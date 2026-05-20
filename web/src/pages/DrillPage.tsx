@@ -1,10 +1,12 @@
 import { Trans } from "@lingui/react/macro";
-import CodeMirror from "@uiw/react-codemirror";
 import { vim } from "@replit/codemirror-vim";
+import CodeMirror from "@uiw/react-codemirror";
 import { useState } from "react";
 
 export function DrillPage() {
-  const [value, setValue] = useState("-- NORMAL --\n\nPress i to enter Insert mode.\nPress Esc to return to Normal mode.\n");
+  const [value, setValue] = useState(
+    "-- NORMAL --\n\nPress i to enter Insert mode.\nPress Esc to return to Normal mode.\n",
+  );
 
   return (
     <div className="drill">

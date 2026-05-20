@@ -1,0 +1,9 @@
+name = "togisumashi-vim"
+compatibility_date = "2024-09-23"
+
+[env.production]
+name = "togisumashi-vim"
+
+[[env.production.routes]]
+pattern = "vim.togisumashi.dev/*"
+custom_domain = true

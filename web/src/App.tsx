@@ -1,6 +1,6 @@
 import { Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { LocaleSwitcher } from "./components/LocaleSwitcher";
-import { type Locale, LOCALES, detectLocale, setLocale } from "./i18n";
+import { LOCALES, type Locale, detectLocale, setLocale } from "./i18n";
 import { DrillPage } from "./pages/DrillPage";
 import { HomePage } from "./pages/HomePage";
 

@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import { type Locale, LOCALES, setLocale } from "../i18n";
+import { LOCALES, type Locale, setLocale } from "../i18n";
 
 export function LocaleSwitcher() {
   const { i18n } = useLingui();
@@ -14,7 +14,8 @@ export function LocaleSwitcher() {
   }
 
   return (
-    <div className="locale-switcher" role="group" aria-label="Language">
+    <fieldset className="locale-switcher">
+      <legend className="sr-only">Language</legend>
       {LOCALES.map((loc) => (
         <button
           key={loc}
@@ -26,6 +27,6 @@ export function LocaleSwitcher() {
           {loc === "en" ? "EN" : "JA"}
         </button>
       ))}
-    </div>
+    </fieldset>
   );
 }

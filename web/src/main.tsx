@@ -9,7 +9,10 @@ import "./index.css";
 const locale = detectLocale();
 setLocale(locale);
 
-createRoot(document.getElementById("root")!).render(
+const rootEl = document.getElementById("root");
+if (!rootEl) throw new Error("Root element #root not found");
+
+createRoot(rootEl).render(
   <StrictMode>
     <I18nProvider i18n={i18n}>
       <BrowserRouter>
