@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.output/
+
+# Cloudflare
+.wrangler/
+.dev.vars
+.dev.vars.*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Local
+*.local
+
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
