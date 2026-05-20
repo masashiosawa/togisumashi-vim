@@ -1,0 +1,210 @@
+import { EditorSelection } from "@codemirror/state";
+import type { EditorView } from "@codemirror/view";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
+import { vim } from "@replit/codemirror-vim";
+import CodeMirror, { type ReactCodeMirrorRef } from "@uiw/react-codemirror";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { instantiateDrill } from "../lib/instantiateDrill";
+import type { DrillDef, DrillInstance } from "../types/drill";
+import { DrillResult } from "./DrillResult";
+import { DrillTimer } from "./DrillTimer";
+import { ShadowOverlay } from "./ShadowOverlay";
+
+type Phase = "idle" | "running" | "success";
+
+interface Props {
+  drill: DrillDef;
+}
+
+export function DrillRunner({ drill }: Props) {
+  const { i18n } = useLingui();
+  const locale = (i18n.locale ?? "en") as "en" | "ja";
+
+  const [phase, setPhase] = useState<Phase>("idle");
+  const [instance, setInstance] = useState<DrillInstance>(() => instantiateDrill(drill));
+  const [startTime, setStartTime] = useState(0);
+  const [elapsedMs, setElapsedMs] = useState(0);
+  const [showShadow, setShowShadow] = useState(false);
+
+  const phaseRef = useRef<Phase>("idle");
+  const successCalledRef = useRef(false);
+  const cmRef = useRef<ReactCodeMirrorRef>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  phaseRef.current = phase;
+
+  const applyStartState = useCallback(
+    (view: EditorView) => {
+      view.dispatch({
+        selection: EditorSelection.cursor(instance.startOffset),
+      });
+    },
+    [instance.startOffset],
+  );
+
+  const handleSuccess = useCallback(() => {
+    if (successCalledRef.current) return;
+    successCalledRef.current = true;
+    const elapsed = Date.now() - startTime;
+    setElapsedMs(elapsed);
+    setPhase("success");
+    if (timerRef.current) clearInterval(timerRef.current);
+  }, [startTime]);
+
+  const startDrill = useCallback(() => {
+    const next = instantiateDrill(drill);
+    successCalledRef.current = false;
+    setInstance(next);
+    setPhase("running");
+    setStartTime(Date.now());
+    setElapsedMs(0);
+    setShowShadow(false);
+  }, [drill]);
+
+  // Space / Enter キーで idle 状態からドリル開始
+  useEffect(() => {
+    if (phase !== "idle") return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === " " || e.key === "Enter") {
+        e.preventDefault();
+        startDrill();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [phase, startDrill]);
+
+  // Cmd/Ctrl + Enter でリトライ
+  useEffect(() => {
+    if (phase !== "success") return;
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+        e.preventDefault();
+        startDrill();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [phase, startDrill]);
+
+  // 実行中→カーソル位置を startOffset に設定してフォーカス
+  // 非実行中→エディタのフォーカスを外す
+  useEffect(() => {
+    if (phase === "running") {
+      // RAF で CodeMirror 内部の effect が完了するのを待つ
+      const raf = requestAnimationFrame(() => {
+        const view = cmRef.current?.view;
+        if (!view) return;
+        view.dispatch({
+          selection: EditorSelection.cursor(instance.startOffset),
+        });
+        view.focus();
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+    // idle / success / timeout はエディタのフォーカスを外す
+    requestAnimationFrame(() => {
+      cmRef.current?.view?.contentDOM.blur();
+    });
+  }, [phase, instance]);
+
+  // タイマー
+  useEffect(() => {
+    if (phase !== "running") return;
+    timerRef.current = setInterval(() => {
+      setElapsedMs(Date.now() - startTime);
+    }, 100);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [phase, startTime]);
+
+  const handleUpdate = useCallback(
+    (vu: Parameters<NonNullable<React.ComponentProps<typeof CodeMirror>["onUpdate"]>>[0]) => {
+      if (phaseRef.current !== "running") return;
+      if (!vu.selectionSet && !vu.docChanged) return;
+
+      if (instance.def.type === "motion") {
+        const pos = vu.state.selection.main.head;
+        if (pos === instance.goalOffset) handleSuccess();
+      } else {
+        const text = vu.state.doc.toString().trimEnd();
+        const goal = (instance.goalText ?? "").trimEnd();
+        if (text === goal) handleSuccess();
+      }
+    },
+    [instance, handleSuccess],
+  );
+
+  // onCreateEditor: 初回マウント時にカーソルを設定（リマウント時も呼ばれる）
+  const handleEditorCreate = useCallback(
+    (view: EditorView) => {
+      applyStartState(view);
+    },
+    [applyStartState],
+  );
+
+  const drillI18n = instance.def.i18n[locale];
+  const running = phase === "running";
+  const done = phase === "success";
+
+  return (
+    <div className="drill-runner">
+      <div className="drill-header">
+        <h3 className="drill-title">{drillI18n.title}</h3>
+        <span className="drill-tier">Tier {instance.def.tier}</span>
+      </div>
+
+      <p className="drill-description">{drillI18n.description}</p>
+
+      {instance.def.type === "edit" && instance.goalText && (
+        <div className="drill-goal-text">
+          <span className="drill-goal-label">
+            <Trans>Goal:</Trans>
+          </span>
+          <code>{instance.goalText}</code>
+        </div>
+      )}
+
+      {running && <DrillTimer elapsedMs={elapsedMs} targetMs={instance.def.target_time_ms} />}
+
+      {running && showShadow && <ShadowOverlay keys={instance.def.solution_keys} />}
+
+      <div className={`editor-wrapper ${!running ? "inactive" : "running"}`}>
+        <CodeMirror
+          key={`${instance.def.id}-${instance.text}`}
+          ref={cmRef}
+          value={instance.text}
+          extensions={[vim()]}
+          onUpdate={handleUpdate}
+          onCreateEditor={handleEditorCreate}
+          theme="dark"
+          height="200px"
+        />
+      </div>
+
+      <div className="drill-actions">
+        {phase === "idle" && (
+          <button type="button" onClick={startDrill} className="btn-primary">
+            <Trans>Start</Trans>
+            <span className="btn-hint">Space</span>
+          </button>
+        )}
+        {running && (
+          <button type="button" onClick={() => setShowShadow((s) => !s)} className="btn-secondary">
+            {showShadow ? <Trans>Hide hint</Trans> : <Trans>Show hint</Trans>}
+          </button>
+        )}
+      </div>
+
+      {done && (
+        <DrillResult
+          elapsedMs={elapsedMs}
+          targetMs={instance.def.target_time_ms}
+          onRetry={startDrill}
+        />
+      )}
+    </div>
+  );
+}

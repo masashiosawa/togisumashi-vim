@@ -16,6 +16,7 @@
     "lingui:compile": "lingui compile"
   },
   "dependencies": {
+    "@codemirror/state": "^6.6.0",
     "@lingui/core": "^5.3.2",
     "@lingui/react": "^5.3.2",
     "@replit/codemirror-vim": "^6.3.0",

@@ -6,10 +6,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ja\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/pages/DrillPage.tsx:36
+msgid "Back"
+msgstr "戻る"
+
+#: src/pages/DrillPage.tsx:26
+msgid "Failed to load drills."
+msgstr "ドリルの読み込みに失敗しました。"
+
+#: src/components/DrillRunner.tsx:124
+msgid "Goal:"
+msgstr "目標:"
+
+#: src/components/DrillResult.tsx:24
+msgid "Goal: {target}s"
+msgstr "目標: {target}s"
+
+#: src/components/DrillRunner.tsx:155
+msgid "Hide hint"
+msgstr "ヒントを隠す"
+
+#: src/components/ShadowOverlay.tsx:11
+msgid "Hint:"
+msgstr "ヒント:"
+
+#: src/pages/DrillPage.tsx:20
+msgid "Loading drills…"
+msgstr "ドリルを読み込み中…"
 
 #: src/pages/HomePage.tsx:10
 msgid "Master Vim in 2 hours"
 msgstr "Vim を 2 時間で極める"
+
+#: src/pages/DrillPage.tsx:60
+msgid "No drills for this tier yet."
+msgstr "このティアのドリルはまだありません。"
+
+#: src/components/DrillRunner.tsx:155
+msgid "Show hint"
+msgstr "ヒントを表示"
+
+#: src/components/DrillRunner.tsx:150
+msgid "Start"
+msgstr "開始"
 
 #: src/pages/HomePage.tsx:16
 msgid "Start drilling"
@@ -19,10 +65,14 @@ msgstr "ドリルを始める"
 msgid "Sushida-style Vim drills — practice at the speed of thought."
 msgstr "寿司打型 Vim ドリル — 思考のペースで練習する。"
 
-#: src/pages/DrillPage.tsx:12
-msgid "Tier 1 — Basic motion"
-msgstr "Tier 1 — 基本移動"
+#: src/components/DrillResult.tsx:33
+msgid "Time's up! ({target}s)"
+msgstr "時間切れ！（目標 {target}s）"
+
+#: src/components/DrillResult.tsx:38
+msgid "Try again"
+msgstr "もう一度"
 
 #: src/pages/DrillPage.tsx:15
-msgid "Use hjkl to move. Press : to enter command mode."
-msgstr "hjkl で移動。: でコマンドモードへ。"
+#~ msgid "Use hjkl to move. Press : to enter command mode."
+#~ msgstr "hjkl で移動。: でコマンドモードへ。"

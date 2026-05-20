@@ -43,3 +43,6 @@ coverage/
 
 # Vite
 web/.vite/
+
+# Generated
+web/public/drills.json

@@ -2,8 +2,9 @@
   "name": "togisumashi-vim",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter web dev",
-    "build": "pnpm --filter web build",
+    "build:drills": "tsx scripts/build-drills.ts",
+    "dev": "pnpm build:drills && pnpm --filter web dev",
+    "build": "pnpm build:drills && pnpm --filter web build",
     "preview": "pnpm --filter web preview",
     "typecheck": "pnpm --filter web typecheck",
     "lint": "pnpm --filter web lint",
@@ -22,6 +23,8 @@
     ]
   },
   "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "tsx": "^4.22.3",
     "wrangler": "^4.93.0"
   }
 }

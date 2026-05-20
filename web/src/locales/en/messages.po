@@ -6,10 +6,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/pages/DrillPage.tsx:36
+msgid "Back"
+msgstr "Back"
+
+#: src/pages/DrillPage.tsx:26
+msgid "Failed to load drills."
+msgstr "Failed to load drills."
+
+#: src/components/DrillRunner.tsx:124
+msgid "Goal:"
+msgstr "Goal:"
+
+#: src/components/DrillResult.tsx:24
+msgid "Goal: {target}s"
+msgstr "Goal: {target}s"
+
+#: src/components/DrillRunner.tsx:155
+msgid "Hide hint"
+msgstr "Hide hint"
+
+#: src/components/ShadowOverlay.tsx:11
+msgid "Hint:"
+msgstr "Hint:"
+
+#: src/pages/DrillPage.tsx:20
+msgid "Loading drills…"
+msgstr "Loading drills…"
 
 #: src/pages/HomePage.tsx:10
 msgid "Master Vim in 2 hours"
 msgstr "Master Vim in 2 hours"
+
+#: src/pages/DrillPage.tsx:60
+msgid "No drills for this tier yet."
+msgstr "No drills for this tier yet."
+
+#: src/components/DrillRunner.tsx:155
+msgid "Show hint"
+msgstr "Show hint"
+
+#: src/components/DrillRunner.tsx:150
+msgid "Start"
+msgstr "Start"
 
 #: src/pages/HomePage.tsx:16
 msgid "Start drilling"
@@ -20,9 +66,17 @@ msgid "Sushida-style Vim drills — practice at the speed of thought."
 msgstr "Sushida-style Vim drills — practice at the speed of thought."
 
 #: src/pages/DrillPage.tsx:12
-msgid "Tier 1 — Basic motion"
-msgstr "Tier 1 — Basic motion"
+#~ msgid "Tier 1 — Basic motion"
+#~ msgstr "Tier 1 — Basic motion"
+
+#: src/components/DrillResult.tsx:33
+msgid "Time's up! ({target}s)"
+msgstr "Time's up! ({target}s)"
+
+#: src/components/DrillResult.tsx:38
+msgid "Try again"
+msgstr "Try again"
 
 #: src/pages/DrillPage.tsx:15
-msgid "Use hjkl to move. Press : to enter command mode."
-msgstr "Use hjkl to move. Press : to enter command mode."
+#~ msgid "Use hjkl to move. Press : to enter command mode."
+#~ msgstr "Use hjkl to move. Press : to enter command mode."
