@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-05-21 01:02+0900\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+
+#: src/pages/HomePage.tsx:10
+msgid "Master Vim in 2 hours"
+msgstr "Master Vim in 2 hours"
+
+#: src/pages/HomePage.tsx:16
+msgid "Start drilling"
+msgstr "Start drilling"
+
+#: src/pages/HomePage.tsx:13
+msgid "Sushida-style Vim drills — practice at the speed of thought."
+msgstr "Sushida-style Vim drills — practice at the speed of thought."
+
+#: src/pages/DrillPage.tsx:12
+msgid "Tier 1 — Basic motion"
+msgstr "Tier 1 — Basic motion"
+
+#: src/pages/DrillPage.tsx:15
+msgid "Use hjkl to move. Press : to enter command mode."
+msgstr "Use hjkl to move. Press : to enter command mode."
