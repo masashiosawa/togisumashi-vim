@@ -40,3 +40,6 @@ pnpm-debug.log*
 # Test coverage
 coverage/
 .nyc_output/
+
+# Vite
+web/.vite/

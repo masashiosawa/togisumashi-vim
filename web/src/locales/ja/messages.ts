@@ -1,0 +1,1 @@
+/*eslint-disable*/import type{Messages}from"@lingui/core";export const messages=JSON.parse("{\"9jC1A3\":[\"hjkl で移動。: でコマンドモードへ。\"],\"XylGhX\":[\"寿司打型 Vim ドリル — 思考のペースで練習する。\"],\"hFfx6l\":[\"Vim を 2 時間で極める\"],\"nqFWXn\":[\"Tier 1 — 基本移動\"],\"snQiV0\":[\"ドリルを始める\"]}")as Messages;
