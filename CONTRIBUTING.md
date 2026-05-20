@@ -16,8 +16,7 @@ Thank you for your interest in contributing! This document covers how to report 
 
 - [Node.js](https://nodejs.org/) 24 LTS
 - [pnpm](https://pnpm.io/) (`npm install -g pnpm`)
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) (`pnpm add -g wrangler`) — for Cloudflare Workers / D1 local dev
-- Neovim 0.10+ — for plugin development
+- Neovim 0.10+ — for plugin development only
 
 ### Getting Started
 
@@ -29,8 +28,9 @@ pnpm install
 
 #### Web app
 
+All commands run from the **repo root**:
+
 ```bash
-cd web
 pnpm dev        # start dev server
 pnpm typecheck  # TypeScript check
 pnpm lint       # Biome lint + format check

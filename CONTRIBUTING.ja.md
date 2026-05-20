@@ -16,8 +16,7 @@
 
 - [Node.js](https://nodejs.org/) 24 LTS
 - [pnpm](https://pnpm.io/)（`npm install -g pnpm`）
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)（`pnpm add -g wrangler`）— Cloudflare Workers / D1 のローカル開発用
-- Neovim 0.10+（プラグイン開発時）
+- Neovim 0.10+（プラグイン開発時のみ）
 
 ### セットアップ手順
 
@@ -29,8 +28,9 @@ pnpm install
 
 #### Web アプリ
 
+すべてのコマンドを**リポジトリルート**から実行します:
+
 ```bash
-cd web
 pnpm dev        # 開発サーバ起動
 pnpm typecheck  # TypeScript チェック
 pnpm lint       # Biome lint + フォーマットチェック

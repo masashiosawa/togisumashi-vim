@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# togisumashi-vim — web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web app for [togisumashi-vim](https://github.com/masashiosawa/togisumashi-vim).  
+Deployed at **[vim.togisumashi.dev](https://vim.togisumashi.dev)**.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| | |
+|---|---|
+| Framework | Vite 8 + React 19 + TypeScript |
+| Vim engine | CodeMirror 6 + `@replit/codemirror-vim` |
+| i18n | lingui v5 (en / ja, URL-path based) |
+| Lint / Format | Biome |
+| Tests | Vitest |
+| Deploy | Cloudflare Pages (via GitHub Actions) |
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Run from the **repo root**:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install      # install all workspaces
+pnpm dev          # start dev server → http://localhost:5173
+pnpm typecheck    # TypeScript check
+pnpm lint         # Biome lint + format check
+pnpm build        # production build (lingui compile → tsc → vite build)
+pnpm test         # Vitest unit tests
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### i18n workflow
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm --filter web lingui:extract   # extract strings from source → .po files
+# edit src/locales/ja/messages.po
+pnpm --filter web lingui:compile   # compile .po → messages.ts (auto-run in build)
 ```
+
+### Environment variables
+
+Copy `.env.example` to `.dev.vars` for local Cloudflare Workers emulation.  
+Never commit `.dev.vars` or `.env.local`.
