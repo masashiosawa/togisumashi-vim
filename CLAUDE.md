@@ -23,6 +23,10 @@ feat: add drill runner with idle/running/success phases
 
 Squash merge only. 1 branch = 1 Issue = 1 commit on main.
 
+**Issue auto-close requires `Closes #XX` in the PR title or the squash commit message.**
+The PR body `Closes #XX` is NOT carried into the squash commit and will not auto-close the Issue.
+Always include `(closes #XX)` in the PR title when creating PRs.
+
 ## Domain
 
 Production: `https://vim.togisumashi.dev` (Cloudflare Pages)
