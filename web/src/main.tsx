@@ -9,6 +9,11 @@ import "./index.css";
 const locale = detectLocale();
 setLocale(locale);
 
+// テーマ初期化（ちらつき防止のため React レンダリング前に実行）
+const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+document.documentElement.dataset.theme = savedTheme ?? (prefersDark ? "dark" : "light");
+
 const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error("Root element #root not found");
 

@@ -1,19 +1,23 @@
 ---
 id: tier-1-word-jump
 tier: 1
-target_time_ms: 10000
+type: motion
+target_time_ms: 8000
 template:
   - kind: random_text_line
     chars: 50
+goal:
+  type: col_end
+solution_keys:
+  - "w"
+  - "w"
+  - "..."
+  - "$"
 i18n:
   en:
-    title: "Word jump: w b e"
-    description: |
-      Jump between words using w (next word start), b (previous word start),
-      and e (next word end). Faster than holding l.
+    title: "Word jump: w / e"
+    description: "Use w (next word start) or e (next word end) to reach the line end faster than holding l."
   ja:
-    title: "単語移動: w b e"
-    description: |
-      w（次の単語先頭）b（前の単語先頭）e（次の単語末尾）で単語をまたいで移動する。
-      l 連打より格段に速い。
+    title: "単語移動: w / e"
+    description: "w（次の単語先頭）や e（次の単語末尾）を使い、l 連打より速く行末へ到達せよ。"
 ---
