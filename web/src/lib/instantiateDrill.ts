@@ -66,6 +66,9 @@ export function instantiateDrill(def: DrillDef): DrillInstance {
     case "offset":
       goalOffset = def.goal.offset;
       break;
+    case "row_col":
+      goalOffset = lineStartOffset(def.goal.row) + def.goal.col;
+      break;
   }
 
   return { def, text, startOffset, goalOffset, goalText };

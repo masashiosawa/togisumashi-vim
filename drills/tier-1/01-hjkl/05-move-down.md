@@ -10,8 +10,9 @@ template:
       - "const b = 2;"
 start_col: 0
 goal:
-  type: offset
-  offset: 13
+  type: row_col
+  row: 1
+  col: 0
 solution_keys:
   - "j"
 i18n:

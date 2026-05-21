@@ -5,13 +5,7 @@ import { DrillRunner } from "../components/DrillRunner";
 import { SessionSummary } from "../components/SessionSummary";
 import { useDrills } from "../hooks/useDrills";
 import { useLessons } from "../hooks/useLessons";
-import {
-  COUNTS,
-  LEVELS,
-  buildGuidedPool,
-  buildPoolFromIds,
-  buildSkipPool,
-} from "../lib/session";
+import { COUNTS, LEVELS, buildGuidedPool, buildPoolFromIds, buildSkipPool } from "../lib/session";
 import {
   type Attempt,
   type Count,
@@ -48,6 +42,7 @@ export function HomePage() {
 
   const settingsSectionRef = useRef<HTMLDivElement>(null);
 
+  // focusIds is always passed explicitly — never read from state implicitly
   const makePool = useCallback(
     (opts: {
       level?: Level;
@@ -58,12 +53,12 @@ export function HomePage() {
       const lvl = opts.level ?? level;
       const lm = opts.lessonMode ?? lessonMode;
       const cnt = opts.count ?? count;
-      const fids = opts.focusIds ?? focusIds;
+      const fids = opts.focusIds ?? [];
       if (fids.length > 0) return buildPoolFromIds(drills, fids);
       if (lm === "guided") return buildGuidedPool(drills, lvl);
       return buildSkipPool(drills, lvl, cnt);
     },
-    [drills, level, lessonMode, count, focusIds],
+    [drills, level, lessonMode, count],
   );
 
   const resetDrill = useCallback((newPool: DrillDef[]) => {
@@ -73,10 +68,10 @@ export function HomePage() {
     setFinished(false);
   }, []);
 
-  // Rebuild pool whenever settings, drills, or focusIds change
+  // Rebuild pool when settings, drills, or focusIds change
   useEffect(() => {
-    resetDrill(makePool({}));
-  }, [makePool, resetDrill]);
+    resetDrill(makePool({ focusIds }));
+  }, [makePool, resetDrill, focusIds]);
 
   const handleLevelChange = useCallback((lvl: Level) => {
     saveLastLevel(lvl);
@@ -112,17 +107,13 @@ export function HomePage() {
   }, [index, pool.length]);
 
   const handleReplay = useCallback(() => {
-    resetDrill(makePool({}));
-  }, [makePool, resetDrill]);
+    resetDrill(makePool({ focusIds }));
+  }, [makePool, resetDrill, focusIds]);
 
-  const handleFocus = useCallback(
-    (ids: string[]) => {
-      if (ids.length === 0) return;
-      setFocusIds(ids);
-      resetDrill(buildPoolFromIds(drills, ids));
-    },
-    [drills, resetDrill],
-  );
+  const handleFocus = useCallback((ids: string[]) => {
+    if (ids.length === 0) return;
+    setFocusIds(ids); // triggers useEffect to rebuild pool
+  }, []);
 
   const handleBackToSettings = useCallback(() => {
     setFocusIds([]);

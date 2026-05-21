@@ -12,7 +12,8 @@ export type DrillGoal =
   | { type: "col_N"; n: number }
   | { type: "last_line_start" }
   | { type: "text_equals"; content: string }
-  | { type: "offset"; offset: number };
+  | { type: "offset"; offset: number }
+  | { type: "row_col"; row: number; col: number };
 
 export interface DrillI18n {
   title: string;

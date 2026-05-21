@@ -18,19 +18,42 @@ interface LessonData {
   concept_ja?: string;
 }
 
-function processDir(
-  dir: string,
-): { drills: unknown[]; lessons: LessonData[] } {
+const LESSON_REQUIRED = ["id", "tier", "order", "title_en", "title_ja"] as const;
+
+function validateLesson(
+  data: Record<string, unknown>,
+  filePath: string,
+): data is LessonData {
+  for (const field of LESSON_REQUIRED) {
+    if (data[field] == null) {
+      console.warn(`⚠ ${filePath}: missing required field "${field}", skipping lesson`);
+      return false;
+    }
+  }
+  return true;
+}
+
+function validateDrill(data: Record<string, unknown>, filePath: string): boolean {
+  if (data.id == null) {
+    console.warn(`⚠ ${filePath}: missing "id", skipping drill`);
+    return false;
+  }
+  return true;
+}
+
+function processDir(dir: string): { drills: unknown[]; lessons: LessonData[] } {
   const drills: unknown[] = [];
   const lessons: LessonData[] = [];
 
   const entries = readdirSync(dir, { withFileTypes: true });
 
+  // Scan _lesson.md first so currentLessonId is set before processing drill files
   let currentLessonId: string | undefined;
   const lessonEntry = entries.find((e) => e.name === "_lesson.md");
   if (lessonEntry) {
-    const { data } = matter(readFileSync(join(dir, "_lesson.md"), "utf8"));
-    if (data.id) {
+    const fullPath = join(dir, "_lesson.md");
+    const { data } = matter(readFileSync(fullPath, "utf8"));
+    if (validateLesson(data as Record<string, unknown>, fullPath)) {
       lessons.push(data as LessonData);
       currentLessonId = data.id as string;
     }
@@ -44,7 +67,7 @@ function processDir(
       lessons.push(...sub.lessons);
     } else if (entry.name.endsWith(".md") && !entry.name.startsWith("_")) {
       const { data } = matter(readFileSync(full, "utf8"));
-      if (data.id) {
+      if (validateDrill(data as Record<string, unknown>, full)) {
         drills.push(currentLessonId ? { ...data, lesson: currentLessonId } : data);
       }
     }

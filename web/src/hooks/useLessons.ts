@@ -12,7 +12,10 @@ export function useLessons() {
         setLessons(data as Lesson[]);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((err) => {
+        console.error("[useLessons] Failed to load lessons.json:", err);
+        setLoading(false);
+      });
   }, []);
 
   return { lessons, loading };
