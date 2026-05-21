@@ -2,14 +2,14 @@
 id: tier-2-02-yy-p
 tier: 2
 order: 2
-title_en: "Yank and paste: yy p P"
-title_ja: "ヤンクとペースト: yy p P"
+title_en: "Yank and paste: yy p P ddp"
+title_ja: "ヤンクとペースト: yy p P ddp"
 concept_en: |
   Yank (copy) and paste without leaving normal mode.
 
     yy  — yank (copy) the current line
-    p   — paste below the current line (linewise) or after cursor (charwise)
-    P   — paste above the current line (linewise) or before cursor (charwise)
+    p   — paste below the current line (linewise)
+    P   — paste above the current line (linewise)
 
   Useful idioms:
     yyp  — duplicate a line below (yank + paste below)
@@ -23,8 +23,8 @@ concept_ja: |
   ノーマルモードを離れずにヤンク（コピー）＆ペースト。
 
     yy  — 現在行をヤンク（コピー）
-    p   — カーソルの下（行単位）またはカーソルの後ろ（文字単位）にペースト
-    P   — カーソルの上（行単位）またはカーソルの前（文字単位）にペースト
+    p   — 現在行の下にペースト（行単位）
+    P   — 現在行の上にペースト（行単位）
 
   よく使う慣用句:
     yyp  — 行を下に複製（ヤンク＋下にペースト）

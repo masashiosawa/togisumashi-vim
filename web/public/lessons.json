@@ -57,9 +57,9 @@
     "id": "tier-2-02-yy-p",
     "tier": 2,
     "order": 2,
-    "title_en": "Yank and paste: yy p P",
-    "title_ja": "ヤンクとペースト: yy p P",
-    "concept_en": "Yank (copy) and paste without leaving normal mode.\n\n  yy  — yank (copy) the current line\n  p   — paste below the current line (linewise) or after cursor (charwise)\n  P   — paste above the current line (linewise) or before cursor (charwise)\n\nUseful idioms:\n  yyp  — duplicate a line below (yank + paste below)\n  yyP  — duplicate a line above\n  ddp  — swap current line with the line below (delete + paste below next)\n\nAdd a count before yank to grab multiple lines:\n  2yy  — yank 2 lines\n  yy3p — yank once, paste 3 times\n",
-    "concept_ja": "ノーマルモードを離れずにヤンク（コピー）＆ペースト。\n\n  yy  — 現在行をヤンク（コピー）\n  p   — カーソルの下（行単位）またはカーソルの後ろ（文字単位）にペースト\n  P   — カーソルの上（行単位）またはカーソルの前（文字単位）にペースト\n\nよく使う慣用句:\n  yyp  — 行を下に複製（ヤンク＋下にペースト）\n  yyP  — 行を上に複製\n  ddp  — 現在行と次の行を入れ替え（削除＋次の行の下にペースト）\n\nカウントでまとめてヤンク:\n  2yy  — 2 行ヤンク\n  yy3p — 1 回ヤンク、3 回ペースト\n"
+    "title_en": "Yank and paste: yy p P ddp",
+    "title_ja": "ヤンクとペースト: yy p P ddp",
+    "concept_en": "Yank (copy) and paste without leaving normal mode.\n\n  yy  — yank (copy) the current line\n  p   — paste below the current line (linewise)\n  P   — paste above the current line (linewise)\n\nUseful idioms:\n  yyp  — duplicate a line below (yank + paste below)\n  yyP  — duplicate a line above\n  ddp  — swap current line with the line below (delete + paste below next)\n\nAdd a count before yank to grab multiple lines:\n  2yy  — yank 2 lines\n  yy3p — yank once, paste 3 times\n",
+    "concept_ja": "ノーマルモードを離れずにヤンク（コピー）＆ペースト。\n\n  yy  — 現在行をヤンク（コピー）\n  p   — 現在行の下にペースト（行単位）\n  P   — 現在行の上にペースト（行単位）\n\nよく使う慣用句:\n  yyp  — 行を下に複製（ヤンク＋下にペースト）\n  yyP  — 行を上に複製\n  ddp  — 現在行と次の行を入れ替え（削除＋次の行の下にペースト）\n\nカウントでまとめてヤンク:\n  2yy  — 2 行ヤンク\n  yy3p — 1 回ヤンク、3 回ペースト\n"
   }
 ]

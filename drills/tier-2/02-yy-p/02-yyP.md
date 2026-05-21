@@ -9,6 +9,7 @@ template:
       - "const a = 1;"
       - "const b = 2;"
 start_row: 1
+start_col: 0
 goal:
   type: text_equals
   content: |-
