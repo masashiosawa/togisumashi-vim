@@ -6,6 +6,7 @@ import { vim } from "@replit/codemirror-vim";
 import CodeMirror, { type ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { instantiateDrill } from "../lib/instantiateDrill";
+import type { Attempt } from "../lib/storage";
 import type { DrillDef, DrillInstance } from "../types/drill";
 import { DrillResult } from "./DrillResult";
 import { DrillTimer } from "./DrillTimer";
@@ -15,9 +16,17 @@ type Phase = "idle" | "running" | "success";
 
 interface Props {
   drill: DrillDef;
+  /** mount 時に自動で開始 (連続セッションの 2 問目以降) */
+  autoStart?: boolean;
+  /** 試行完了時のコールバック (成功時のみ呼ばれる) */
+  onComplete?: (a: Attempt) => void;
+  /** 結果画面で「次へ」を押された時 */
+  onNext?: () => void;
+  /** セッション最後の問題かどうか */
+  isLast?: boolean;
 }
 
-export function DrillRunner({ drill }: Props) {
+export function DrillRunner({ drill, autoStart, onComplete, onNext, isLast }: Props) {
   const { i18n } = useLingui();
   const locale = (i18n.locale ?? "en") as "en" | "ja";
 
@@ -50,7 +59,14 @@ export function DrillRunner({ drill }: Props) {
     setElapsedMs(elapsed);
     setPhase("success");
     if (timerRef.current) clearInterval(timerRef.current);
-  }, [startTime]);
+    onComplete?.({
+      drillId: drill.id,
+      success: true,
+      elapsedMs: elapsed,
+      targetMs: drill.target_time_ms,
+      timestamp: Date.now(),
+    });
+  }, [startTime, drill.id, drill.target_time_ms, onComplete]);
 
   const startDrill = useCallback(() => {
     const next = instantiateDrill(drill);
@@ -62,37 +78,44 @@ export function DrillRunner({ drill }: Props) {
     setShowShadow(false);
   }, [drill]);
 
-  // Space / Enter キーで idle 状態からドリル開始
+  // autoStart=true で mount 直後に自動開始 (連続セッション 2 問目以降)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: mount only — autoStart/startDrill は意図的に省略
   useEffect(() => {
-    if (phase !== "idle") return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === " " || e.key === "Enter") {
-        e.preventDefault();
-        startDrill();
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [phase, startDrill]);
+    if (autoStart) {
+      startDrill();
+    }
+  }, []);
 
-  // Cmd/Ctrl + Enter でリトライ
+  // グローバルキーバインド (idle/success の Space, success の R)
   useEffect(() => {
-    if (phase !== "success") return;
     const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-        e.preventDefault();
-        startDrill();
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const tgt = e.target as HTMLElement | null;
+      // CodeMirror エディタ内のキーイベントは横取りしない (running時)
+      if (tgt?.closest(".cm-editor")) return;
+
+      if (phase === "idle") {
+        if (e.key === " " || e.key === "Enter") {
+          e.preventDefault();
+          startDrill();
+        }
+      } else if (phase === "success") {
+        if (e.key === " " || e.key === "Enter") {
+          e.preventDefault();
+          onNext?.();
+        } else if (e.key === "r" || e.key === "R") {
+          e.preventDefault();
+          startDrill();
+        }
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [phase, startDrill]);
+  }, [phase, startDrill, onNext]);
 
   // 実行中→カーソル位置を startOffset に設定してフォーカス
-  // 非実行中→エディタのフォーカスを外す
   useEffect(() => {
     if (phase === "running") {
-      // RAF で CodeMirror 内部の effect が完了するのを待つ
       const raf = requestAnimationFrame(() => {
         const view = cmRef.current?.view;
         if (!view) return;
@@ -103,7 +126,6 @@ export function DrillRunner({ drill }: Props) {
       });
       return () => cancelAnimationFrame(raf);
     }
-    // idle / success / timeout はエディタのフォーカスを外す
     requestAnimationFrame(() => {
       cmRef.current?.view?.contentDOM.blur();
     });
@@ -137,7 +159,6 @@ export function DrillRunner({ drill }: Props) {
     [instance, handleSuccess],
   );
 
-  // onCreateEditor: 初回マウント時にカーソルを設定（リマウント時も呼ばれる）
   const handleEditorCreate = useCallback(
     (view: EditorView) => {
       applyStartState(view);
@@ -203,6 +224,8 @@ export function DrillRunner({ drill }: Props) {
           elapsedMs={elapsedMs}
           targetMs={instance.def.target_time_ms}
           onRetry={startDrill}
+          onNext={() => onNext?.()}
+          isLast={isLast ?? false}
         />
       )}
     </div>

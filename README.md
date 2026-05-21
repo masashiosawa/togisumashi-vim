@@ -8,9 +8,9 @@ togisumashi-vim is a speed-drill trainer for Neovim, inspired by the classic Jap
 
 ## Features
 
-- **Tier 1–4 drills** — progressive difficulty from basic motions to advanced text objects
+- **3-level sessions** — Beginner (motions) / Intermediate (edit commands) / Advanced (mixed). Pick a level, press Space, and drill through the full set
 - **Shadow mode** — watch the ideal key sequence before attempting
-- **Personal best tracking** — local (IndexedDB) with optional cloud sync (Sign in with GitHub)
+- **Progress tracking** — localStorage records every attempt; slow drills surface automatically after each session
 - **Neovim-native** — practice without leaving your editor
 - **Bilingual** — English and Japanese as first-class languages
 
@@ -18,7 +18,7 @@ togisumashi-vim is a speed-drill trainer for Neovim, inspired by the classic Jap
 
 👉 [vim.togisumashi.dev](https://vim.togisumashi.dev)
 
-No install required. Open the app, pick a drill, and start typing.
+No install required. Open the app, pick a level, and press Space.
 
 ## Neovim Plugin
 
@@ -38,12 +38,12 @@ Run `:Togisumashi` to start a drill session. Requires Neovim 0.10+.
 
 ## Drill Tiers
 
-| Tier | Focus |
-|------|-------|
-| 1 | Basic motions — `hjkl`, word jumps (`w` `b` `e`) |
-| 2 | Operators — `d` `c` `y` combined with motions |
-| 3 | Text objects — `iw` `i"` `i(` `it` |
-| 4 | Advanced — macros, marks, registers |
+| Tier | Focus | Status |
+|------|-------|--------|
+| 1 | Basic motions — `hjkl`, word jumps (`w` `b` `e`), line edges | ✅ 15 drills |
+| 2 | Operators — `d` `c` `y` combined with motions | ✅ 15 drills |
+| 3 | Text objects — `iw` `i"` `i(` `it` | 🚧 roadmap |
+| 4 | Advanced — macros, marks, registers | 🚧 roadmap |
 
 ## Repository Structure
 

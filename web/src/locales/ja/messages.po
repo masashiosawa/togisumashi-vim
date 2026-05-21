@@ -13,23 +13,54 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/DrillPage.tsx:36
-msgid "Back"
-msgstr "戻る"
+#: src/components/SessionSummary.tsx:59
+#: src/pages/HomePage.tsx:96
+msgid "Advanced"
+msgstr "上級"
 
-#: src/pages/DrillPage.tsx:26
+#: src/pages/DrillPage.tsx:36
+#~ msgid "Back"
+#~ msgstr "戻る"
+
+#: src/pages/HomePage.tsx:99
+msgid "Basic motions"
+msgstr "基本モーション"
+
+#: src/components/SessionSummary.tsx:57
+#: src/pages/HomePage.tsx:94
+msgid "Beginner"
+msgstr "初級"
+
+#: src/components/SessionSummary.tsx:73
+#: src/pages/HomePage.tsx:104
+msgid "drills"
+msgstr "問"
+
+#: src/pages/HomePage.tsx:100
+msgid "Edit commands"
+msgstr "編集コマンド"
+
+#: src/pages/DrillPage.tsx:106
 msgid "Failed to load drills."
 msgstr "ドリルの読み込みに失敗しました。"
 
-#: src/components/DrillRunner.tsx:124
+#: src/pages/DrillPage.tsx:150
+msgid "Focus"
+msgstr "復習"
+
+#: src/components/SessionSummary.tsx:108
+msgid "Focus practice"
+msgstr "苦手だけ復習"
+
+#: src/components/DrillRunner.tsx:186
 msgid "Goal:"
 msgstr "目標:"
 
 #: src/components/DrillResult.tsx:24
-msgid "Goal: {target}s"
-msgstr "目標: {target}s"
+#~ msgid "Goal: {target}s"
+#~ msgstr "目標: {target}s"
 
-#: src/components/DrillRunner.tsx:155
+#: src/components/DrillRunner.tsx:218
 msgid "Hide hint"
 msgstr "ヒントを隠す"
 
@@ -37,41 +68,118 @@ msgstr "ヒントを隠す"
 msgid "Hint:"
 msgstr "ヒント:"
 
-#: src/pages/DrillPage.tsx:20
+#: src/components/SessionSummary.tsx:58
+#: src/pages/HomePage.tsx:95
+msgid "Intermediate"
+msgstr "中級"
+
+#: src/pages/HomePage.tsx:129
+msgid "jump & start"
+msgstr "直接開始"
+
+#: src/pages/DrillPage.tsx:99
+#: src/pages/HomePage.tsx:61
 msgid "Loading drills…"
 msgstr "ドリルを読み込み中…"
 
 #: src/pages/HomePage.tsx:10
-msgid "Master Vim in 2 hours"
-msgstr "Vim を 2 時間で極める"
+#~ msgid "Master Vim in 2 hours"
+#~ msgstr "Vim を 2 時間で極める"
+
+#: src/pages/HomePage.tsx:75
+msgid "Master Vim, drill by drill."
+msgstr "ドリルで Vim を極める。"
+
+#: src/components/SessionSummary.tsx:120
+#: src/pages/DrillPage.tsx:114
+#: src/pages/DrillPage.tsx:145
+msgid "Menu"
+msgstr "メニュー"
+
+#: src/pages/HomePage.tsx:101
+msgid "Mixed challenge"
+msgstr "総合チャレンジ"
+
+#: src/components/DrillResult.tsx:33
+msgid "Next drill"
+msgstr "次の問題"
+
+#: src/pages/DrillPage.tsx:117
+msgid "No drills available for this selection."
+msgstr "この選択に該当するドリルがありません。"
 
 #: src/pages/DrillPage.tsx:60
-msgid "No drills for this tier yet."
-msgstr "このティアのドリルはまだありません。"
+#~ msgid "No drills for this tier yet."
+#~ msgstr "このティアのドリルはまだありません。"
 
-#: src/components/DrillRunner.tsx:155
+#: src/pages/HomePage.tsx:78
+msgid "Pick a level. Press Space."
+msgstr "レベルを選んで Space。"
+
+#: src/components/SessionSummary.tsx:116
+msgid "Play again"
+msgstr "もう一度"
+
+#: src/components/DrillResult.tsx:37
+msgid "Retry"
+msgstr "もう一度"
+
+#: src/components/DrillResult.tsx:33
+msgid "See results"
+msgstr "結果を見る"
+
+#: src/components/SessionSummary.tsx:66
+msgid "Session complete"
+msgstr "セッション完了"
+
+#: src/components/DrillRunner.tsx:218
 msgid "Show hint"
 msgstr "ヒントを表示"
 
-#: src/components/DrillRunner.tsx:150
+#: src/components/SessionSummary.tsx:93
+msgid "Slower than target — practice these:"
+msgstr "目標タイム未達 — 復習推奨:"
+
+#: src/components/DrillRunner.tsx:212
+#: src/pages/HomePage.tsx:116
 msgid "Start"
 msgstr "開始"
 
 #: src/pages/HomePage.tsx:16
-msgid "Start drilling"
-msgstr "ドリルを始める"
+#~ msgid "Start drilling"
+#~ msgstr "ドリルを始める"
 
 #: src/pages/HomePage.tsx:13
-msgid "Sushida-style Vim drills — practice at the speed of thought."
-msgstr "寿司打型 Vim ドリル — 思考のペースで練習する。"
+#~ msgid "Sushida-style Vim drills — practice at the speed of thought."
+#~ msgstr "寿司打型 Vim ドリル — 思考のペースで練習する。"
+
+#: src/pages/HomePage.tsx:123
+msgid "switch"
+msgstr "切替"
+
+#: src/components/DrillResult.tsx:26
+msgid "target {target}s"
+msgstr "目標 {target}s"
 
 #: src/components/DrillResult.tsx:33
-msgid "Time's up! ({target}s)"
-msgstr "時間切れ！（目標 {target}s）"
+#~ msgid "Time's up! ({target}s)"
+#~ msgstr "時間切れ！（目標 {target}s）"
+
+#: src/components/SessionSummary.tsx:85
+msgid "total"
+msgstr "合計"
 
 #: src/components/DrillResult.tsx:38
-msgid "Try again"
-msgstr "もう一度"
+#~ msgid "Try again"
+#~ msgstr "もう一度"
+
+#: src/components/DrillResult.tsx:24
+msgid "under {target}s ✦"
+msgstr "{target}s 未満 ✦"
+
+#: src/components/SessionSummary.tsx:79
+msgid "under target"
+msgstr "目標達成"
 
 #: src/pages/DrillPage.tsx:15
 #~ msgid "Use hjkl to move. Press : to enter command mode."

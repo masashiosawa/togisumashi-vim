@@ -4,31 +4,36 @@ interface Props {
   elapsedMs: number;
   targetMs: number;
   onRetry: () => void;
+  onNext: () => void;
+  isLast: boolean;
 }
 
-const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform);
-const retryHint = isMac ? "⌘↵" : "Ctrl+↵";
-
-export function DrillResult({ elapsedMs, targetMs, onRetry }: Props) {
+export function DrillResult({ elapsedMs, targetMs, onRetry, onNext, isLast }: Props) {
   const elapsed = (elapsedMs / 1000).toFixed(2);
   const target = (targetMs / 1000).toFixed(1);
   const faster = elapsedMs < targetMs;
 
   return (
     <div className="drill-result success">
-      <p className="result-icon">✓</p>
-      <p className="result-time">
-        {elapsed}s{" "}
-        {faster && (
+      <div className="result-head">
+        <p className="result-icon">✓</p>
+        <p className="result-time">
+          {elapsed}s
           <span className="result-badge">
-            <Trans>Goal: {target}s</Trans>
+            {faster ? <Trans>under {target}s ✦</Trans> : <Trans>target {target}s</Trans>}
           </span>
-        )}
-      </p>
-      <button type="button" onClick={onRetry} className="btn-primary">
-        <Trans>Try again</Trans>
-        <span className="btn-hint">{retryHint}</span>
-      </button>
+        </p>
+      </div>
+      <div className="result-actions">
+        <button type="button" onClick={onNext} className="btn-primary">
+          {isLast ? <Trans>See results</Trans> : <Trans>Next drill</Trans>}
+          <span className="btn-hint">Space</span>
+        </button>
+        <button type="button" onClick={onRetry} className="btn-secondary">
+          <Trans>Retry</Trans>
+          <span className="btn-hint">R</span>
+        </button>
+      </div>
     </div>
   );
 }

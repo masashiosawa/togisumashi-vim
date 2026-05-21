@@ -13,23 +13,54 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/DrillPage.tsx:36
-msgid "Back"
-msgstr "Back"
+#: src/components/SessionSummary.tsx:59
+#: src/pages/HomePage.tsx:96
+msgid "Advanced"
+msgstr "Advanced"
 
-#: src/pages/DrillPage.tsx:26
+#: src/pages/DrillPage.tsx:36
+#~ msgid "Back"
+#~ msgstr "Back"
+
+#: src/pages/HomePage.tsx:99
+msgid "Basic motions"
+msgstr "Basic motions"
+
+#: src/components/SessionSummary.tsx:57
+#: src/pages/HomePage.tsx:94
+msgid "Beginner"
+msgstr "Beginner"
+
+#: src/components/SessionSummary.tsx:73
+#: src/pages/HomePage.tsx:104
+msgid "drills"
+msgstr "drills"
+
+#: src/pages/HomePage.tsx:100
+msgid "Edit commands"
+msgstr "Edit commands"
+
+#: src/pages/DrillPage.tsx:106
 msgid "Failed to load drills."
 msgstr "Failed to load drills."
 
-#: src/components/DrillRunner.tsx:124
+#: src/pages/DrillPage.tsx:150
+msgid "Focus"
+msgstr "Focus"
+
+#: src/components/SessionSummary.tsx:108
+msgid "Focus practice"
+msgstr "Focus practice"
+
+#: src/components/DrillRunner.tsx:186
 msgid "Goal:"
 msgstr "Goal:"
 
 #: src/components/DrillResult.tsx:24
-msgid "Goal: {target}s"
-msgstr "Goal: {target}s"
+#~ msgid "Goal: {target}s"
+#~ msgstr "Goal: {target}s"
 
-#: src/components/DrillRunner.tsx:155
+#: src/components/DrillRunner.tsx:218
 msgid "Hide hint"
 msgstr "Hide hint"
 
@@ -37,45 +68,122 @@ msgstr "Hide hint"
 msgid "Hint:"
 msgstr "Hint:"
 
-#: src/pages/DrillPage.tsx:20
+#: src/components/SessionSummary.tsx:58
+#: src/pages/HomePage.tsx:95
+msgid "Intermediate"
+msgstr "Intermediate"
+
+#: src/pages/HomePage.tsx:129
+msgid "jump & start"
+msgstr "jump & start"
+
+#: src/pages/DrillPage.tsx:99
+#: src/pages/HomePage.tsx:61
 msgid "Loading drills…"
 msgstr "Loading drills…"
 
 #: src/pages/HomePage.tsx:10
-msgid "Master Vim in 2 hours"
-msgstr "Master Vim in 2 hours"
+#~ msgid "Master Vim in 2 hours"
+#~ msgstr "Master Vim in 2 hours"
+
+#: src/pages/HomePage.tsx:75
+msgid "Master Vim, drill by drill."
+msgstr "Master Vim, drill by drill."
+
+#: src/components/SessionSummary.tsx:120
+#: src/pages/DrillPage.tsx:114
+#: src/pages/DrillPage.tsx:145
+msgid "Menu"
+msgstr "Menu"
+
+#: src/pages/HomePage.tsx:101
+msgid "Mixed challenge"
+msgstr "Mixed challenge"
+
+#: src/components/DrillResult.tsx:33
+msgid "Next drill"
+msgstr "Next drill"
+
+#: src/pages/DrillPage.tsx:117
+msgid "No drills available for this selection."
+msgstr "No drills available for this selection."
 
 #: src/pages/DrillPage.tsx:60
-msgid "No drills for this tier yet."
-msgstr "No drills for this tier yet."
+#~ msgid "No drills for this tier yet."
+#~ msgstr "No drills for this tier yet."
 
-#: src/components/DrillRunner.tsx:155
+#: src/pages/HomePage.tsx:78
+msgid "Pick a level. Press Space."
+msgstr "Pick a level. Press Space."
+
+#: src/components/SessionSummary.tsx:116
+msgid "Play again"
+msgstr "Play again"
+
+#: src/components/DrillResult.tsx:37
+msgid "Retry"
+msgstr "Retry"
+
+#: src/components/DrillResult.tsx:33
+msgid "See results"
+msgstr "See results"
+
+#: src/components/SessionSummary.tsx:66
+msgid "Session complete"
+msgstr "Session complete"
+
+#: src/components/DrillRunner.tsx:218
 msgid "Show hint"
 msgstr "Show hint"
 
-#: src/components/DrillRunner.tsx:150
+#: src/components/SessionSummary.tsx:93
+msgid "Slower than target — practice these:"
+msgstr "Slower than target — practice these:"
+
+#: src/components/DrillRunner.tsx:212
+#: src/pages/HomePage.tsx:116
 msgid "Start"
 msgstr "Start"
 
 #: src/pages/HomePage.tsx:16
-msgid "Start drilling"
-msgstr "Start drilling"
+#~ msgid "Start drilling"
+#~ msgstr "Start drilling"
 
 #: src/pages/HomePage.tsx:13
-msgid "Sushida-style Vim drills — practice at the speed of thought."
-msgstr "Sushida-style Vim drills — practice at the speed of thought."
+#~ msgid "Sushida-style Vim drills — practice at the speed of thought."
+#~ msgstr "Sushida-style Vim drills — practice at the speed of thought."
+
+#: src/pages/HomePage.tsx:123
+msgid "switch"
+msgstr "switch"
+
+#: src/components/DrillResult.tsx:26
+msgid "target {target}s"
+msgstr "target {target}s"
 
 #: src/pages/DrillPage.tsx:12
 #~ msgid "Tier 1 — Basic motion"
 #~ msgstr "Tier 1 — Basic motion"
 
 #: src/components/DrillResult.tsx:33
-msgid "Time's up! ({target}s)"
-msgstr "Time's up! ({target}s)"
+#~ msgid "Time's up! ({target}s)"
+#~ msgstr "Time's up! ({target}s)"
+
+#: src/components/SessionSummary.tsx:85
+msgid "total"
+msgstr "total"
 
 #: src/components/DrillResult.tsx:38
-msgid "Try again"
-msgstr "Try again"
+#~ msgid "Try again"
+#~ msgstr "Try again"
+
+#: src/components/DrillResult.tsx:24
+msgid "under {target}s ✦"
+msgstr "under {target}s ✦"
+
+#: src/components/SessionSummary.tsx:79
+msgid "under target"
+msgstr "under target"
 
 #: src/pages/DrillPage.tsx:15
 #~ msgid "Use hjkl to move. Press : to enter command mode."
