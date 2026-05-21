@@ -1,0 +1,16 @@
+name: Check PR base branch
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  check-base:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if base is not main
+        if: github.base_ref != 'main'
+        run: |
+          echo "PRs must target 'main', got '${{ github.base_ref }}'."
+          echo "If you are stacking changes, wait for the preceding PR to merge, then rebase onto main."
+          exit 1

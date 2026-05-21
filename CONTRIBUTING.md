@@ -58,7 +58,8 @@ Copy `.env.example` to `.env.local` and fill in the values. Never commit `.env.l
 3. **One PR per issue** as a rule.
 4. **Include tests** for new functionality. Bug fixes should add a regression test.
 5. **Keep commits focused**. Squash fixup commits before requesting review.
-6. **Add `Closes #<issue>`** in the PR description to auto-close the linked issue on merge.
+6. **Add `Closes #<issue>`** in the PR title (not just the body) to auto-close the linked issue on squash merge.
+7. **Always target `main`** — never open a PR against a feature branch. If you are stacking changes, wait for the preceding PR to merge and rebase onto `main` before opening the next one. CI will fail if the base is not `main`.
 
 ### Commit Messages
 
