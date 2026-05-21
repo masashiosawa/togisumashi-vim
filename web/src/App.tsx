@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { LocaleSwitcher } from "./components/LocaleSwitcher";
 import { ThemeToggle } from "./components/ThemeToggle";
-import { LOCALES, type Locale, detectLocale, setLocale } from "./i18n";
+import { LOCALES, type Locale, detectLocale, i18n, setLocale } from "./i18n";
 import { DrillPage } from "./pages/DrillPage";
 import { HomePage } from "./pages/HomePage";
 
@@ -21,11 +22,15 @@ export function App() {
 function LocaleLayout() {
   const { locale } = useParams<{ locale: string }>();
 
+  useEffect(() => {
+    if (locale && LOCALES.includes(locale as Locale) && i18n.locale !== locale) {
+      setLocale(locale as Locale);
+    }
+  }, [locale]);
+
   if (!locale || !LOCALES.includes(locale as Locale)) {
     return <Navigate to="/" replace />;
   }
-
-  setLocale(locale as Locale);
 
   return (
     <div className="app">

@@ -20,7 +20,7 @@ Run from the **repo root**:
 
 ```bash
 pnpm install      # install all workspaces
-pnpm dev          # start dev server → http://localhost:5173
+pnpm dev          # start dev server → http://localhost:3000
 pnpm typecheck    # TypeScript check
 pnpm lint         # Biome lint + format check
 pnpm build        # production build (lingui compile → tsc → vite build)
