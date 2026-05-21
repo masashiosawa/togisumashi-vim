@@ -36,6 +36,15 @@
     "concept_ja": "スクロールなしでファイル内の任意の行に飛べます。\n\n  gg    — 先頭行（1行目）に移動\n  G     — 末尾行に移動\n  {N}G  — N 行目に移動（例: 5G で 5 行目へ）\n  {N}gg — {N}G と同じ（別構文）\n\nファイルのどこからでも使えます。\n他のオペレーターとの組み合わせも強力: dG でカーソル以降を全削除。\n"
   },
   {
+    "id": "tier-1-05-find-char",
+    "tier": 1,
+    "order": 5,
+    "title_en": "Inline find: f F t T ; ,",
+    "title_ja": "行内検索: f F t T ; ,",
+    "concept_en": "Jump to any character on the current line in one keystroke.\n\n  f{x} — move forward to the next occurrence of x\n  F{x} — move backward to the previous occurrence of x\n  t{x} — move forward, stopping one cell before x (\"till\")\n  T{x} — move backward, stopping one cell after x\n\nRepeat the last find without retyping the character:\n  ;    — repeat in the same direction\n  ,    — repeat in the opposite direction\n\nf and t are mirrors of F and T.\nUse t when you need the cursor before the target (e.g. ct= to change up to =).\n",
+    "concept_ja": "現在行の任意の文字に 1〜2 キーでジャンプできます。\n\n  f{x} — 前方に向かって次の x にジャンプ\n  F{x} — 後方に向かって前の x にジャンプ\n  t{x} — 前方へ、x の 1 つ手前で止まる (\"till\")\n  T{x} — 後方へ、x の 1 つ後ろで止まる\n\n最後の検索を再利用:\n  ;    — 同じ方向に繰り返す\n  ,    — 逆方向に繰り返す\n\nf と F、t と T はそれぞれ対。\nct= のように「x の手前まで変更」したいときに t が役立つ。\n"
+  },
+  {
     "id": "tier-2-01-dw-dd",
     "tier": 2,
     "order": 1,
