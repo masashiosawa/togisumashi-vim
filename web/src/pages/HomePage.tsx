@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DrillRunner } from "../components/DrillRunner";
 import { SessionSummary } from "../components/SessionSummary";
@@ -39,8 +39,6 @@ export function HomePage() {
   const [attempts, setAttempts] = useState<Attempt[]>([]);
   const [finished, setFinished] = useState(false);
   const [focusIds, setFocusIds] = useState<string[]>([]);
-
-  const settingsSectionRef = useRef<HTMLDivElement>(null);
 
   // focusIds is always passed explicitly — never read from state implicitly
   const makePool = useCallback(
@@ -120,12 +118,6 @@ export function HomePage() {
     resetDrill(makePool({ focusIds: [] }));
   }, [makePool, resetDrill]);
 
-  const handleDrillStart = useCallback(() => {
-    requestAnimationFrame(() => {
-      settingsSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }, []);
-
   const currentDrill = pool[index];
   const currentLesson = lessons.find((l) => l.id === currentDrill?.lesson);
   const concept =
@@ -137,161 +129,161 @@ export function HomePage() {
 
   return (
     <div className="home">
-      <section className="hero">
-        <div className="hero-kanji">{locale === "ja" ? "研ぎ澄ます" : "Sharpen."}</div>
-        <p className="hero-sub">
-          <Trans>Sharpen your Vim. One drill at a time.</Trans>
-        </p>
-      </section>
+      <div className="home-left">
+        <section className="hero">
+          <div className="hero-kanji">{locale === "ja" ? "Vimを研ぎ澄ます" : "Hone."}</div>
+        </section>
 
-      <section ref={settingsSectionRef} className="settings-panel">
-        <div className="settings-group">
-          <span className="settings-label">
-            <Trans>Level</Trans>
-          </span>
-          <div className="settings-btns">
-            {LEVELS.map((lvl) => (
+        <section className="settings-panel">
+          <div className="settings-group">
+            <span className="settings-label">
+              <Trans>Level</Trans>
+            </span>
+            <div className="settings-btns">
+              {LEVELS.map((lvl) => (
+                <button
+                  key={lvl}
+                  type="button"
+                  className={`settings-btn ${level === lvl ? "active" : ""}`}
+                  onClick={() => handleLevelChange(lvl)}
+                >
+                  {lvl === "beginner" && <Trans>Beginner</Trans>}
+                  {lvl === "intermediate" && <Trans>Intermediate</Trans>}
+                  {lvl === "advanced" && <Trans>Advanced</Trans>}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="settings-group">
+            <span className="settings-label">
+              <Trans>Mode</Trans>
+            </span>
+            <div className="settings-btns">
               <button
-                key={lvl}
                 type="button"
-                className={`settings-btn ${level === lvl ? "active" : ""}`}
-                onClick={() => handleLevelChange(lvl)}
+                className={`settings-btn ${mode === "practice" ? "active" : ""}`}
+                onClick={() => handleModeChange("practice")}
               >
-                {lvl === "beginner" && <Trans>Beginner</Trans>}
-                {lvl === "intermediate" && <Trans>Intermediate</Trans>}
-                {lvl === "advanced" && <Trans>Advanced</Trans>}
+                <Trans>Practice</Trans>
               </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="settings-group">
-          <span className="settings-label">
-            <Trans>Mode</Trans>
-          </span>
-          <div className="settings-btns">
-            <button
-              type="button"
-              className={`settings-btn ${mode === "practice" ? "active" : ""}`}
-              onClick={() => handleModeChange("practice")}
-            >
-              <Trans>Practice</Trans>
-            </button>
-            <button
-              type="button"
-              className={`settings-btn ${mode === "test" ? "active" : ""}`}
-              onClick={() => handleModeChange("test")}
-            >
-              <Trans>Test</Trans>
-            </button>
-          </div>
-        </div>
-
-        <div className="settings-group">
-          <span className="settings-label">
-            <Trans>Lesson</Trans>
-          </span>
-          <div className="settings-btns">
-            <button
-              type="button"
-              className={`settings-btn ${lessonMode === "guided" ? "active" : ""}`}
-              onClick={() => handleLessonModeChange("guided")}
-            >
-              <Trans>Guided</Trans>
-            </button>
-            <button
-              type="button"
-              className={`settings-btn ${lessonMode === "skip" ? "active" : ""}`}
-              onClick={() => handleLessonModeChange("skip")}
-            >
-              <Trans>Skip</Trans>
-            </button>
-          </div>
-        </div>
-
-        <div
-          className={`settings-group ${lessonMode === "guided" ? "settings-group--disabled" : ""}`}
-        >
-          <span className="settings-label">
-            <Trans>Count</Trans>
-          </span>
-          <div className="settings-btns">
-            {COUNTS.map((n) => (
               <button
-                key={n}
                 type="button"
-                className={`settings-btn ${count === n ? "active" : ""}`}
-                onClick={() => handleCountChange(n)}
-                disabled={lessonMode === "guided"}
+                className={`settings-btn ${mode === "test" ? "active" : ""}`}
+                onClick={() => handleModeChange("test")}
               >
-                {n}
+                <Trans>Test</Trans>
               </button>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
 
-      <section className="drill-section">
-        <div className="terminal-window terminal-dark">
-          <div className="terminal-titlebar">
-            <span className="terminal-dot terminal-dot--red" />
-            <span className="terminal-dot terminal-dot--yellow" />
-            <span className="terminal-dot terminal-dot--green" />
-            <span className="terminal-title">togisumashi-vim</span>
+          <div className="settings-group">
+            <span className="settings-label">
+              <Trans>Lesson</Trans>
+            </span>
+            <div className="settings-btns">
+              <button
+                type="button"
+                className={`settings-btn ${lessonMode === "guided" ? "active" : ""}`}
+                onClick={() => handleLessonModeChange("guided")}
+              >
+                <Trans>Guided</Trans>
+              </button>
+              <button
+                type="button"
+                className={`settings-btn ${lessonMode === "skip" ? "active" : ""}`}
+                onClick={() => handleLessonModeChange("skip")}
+              >
+                <Trans>Skip</Trans>
+              </button>
+            </div>
           </div>
-          <div className="terminal-body">
-            {loading ? (
-              <p className="drill-loading">
-                <Trans>Loading drills…</Trans>
-              </p>
-            ) : finished ? (
-              <SessionSummary
-                level={level}
-                attempts={attempts}
-                pool={pool}
-                onReplay={handleReplay}
-                onHome={handleBackToSettings}
-                onFocus={handleFocus}
-              />
-            ) : pool.length === 0 ? (
-              <p className="drill-empty">
-                <Trans>No drills available for this selection.</Trans>
-              </p>
-            ) : (
-              <>
-                <div className="terminal-session-bar">
-                  <span className="session-progress-label">
-                    {focusIds.length > 0 ? (
-                      <Trans>Focus</Trans>
-                    ) : (
-                      <>
-                        {level === "beginner" && <Trans>Beginner</Trans>}
-                        {level === "intermediate" && <Trans>Intermediate</Trans>}
-                        {level === "advanced" && <Trans>Advanced</Trans>}
-                      </>
-                    )}
-                  </span>
-                  <span className="session-progress-count" aria-live="polite">
-                    {index + 1} / {pool.length}
-                  </span>
-                </div>
-                <DrillRunner
-                  key={`${currentDrill.id}-${index}`}
-                  drill={currentDrill}
-                  autoStart={index > 0}
-                  onComplete={handleComplete}
-                  onNext={handleNext}
-                  onStart={handleDrillStart}
-                  isLast={index + 1 >= pool.length}
-                  showTimer={mode === "test"}
-                  hintsEnabled={mode === "practice"}
-                  concept={concept}
+
+          <div
+            className={`settings-group ${lessonMode === "guided" ? "settings-group--disabled" : ""}`}
+          >
+            <span className="settings-label">
+              <Trans>Count</Trans>
+            </span>
+            <div className="settings-btns">
+              {COUNTS.map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  className={`settings-btn ${count === n ? "active" : ""}`}
+                  onClick={() => handleCountChange(n)}
+                  disabled={lessonMode === "guided"}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="home-right">
+        <section className="drill-section">
+          <div className="terminal-window terminal-dark">
+            <div className="terminal-titlebar">
+              <span className="terminal-dot terminal-dot--red" />
+              <span className="terminal-dot terminal-dot--yellow" />
+              <span className="terminal-dot terminal-dot--green" />
+              <span className="terminal-title">togisumashi-vim</span>
+            </div>
+            <div className="terminal-body">
+              {loading ? (
+                <p className="drill-loading">
+                  <Trans>Loading drills…</Trans>
+                </p>
+              ) : finished ? (
+                <SessionSummary
+                  level={level}
+                  attempts={attempts}
+                  pool={pool}
+                  onReplay={handleReplay}
+                  onHome={handleBackToSettings}
+                  onFocus={handleFocus}
                 />
-              </>
-            )}
+              ) : pool.length === 0 ? (
+                <p className="drill-empty">
+                  <Trans>No drills available for this selection.</Trans>
+                </p>
+              ) : (
+                <>
+                  <div className="terminal-session-bar">
+                    <span className="session-progress-label">
+                      {focusIds.length > 0 ? (
+                        <Trans>Focus</Trans>
+                      ) : (
+                        <>
+                          {level === "beginner" && <Trans>Beginner</Trans>}
+                          {level === "intermediate" && <Trans>Intermediate</Trans>}
+                          {level === "advanced" && <Trans>Advanced</Trans>}
+                        </>
+                      )}
+                    </span>
+                    <span className="session-progress-count" aria-live="polite">
+                      {index + 1} / {pool.length}
+                    </span>
+                  </div>
+                  <DrillRunner
+                    key={`${currentDrill.id}-${index}`}
+                    drill={currentDrill}
+                    autoStart={index > 0}
+                    onComplete={handleComplete}
+                    onNext={handleNext}
+                    isLast={index + 1 >= pool.length}
+                    showTimer={mode === "test"}
+                    hintsEnabled={mode === "practice"}
+                    concept={concept}
+                  />
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

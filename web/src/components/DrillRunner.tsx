@@ -19,7 +19,6 @@ interface Props {
   autoStart?: boolean;
   onComplete?: (a: Attempt) => void;
   onNext?: () => void;
-  onStart?: () => void;
   isLast?: boolean;
   showTimer?: boolean;
   hintsEnabled?: boolean;
@@ -31,7 +30,6 @@ export function DrillRunner({
   autoStart,
   onComplete,
   onNext,
-  onStart,
   isLast,
   showTimer = true,
   hintsEnabled = true,
@@ -86,8 +84,7 @@ export function DrillRunner({
     setStartTime(Date.now());
     setElapsedMs(0);
     setShowShadow(false);
-    onStart?.();
-  }, [drill, onStart]);
+  }, [drill]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: mount only
   useEffect(() => {
