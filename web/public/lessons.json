@@ -27,6 +27,15 @@
     "concept_ja": "4 つのキーで行の端に瞬時にジャンプできます。\n\n  0  — 列 0: 行の先頭位置（スペースでも）\n  $  — 行末: 行の最後の文字\n  ^  — 最初の非空白: 先頭のスペースをスキップして実際のコードへ\n  g_ — 最後の非空白: 末尾のスペースをスキップ（^ の逆）\n\n使い分けの目安:\n• 0 と $ は位置計算（d0, y$ など）に使う。\n• ^ はインデント量に関係なくコードの先頭に飛ぶときに使う。\n• g_ は末尾スペースがある場合にたまに使う。\n"
   },
   {
+    "id": "tier-1-04-file-jump",
+    "tier": 1,
+    "order": 4,
+    "title_en": "File jumps: gg G {N}G",
+    "title_ja": "ファイル内ジャンプ: gg G {N}G",
+    "concept_en": "Jump anywhere in a file without scrolling.\n\n  gg   — go to the first line (line 1)\n  G    — go to the last line\n  {N}G — go to line N (e.g. 5G jumps to line 5)\n  {N}gg — same as {N}G (alternative syntax)\n\nThese work from anywhere in the file.\nCombine with other operators: dG deletes from cursor to end of file.\n",
+    "concept_ja": "スクロールなしでファイル内の任意の行に飛べます。\n\n  gg    — 先頭行（1行目）に移動\n  G     — 末尾行に移動\n  {N}G  — N 行目に移動（例: 5G で 5 行目へ）\n  {N}gg — {N}G と同じ（別構文）\n\nファイルのどこからでも使えます。\n他のオペレーターとの組み合わせも強力: dG でカーソル以降を全削除。\n"
+  },
+  {
     "id": "tier-2-01-dw-dd",
     "tier": 2,
     "order": 1,
