@@ -3,7 +3,6 @@ import { Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { LocaleSwitcher } from "./components/LocaleSwitcher";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { LOCALES, type Locale, detectLocale, i18n, setLocale } from "./i18n";
-import { DrillPage } from "./pages/DrillPage";
 import { HomePage } from "./pages/HomePage";
 
 export function App() {
@@ -12,7 +11,6 @@ export function App() {
       <Route path="/" element={<Navigate to={`/${detectLocale()}`} replace />} />
       <Route path="/:locale" element={<LocaleLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="drills" element={<DrillPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

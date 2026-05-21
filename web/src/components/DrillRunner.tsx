@@ -16,17 +16,23 @@ type Phase = "idle" | "running" | "success";
 
 interface Props {
   drill: DrillDef;
-  /** mount 時に自動で開始 (連続セッションの 2 問目以降) */
   autoStart?: boolean;
-  /** 試行完了時のコールバック (成功時のみ呼ばれる) */
   onComplete?: (a: Attempt) => void;
-  /** 結果画面で「次へ」を押された時 */
   onNext?: () => void;
-  /** セッション最後の問題かどうか */
   isLast?: boolean;
+  showTimer?: boolean;
+  hintsEnabled?: boolean;
 }
 
-export function DrillRunner({ drill, autoStart, onComplete, onNext, isLast }: Props) {
+export function DrillRunner({
+  drill,
+  autoStart,
+  onComplete,
+  onNext,
+  isLast,
+  showTimer = true,
+  hintsEnabled = true,
+}: Props) {
   const { i18n } = useLingui();
   const locale = (i18n.locale ?? "en") as "en" | "ja";
 
@@ -78,20 +84,15 @@ export function DrillRunner({ drill, autoStart, onComplete, onNext, isLast }: Pr
     setShowShadow(false);
   }, [drill]);
 
-  // autoStart=true で mount 直後に自動開始 (連続セッション 2 問目以降)
-  // biome-ignore lint/correctness/useExhaustiveDependencies: mount only — autoStart/startDrill は意図的に省略
+  // biome-ignore lint/correctness/useExhaustiveDependencies: mount only
   useEffect(() => {
-    if (autoStart) {
-      startDrill();
-    }
+    if (autoStart) startDrill();
   }, []);
 
-  // グローバルキーバインド (idle/success の Space, success の R)
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const tgt = e.target as HTMLElement | null;
-      // CodeMirror エディタ内のキーイベントは横取りしない (running時)
       if (tgt?.closest(".cm-editor")) return;
 
       if (phase === "idle") {
@@ -113,30 +114,22 @@ export function DrillRunner({ drill, autoStart, onComplete, onNext, isLast }: Pr
     return () => window.removeEventListener("keydown", handler);
   }, [phase, startDrill, onNext]);
 
-  // 実行中→カーソル位置を startOffset に設定してフォーカス
   useEffect(() => {
     if (phase === "running") {
       const raf = requestAnimationFrame(() => {
         const view = cmRef.current?.view;
         if (!view) return;
-        view.dispatch({
-          selection: EditorSelection.cursor(instance.startOffset),
-        });
+        view.dispatch({ selection: EditorSelection.cursor(instance.startOffset) });
         view.focus();
       });
       return () => cancelAnimationFrame(raf);
     }
-    requestAnimationFrame(() => {
-      cmRef.current?.view?.contentDOM.blur();
-    });
+    requestAnimationFrame(() => cmRef.current?.view?.contentDOM.blur());
   }, [phase, instance]);
 
-  // タイマー
   useEffect(() => {
     if (phase !== "running") return;
-    timerRef.current = setInterval(() => {
-      setElapsedMs(Date.now() - startTime);
-    }, 100);
+    timerRef.current = setInterval(() => setElapsedMs(Date.now() - startTime), 100);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
@@ -160,9 +153,7 @@ export function DrillRunner({ drill, autoStart, onComplete, onNext, isLast }: Pr
   );
 
   const handleEditorCreate = useCallback(
-    (view: EditorView) => {
-      applyStartState(view);
-    },
+    (view: EditorView) => applyStartState(view),
     [applyStartState],
   );
 
@@ -188,9 +179,11 @@ export function DrillRunner({ drill, autoStart, onComplete, onNext, isLast }: Pr
         </div>
       )}
 
-      {running && <DrillTimer elapsedMs={elapsedMs} targetMs={instance.def.target_time_ms} />}
+      {running && showTimer && (
+        <DrillTimer elapsedMs={elapsedMs} targetMs={instance.def.target_time_ms} />
+      )}
 
-      {running && showShadow && <ShadowOverlay keys={instance.def.solution_keys} />}
+      {running && showShadow && hintsEnabled && <ShadowOverlay keys={instance.def.solution_keys} />}
 
       <div className={`editor-wrapper ${!running ? "inactive" : "running"}`}>
         <CodeMirror
@@ -212,7 +205,7 @@ export function DrillRunner({ drill, autoStart, onComplete, onNext, isLast }: Pr
             <span className="btn-hint">Space</span>
           </button>
         )}
-        {running && (
+        {running && hintsEnabled && (
           <button type="button" onClick={() => setShowShadow((s) => !s)} className="btn-secondary">
             {showShadow ? <Trans>Hide hint</Trans> : <Trans>Show hint</Trans>}
           </button>

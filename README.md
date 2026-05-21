@@ -8,17 +8,19 @@ togisumashi-vim is a speed-drill trainer for Neovim, inspired by the classic Jap
 
 ## Features
 
-- **3-level sessions** — Beginner (motions) / Intermediate (edit commands) / Advanced (mixed). Pick a level, press Space, and drill through the full set
-- **Shadow mode** — watch the ideal key sequence before attempting
-- **Progress tracking** — localStorage records every attempt; slow drills surface automatically after each session
-- **Neovim-native** — practice without leaving your editor
+- **3-level sessions** — Beginner (motions) / Intermediate (edit commands) / Advanced (mixed)
+- **Guided & Skip modes** — Guided follows lesson order and shows concept text; Skip randomly samples N drills from the tier
+- **Practice & Test modes** — Practice reveals hint keys on demand; Test mode hides hints and shows a live timer
+- **Two-panel layout** — settings and concept on the left, terminal console on the right; no scrolling required
+- **Progress tracking** — localStorage records every attempt; session summary surfaces slow drills with a Focus option to re-drill them
+- **Neovim-native** — practice without leaving your editor (plugin in development)
 - **Bilingual** — English and Japanese as first-class languages
 
 ## Web App
 
 👉 [vim.togisumashi.dev](https://vim.togisumashi.dev)
 
-No install required. Open the app, pick a level, and press Space.
+No install required. Open the app, pick your level and mode in the left panel, and click Start in the terminal.
 
 ## Neovim Plugin
 
@@ -40,8 +42,8 @@ Run `:Togisumashi` to start a drill session. Requires Neovim 0.10+.
 
 | Tier | Focus | Status |
 |------|-------|--------|
-| 1 | Basic motions — `hjkl`, word jumps (`w` `b` `e`), line edges | ✅ 15 drills |
-| 2 | Operators — `d` `c` `y` combined with motions | ✅ 15 drills |
+| 1 | Basic motions — `hjkl`, line edges (`0` `$`) | ✅ 5 drills |
+| 2 | Delete operators — `dw` `dd` `D` `diw` `2dw` | ✅ 5 drills |
 | 3 | Text objects — `iw` `i"` `i(` `it` | 🚧 roadmap |
 | 4 | Advanced — macros, marks, registers | 🚧 roadmap |
 

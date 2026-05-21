@@ -11,21 +11,25 @@ export type DrillGoal =
   | { type: "first_nonblank" }
   | { type: "col_N"; n: number }
   | { type: "last_line_start" }
-  | { type: "text_equals"; content: string };
+  | { type: "text_equals"; content: string }
+  | { type: "offset"; offset: number }
+  | { type: "row_col"; row: number; col: number };
 
 export interface DrillI18n {
   title: string;
   description: string;
+  concept?: string;
 }
 
 export interface DrillDef {
   id: string;
   tier: TierLevel;
   type: DrillType;
+  lesson?: string;
   target_time_ms: number;
   template: TemplateKind[];
   start_col?: number | "end";
-  start_row?: "last";
+  start_row?: "last" | number;
   goal: DrillGoal;
   solution_keys: string[];
   i18n: {
@@ -40,4 +44,14 @@ export interface DrillInstance {
   startOffset: number;
   goalOffset: number;
   goalText?: string;
+}
+
+export interface Lesson {
+  id: string;
+  tier: TierLevel;
+  order: number;
+  title_en: string;
+  title_ja: string;
+  concept_en?: string;
+  concept_ja?: string;
 }

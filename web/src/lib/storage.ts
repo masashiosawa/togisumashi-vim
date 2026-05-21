@@ -1,4 +1,7 @@
 export type Level = "beginner" | "intermediate" | "advanced";
+export type Mode = "practice" | "test";
+export type LessonMode = "guided" | "skip";
+export type Count = 10 | 20 | 30;
 
 export interface Attempt {
   drillId: string;
@@ -14,6 +17,9 @@ const MAX_ATTEMPTS = 500;
 
 interface Prefs {
   lastLevel?: Level;
+  lastMode?: Mode;
+  lastLessonMode?: LessonMode;
+  lastCount?: Count;
 }
 
 function safeParse<T>(raw: string | null, fallback: T): T {
@@ -54,6 +60,30 @@ export function loadLastLevel(): Level | null {
 
 export function saveLastLevel(level: Level): void {
   savePrefs({ ...loadPrefs(), lastLevel: level });
+}
+
+export function loadLastMode(): Mode {
+  return loadPrefs().lastMode ?? "practice";
+}
+
+export function saveLastMode(mode: Mode): void {
+  savePrefs({ ...loadPrefs(), lastMode: mode });
+}
+
+export function loadLastLessonMode(): LessonMode {
+  return loadPrefs().lastLessonMode ?? "guided";
+}
+
+export function saveLastLessonMode(lm: LessonMode): void {
+  savePrefs({ ...loadPrefs(), lastLessonMode: lm });
+}
+
+export function loadLastCount(): Count {
+  return loadPrefs().lastCount ?? 10;
+}
+
+export function saveLastCount(c: Count): void {
+  savePrefs({ ...loadPrefs(), lastCount: c });
 }
 
 /**

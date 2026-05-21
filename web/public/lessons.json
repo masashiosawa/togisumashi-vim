@@ -1,0 +1,20 @@
+[
+  {
+    "id": "tier-1-01-hjkl",
+    "tier": 1,
+    "order": 1,
+    "title_en": "Basic movement: h j k l",
+    "title_ja": "基本移動: h j k l",
+    "concept_en": "h j k l are the fundamental movement keys in Vim.\nThey move the cursor left, down, up, and right respectively.\nKeep your fingers on the home row — never reach for arrow keys.\n\n  h — left    l — right\n  j — down    k — up\n\nQuick tips:\n• 0 jumps to column 0 (line start)\n• $ jumps to the last character (line end)\n",
+    "concept_ja": "h j k l は Vim の基本的な移動キーです。\nそれぞれ左・下・上・右にカーソルを動かします。\nホームポジションを離れずに移動しましょう。矢印キーは使わない。\n\n  h — 左    l — 右\n  j — 下    k — 上\n\nショートカット:\n• 0 で列 0（行頭）にジャンプ\n• $ で最後の文字（行末）にジャンプ\n"
+  },
+  {
+    "id": "tier-2-01-dw-dd",
+    "tier": 2,
+    "order": 1,
+    "title_en": "Delete commands: dw, dd, D",
+    "title_ja": "削除コマンド: dw, dd, D",
+    "concept_en": "dw  — Delete word (from cursor to start of next word)\ndd  — Delete entire line\nD   — Delete to end of line (equivalent to d$)\ndiw — Delete inner word (the word under cursor, no surrounding spaces)\n\nCombine with counts: 2dw deletes 2 words, 3dd deletes 3 lines.\n\nDeleted text goes into a register — paste it with p.\n",
+    "concept_ja": "dw  — 単語を削除（カーソルから次の単語の先頭まで）\ndd  — 行全体を削除\nD   — 行末まで削除（d$ と同じ）\ndiw — 内側の単語を削除（周囲のスペースはそのまま）\n\nカウントと組み合わせ: 2dw で 2 単語、3dd で 3 行削除。\n\n削除したテキストはレジスタに入る — p でペースト可能。\n"
+  }
+]
