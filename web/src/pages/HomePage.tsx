@@ -1,136 +1,306 @@
 import { Trans } from "@lingui/react/macro";
-import { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
+import { DrillRunner } from "../components/DrillRunner";
+import { SessionSummary } from "../components/SessionSummary";
 import { useDrills } from "../hooks/useDrills";
-import { LEVELS, filterByLevel } from "../lib/session";
-import { type Level, loadLastLevel, saveLastLevel } from "../lib/storage";
+import { useLessons } from "../hooks/useLessons";
+import {
+  COUNTS,
+  LEVELS,
+  buildGuidedPool,
+  buildPoolFromIds,
+  buildSkipPool,
+} from "../lib/session";
+import {
+  type Attempt,
+  type Count,
+  type LessonMode,
+  type Level,
+  type Mode,
+  loadLastCount,
+  loadLastLessonMode,
+  loadLastLevel,
+  loadLastMode,
+  recordAttempt,
+  saveLastCount,
+  saveLastLessonMode,
+  saveLastLevel,
+  saveLastMode,
+} from "../lib/storage";
+import type { DrillDef } from "../types/drill";
 
 export function HomePage() {
   const { locale } = useParams<{ locale: string }>();
-  const navigate = useNavigate();
   const { drills, loading } = useDrills();
+  const { lessons } = useLessons();
 
-  const [selected, setSelected] = useState<Level>(() => loadLastLevel() ?? "beginner");
+  const [level, setLevel] = useState<Level>(() => loadLastLevel() ?? "beginner");
+  const [mode, setMode] = useState<Mode>(loadLastMode);
+  const [lessonMode, setLessonMode] = useState<LessonMode>(loadLastLessonMode);
+  const [count, setCount] = useState<Count>(loadLastCount);
 
-  const startDrill = useCallback(
-    (level: Level) => {
-      saveLastLevel(level);
-      navigate(`/${locale}/drills?level=${level}`);
+  const [pool, setPool] = useState<DrillDef[]>([]);
+  const [index, setIndex] = useState(0);
+  const [attempts, setAttempts] = useState<Attempt[]>([]);
+  const [finished, setFinished] = useState(false);
+  const [focusIds, setFocusIds] = useState<string[]>([]);
+
+  const settingsSectionRef = useRef<HTMLDivElement>(null);
+
+  const makePool = useCallback(
+    (opts: {
+      level?: Level;
+      lessonMode?: LessonMode;
+      count?: Count;
+      focusIds?: string[];
+    }) => {
+      const lvl = opts.level ?? level;
+      const lm = opts.lessonMode ?? lessonMode;
+      const cnt = opts.count ?? count;
+      const fids = opts.focusIds ?? focusIds;
+      if (fids.length > 0) return buildPoolFromIds(drills, fids);
+      if (lm === "guided") return buildGuidedPool(drills, lvl);
+      return buildSkipPool(drills, lvl, cnt);
     },
-    [locale, navigate],
+    [drills, level, lessonMode, count, focusIds],
   );
 
+  const resetDrill = useCallback((newPool: DrillDef[]) => {
+    setPool(newPool);
+    setIndex(0);
+    setAttempts([]);
+    setFinished(false);
+  }, []);
+
+  // Rebuild pool whenever settings, drills, or focusIds change
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      // テキスト入力中などはスキップ
-      const tgt = e.target as HTMLElement | null;
-      if (tgt && (tgt.tagName === "INPUT" || tgt.tagName === "TEXTAREA" || tgt.isContentEditable)) {
-        return;
-      }
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
+    resetDrill(makePool({}));
+  }, [makePool, resetDrill]);
 
-      if (e.key === " " || e.key === "Enter") {
-        e.preventDefault();
-        startDrill(selected);
-      } else if (e.key === "ArrowRight" || e.key === "l" || e.key === "j") {
-        e.preventDefault();
-        const idx = LEVELS.indexOf(selected);
-        setSelected(LEVELS[(idx + 1) % LEVELS.length]);
-      } else if (e.key === "ArrowLeft" || e.key === "h" || e.key === "k") {
-        e.preventDefault();
-        const idx = LEVELS.indexOf(selected);
-        setSelected(LEVELS[(idx - 1 + LEVELS.length) % LEVELS.length]);
-      } else if (e.key === "1") {
-        e.preventDefault();
-        startDrill("beginner");
-      } else if (e.key === "2") {
-        e.preventDefault();
-        startDrill("intermediate");
-      } else if (e.key === "3") {
-        e.preventDefault();
-        startDrill("advanced");
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [selected, startDrill]);
+  const handleLevelChange = useCallback((lvl: Level) => {
+    saveLastLevel(lvl);
+    setLevel(lvl);
+  }, []);
 
-  if (loading) {
-    return (
-      <p className="drill-loading">
-        <Trans>Loading drills…</Trans>
-      </p>
-    );
-  }
+  const handleModeChange = useCallback((m: Mode) => {
+    saveLastMode(m);
+    setMode(m);
+  }, []);
 
-  const counts = {
-    beginner: filterByLevel(drills, "beginner").length,
-    intermediate: filterByLevel(drills, "intermediate").length,
-    advanced: filterByLevel(drills, "advanced").length,
-  };
+  const handleLessonModeChange = useCallback((lm: LessonMode) => {
+    saveLastLessonMode(lm);
+    setLessonMode(lm);
+  }, []);
+
+  const handleCountChange = useCallback((c: Count) => {
+    saveLastCount(c);
+    setCount(c);
+  }, []);
+
+  const handleComplete = useCallback((a: Attempt) => {
+    recordAttempt(a);
+    setAttempts((arr) => [...arr, a]);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    if (index + 1 >= pool.length) {
+      setFinished(true);
+    } else {
+      setIndex((i) => i + 1);
+    }
+  }, [index, pool.length]);
+
+  const handleReplay = useCallback(() => {
+    resetDrill(makePool({}));
+  }, [makePool, resetDrill]);
+
+  const handleFocus = useCallback(
+    (ids: string[]) => {
+      if (ids.length === 0) return;
+      setFocusIds(ids);
+      resetDrill(buildPoolFromIds(drills, ids));
+    },
+    [drills, resetDrill],
+  );
+
+  const handleBackToSettings = useCallback(() => {
+    setFocusIds([]);
+    resetDrill(makePool({ focusIds: [] }));
+  }, [makePool, resetDrill]);
+
+  const handleDrillStart = useCallback(() => {
+    requestAnimationFrame(() => {
+      settingsSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, []);
+
+  const currentDrill = pool[index];
+  const currentLesson = lessons.find((l) => l.id === currentDrill?.lesson);
+  const concept =
+    lessonMode === "guided" && currentLesson
+      ? locale === "ja"
+        ? currentLesson.concept_ja
+        : currentLesson.concept_en
+      : undefined;
 
   return (
     <div className="home">
-      <h2 className="home-title">
-        <Trans>Master Vim, drill by drill.</Trans>
-      </h2>
-      <p className="home-lede">
-        <Trans>Pick a level. Press Space.</Trans>
-      </p>
+      <section className="hero">
+        <div className="hero-kanji">{locale === "ja" ? "研ぎ澄ます" : "Sharpen."}</div>
+        <p className="hero-sub">
+          <Trans>Sharpen your Vim. One drill at a time.</Trans>
+        </p>
+      </section>
 
-      <div className="level-cards" role="radiogroup" aria-label="Difficulty">
-        {LEVELS.map((lvl, idx) => (
-          <button
-            key={lvl}
-            type="button"
-            // biome-ignore lint/a11y/useSemanticElements: visual card behaves as a radio choice
-            role="radio"
-            aria-checked={selected === lvl}
-            className={`level-card ${selected === lvl ? "selected" : ""}`}
-            onClick={() => startDrill(lvl)}
-            onMouseEnter={() => setSelected(lvl)}
-          >
-            <span className="level-card-num">{idx + 1}</span>
-            <span className="level-card-title">
-              {lvl === "beginner" && <Trans>Beginner</Trans>}
-              {lvl === "intermediate" && <Trans>Intermediate</Trans>}
-              {lvl === "advanced" && <Trans>Advanced</Trans>}
-            </span>
-            <span className="level-card-sub">
-              {lvl === "beginner" && <Trans>Basic motions</Trans>}
-              {lvl === "intermediate" && <Trans>Edit commands</Trans>}
-              {lvl === "advanced" && <Trans>Mixed challenge</Trans>}
-            </span>
-            <span className="level-card-count">
-              {counts[lvl]} <Trans>drills</Trans>
-            </span>
-          </button>
-        ))}
-      </div>
-
-      <div className="home-cta">
-        <button
-          type="button"
-          className="btn-primary btn-large"
-          onClick={() => startDrill(selected)}
-        >
-          <Trans>Start</Trans>
-          <span className="btn-hint">Space</span>
-        </button>
-        <div className="home-hints">
-          <span className="hint-pair">
-            <kbd>←</kbd>
-            <kbd>→</kbd>
-            <Trans>switch</Trans>
+      <section ref={settingsSectionRef} className="settings-panel">
+        <div className="settings-group">
+          <span className="settings-label">
+            <Trans>Level</Trans>
           </span>
-          <span className="hint-pair">
-            <kbd>1</kbd>
-            <kbd>2</kbd>
-            <kbd>3</kbd>
-            <Trans>jump &amp; start</Trans>
-          </span>
+          <div className="settings-btns">
+            {LEVELS.map((lvl) => (
+              <button
+                key={lvl}
+                type="button"
+                className={`settings-btn ${level === lvl ? "active" : ""}`}
+                onClick={() => handleLevelChange(lvl)}
+              >
+                {lvl === "beginner" && <Trans>Beginner</Trans>}
+                {lvl === "intermediate" && <Trans>Intermediate</Trans>}
+                {lvl === "advanced" && <Trans>Advanced</Trans>}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+
+        <div className="settings-group">
+          <span className="settings-label">
+            <Trans>Mode</Trans>
+          </span>
+          <div className="settings-btns">
+            <button
+              type="button"
+              className={`settings-btn ${mode === "practice" ? "active" : ""}`}
+              onClick={() => handleModeChange("practice")}
+            >
+              <Trans>Practice</Trans>
+            </button>
+            <button
+              type="button"
+              className={`settings-btn ${mode === "test" ? "active" : ""}`}
+              onClick={() => handleModeChange("test")}
+            >
+              <Trans>Test</Trans>
+            </button>
+          </div>
+        </div>
+
+        <div className="settings-group">
+          <span className="settings-label">
+            <Trans>Lesson</Trans>
+          </span>
+          <div className="settings-btns">
+            <button
+              type="button"
+              className={`settings-btn ${lessonMode === "guided" ? "active" : ""}`}
+              onClick={() => handleLessonModeChange("guided")}
+            >
+              <Trans>Guided</Trans>
+            </button>
+            <button
+              type="button"
+              className={`settings-btn ${lessonMode === "skip" ? "active" : ""}`}
+              onClick={() => handleLessonModeChange("skip")}
+            >
+              <Trans>Skip</Trans>
+            </button>
+          </div>
+        </div>
+
+        <div
+          className={`settings-group ${lessonMode === "guided" ? "settings-group--disabled" : ""}`}
+        >
+          <span className="settings-label">
+            <Trans>Count</Trans>
+          </span>
+          <div className="settings-btns">
+            {COUNTS.map((n) => (
+              <button
+                key={n}
+                type="button"
+                className={`settings-btn ${count === n ? "active" : ""}`}
+                onClick={() => handleCountChange(n)}
+                disabled={lessonMode === "guided"}
+              >
+                {n}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="drill-section">
+        <div className="terminal-window terminal-dark">
+          <div className="terminal-titlebar">
+            <span className="terminal-dot terminal-dot--red" />
+            <span className="terminal-dot terminal-dot--yellow" />
+            <span className="terminal-dot terminal-dot--green" />
+            <span className="terminal-title">togisumashi-vim</span>
+          </div>
+          <div className="terminal-body">
+            {loading ? (
+              <p className="drill-loading">
+                <Trans>Loading drills…</Trans>
+              </p>
+            ) : finished ? (
+              <SessionSummary
+                level={level}
+                attempts={attempts}
+                pool={pool}
+                onReplay={handleReplay}
+                onHome={handleBackToSettings}
+                onFocus={handleFocus}
+              />
+            ) : pool.length === 0 ? (
+              <p className="drill-empty">
+                <Trans>No drills available for this selection.</Trans>
+              </p>
+            ) : (
+              <>
+                <div className="terminal-session-bar">
+                  <span className="session-progress-label">
+                    {focusIds.length > 0 ? (
+                      <Trans>Focus</Trans>
+                    ) : (
+                      <>
+                        {level === "beginner" && <Trans>Beginner</Trans>}
+                        {level === "intermediate" && <Trans>Intermediate</Trans>}
+                        {level === "advanced" && <Trans>Advanced</Trans>}
+                      </>
+                    )}
+                  </span>
+                  <span className="session-progress-count" aria-live="polite">
+                    {index + 1} / {pool.length}
+                  </span>
+                </div>
+                <DrillRunner
+                  key={`${currentDrill.id}-${index}`}
+                  drill={currentDrill}
+                  autoStart={index > 0}
+                  onComplete={handleComplete}
+                  onNext={handleNext}
+                  onStart={handleDrillStart}
+                  isLast={index + 1 >= pool.length}
+                  showTimer={mode === "test"}
+                  hintsEnabled={mode === "practice"}
+                  concept={concept}
+                />
+              </>
+            )}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

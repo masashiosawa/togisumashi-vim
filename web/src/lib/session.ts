@@ -1,7 +1,8 @@
 import type { DrillDef } from "../types/drill";
-import type { Level } from "./storage";
+import type { Count, LessonMode, Level } from "./storage";
 
 export const LEVELS: Level[] = ["beginner", "intermediate", "advanced"];
+export const COUNTS: Count[] = [10, 20, 30];
 
 export interface SessionSummary {
   level: Level;
@@ -27,11 +28,28 @@ export function filterByLevel(drills: DrillDef[], level: Level): DrillDef[] {
   return drills;
 }
 
-/**
- * 選択レベルからセッション用のドリルプールを構築 (ランダム順)。
- */
-export function buildPool(drills: DrillDef[], level: Level): DrillDef[] {
-  return shuffle(filterByLevel(drills, level));
+export function buildPool(
+  drills: DrillDef[],
+  level: Level,
+  lessonMode: LessonMode,
+  count: Count,
+): DrillDef[] {
+  if (lessonMode === "guided") return buildGuidedPool(drills, level);
+  return buildSkipPool(drills, level, count);
+}
+
+export function buildGuidedPool(drills: DrillDef[], level: Level): DrillDef[] {
+  const filtered = filterByLevel(drills, level);
+  return [...filtered].sort((a, b) => {
+    const la = a.lesson ?? "";
+    const lb = b.lesson ?? "";
+    if (la !== lb) return la.localeCompare(lb);
+    return a.id.localeCompare(b.id);
+  });
+}
+
+export function buildSkipPool(drills: DrillDef[], level: Level, count: Count): DrillDef[] {
+  return shuffle(filterByLevel(drills, level)).slice(0, count);
 }
 
 export function levelTier(level: Level): 1 | 2 | "mixed" {
@@ -40,10 +58,6 @@ export function levelTier(level: Level): 1 | 2 | "mixed" {
   return "mixed";
 }
 
-/**
- * 指定したドリル ID リストからプールを構築 (順序は引数の順)。
- * 不明な ID は無視。
- */
 export function buildPoolFromIds(drills: DrillDef[], ids: string[]): DrillDef[] {
   return ids.map((id) => drills.find((d) => d.id === id)).filter((d): d is DrillDef => !!d);
 }
