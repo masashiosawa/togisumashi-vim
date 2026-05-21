@@ -9,6 +9,15 @@
     "concept_ja": "h j k l は Vim の基本的な移動キーです。\nそれぞれ左・下・上・右にカーソルを動かします。\nホームポジションを離れずに移動しましょう。矢印キーは使わない。\n\n  h — 左    l — 右\n  j — 下    k — 上\n\nショートカット:\n• 0 で列 0（行頭）にジャンプ\n• $ で最後の文字（行末）にジャンプ\n"
   },
   {
+    "id": "tier-1-02-word-motion",
+    "tier": 1,
+    "order": 2,
+    "title_en": "Word motions: w b e",
+    "title_ja": "単語移動: w b e",
+    "concept_en": "Word motions let you jump between words instead of moving character by character.\n\n  w — jump to the start of the next word\n  b — jump back to the start of the previous word\n  e — jump to the end of the current (or next) word\n\nCombine with a count for bigger jumps:\n  2w — forward two words\n  3e — to the end of the third word ahead\n\nA \"word\" is a run of letters/digits/underscores, or a run of other non-blank characters.\nPunctuation like = and ; each count as their own word.\n",
+    "concept_ja": "単語移動を使えば、1文字ずつではなく単語単位でジャンプできます。\n\n  w — 次の単語の先頭にジャンプ\n  b — 前の単語の先頭に戻る\n  e — 現在（または次）の単語の末尾にジャンプ\n\n数字と組み合わせて大きくジャンプ:\n  2w — 2単語前進\n  3e — 3単語先の末尾へ\n\n「単語」は英数字・アンダースコアの連続、または空白以外の記号の連続です。\n= や ; もそれぞれ独立した単語として扱われます。\n"
+  },
+  {
     "id": "tier-2-01-dw-dd",
     "tier": 2,
     "order": 1,
