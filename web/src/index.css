@@ -588,7 +588,6 @@ a {
   white-space: pre-line;
   font-family: var(--font-mono);
   line-height: 1.75;
-  margin-bottom: 4px;
 }
 
 .concept-label {

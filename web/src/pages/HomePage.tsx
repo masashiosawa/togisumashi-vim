@@ -220,6 +220,15 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+        {concept && (
+          <div className="concept-block">
+            <span className="concept-label">
+              <Trans>Concept</Trans>
+            </span>
+            {concept}
+          </div>
+        )}
       </div>
 
       <div className="home-right">
@@ -276,7 +285,6 @@ export function HomePage() {
                     isLast={index + 1 >= pool.length}
                     showTimer={mode === "test"}
                     hintsEnabled={mode === "practice"}
-                    concept={concept}
                   />
                 </>
               )}

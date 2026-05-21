@@ -22,7 +22,6 @@ interface Props {
   isLast?: boolean;
   showTimer?: boolean;
   hintsEnabled?: boolean;
-  concept?: string;
 }
 
 export function DrillRunner({
@@ -33,7 +32,6 @@ export function DrillRunner({
   isLast,
   showTimer = true,
   hintsEnabled = true,
-  concept,
 }: Props) {
   const { i18n } = useLingui();
   const locale = (i18n.locale ?? "en") as "en" | "ja";
@@ -165,15 +163,6 @@ export function DrillRunner({
 
   return (
     <div className="drill-runner">
-      {concept && (
-        <div className="concept-block">
-          <span className="concept-label">
-            <Trans>Concept</Trans>
-          </span>
-          {concept}
-        </div>
-      )}
-
       <div className="drill-header">
         <h3 className="drill-title">{drillI18n.title}</h3>
         <span className="drill-tier">Tier {instance.def.tier}</span>
