@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
 import { LOCALES, type Locale, detectLocale, i18n, setLocale } from "./i18n";
 import "./index.css";
+import "./lib/vimCustomMappings";
 
 // URL に locale が含まれていればそれを初期値に (リロード時のちらつき防止)
 const urlSegment = window.location.pathname.split("/").filter(Boolean)[0];

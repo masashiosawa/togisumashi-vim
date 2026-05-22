@@ -52,5 +52,14 @@
     "title_ja": "削除コマンド: dw, dd, D",
     "concept_en": "dw  — Delete word (from cursor to start of next word)\ndd  — Delete entire line\nD   — Delete to end of line (equivalent to d$)\ndiw — Delete inner word (the word under cursor, no surrounding spaces)\n\nCombine with counts: 2dw deletes 2 words, 3dd deletes 3 lines.\n\nDeleted text goes into a register — paste it with p.\n",
     "concept_ja": "dw  — 単語を削除（カーソルから次の単語の先頭まで）\ndd  — 行全体を削除\nD   — 行末まで削除（d$ と同じ）\ndiw — 内側の単語を削除（周囲のスペースはそのまま）\n\nカウントと組み合わせ: 2dw で 2 単語、3dd で 3 行削除。\n\n削除したテキストはレジスタに入る — p でペースト可能。\n"
+  },
+  {
+    "id": "tier-2-02-yy-p",
+    "tier": 2,
+    "order": 2,
+    "title_en": "Yank and paste: yy p P ddp",
+    "title_ja": "ヤンクとペースト: yy p P ddp",
+    "concept_en": "Yank (copy) and paste without leaving normal mode.\n\n  yy  — yank (copy) the current line\n  p   — paste below the current line (linewise)\n  P   — paste above the current line (linewise)\n\nUseful idioms:\n  yyp  — duplicate a line below (yank + paste below)\n  yyP  — duplicate a line above\n  ddp  — swap current line with the line below (delete + paste below next)\n\nAdd a count before yank to grab multiple lines:\n  2yy  — yank 2 lines\n  yy3p — yank once, paste 3 times\n",
+    "concept_ja": "ノーマルモードを離れずにヤンク（コピー）＆ペースト。\n\n  yy  — 現在行をヤンク（コピー）\n  p   — 現在行の下にペースト（行単位）\n  P   — 現在行の上にペースト（行単位）\n\nよく使う慣用句:\n  yyp  — 行を下に複製（ヤンク＋下にペースト）\n  yyP  — 行を上に複製\n  ddp  — 現在行と次の行を入れ替え（削除＋次の行の下にペースト）\n\nカウントでまとめてヤンク:\n  2yy  — 2 行ヤンク\n  yy3p — 1 回ヤンク、3 回ペースト\n"
   }
 ]
