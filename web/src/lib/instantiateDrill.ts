@@ -42,15 +42,18 @@ export function instantiateDrill(def: DrillDef): DrillInstance {
   let goalText: string | undefined;
 
   switch (def.goal.type) {
-    case "col_end":
-      goalOffset = Math.max(0, lines[0].length - 1);
+    case "col_end": {
+      const row = def.goal.row ?? 0;
+      goalOffset = lineStartOffset(row) + Math.max(0, lines[row].length - 1);
       break;
+    }
     case "col_start":
       goalOffset = 0;
       break;
     case "first_nonblank": {
-      const idx = lines[0].search(/\S/);
-      goalOffset = idx >= 0 ? idx : 0;
+      const row = def.goal.row ?? 0;
+      const idx = lines[row].search(/\S/);
+      goalOffset = lineStartOffset(row) + (idx >= 0 ? idx : 0);
       break;
     }
     case "col_N":
