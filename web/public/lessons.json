@@ -79,5 +79,41 @@
     "title_ja": "アンドゥ・リドゥ: u Ctrl+r",
     "concept_en": "Every change in Vim is tracked. You can always step backwards — and forwards.\n\n  u      — undo the last change\n  Ctrl+r — redo (re-apply an undone change)\n\nCount prefix works with u:\n  2u — undo the last two changes (same as pressing u twice)\n  3u — undo the last three changes\n\nKey insight: each x, d, c is recorded as a separate change.\nu undoes one change at a time, not one keystroke.\n\nNote: in terminal Vim, Ctrl+z suspends the process. Always use u to undo.\n",
     "concept_ja": "Vim はすべての変更を記録しています。いつでも過去に戻り、また未来に進めます。\n\n  u        — 直前の変更を元に戻す\n  Ctrl+r   — リドゥ（元に戻した変更を再適用する）\n\nカウントプレフィックスも使えます:\n  2u — 直前の 2 つの変更を元に戻す（u を 2 回押すのと同じ）\n  3u — 直前の 3 つの変更を元に戻す\n\nポイント: x・d・c はそれぞれ別の変更として記録される。\nu は 1 回の変更だけを元に戻す（1 キーストロークではなく）。\n\n注意: ターミナル Vim では Ctrl+z はプロセスをサスペンドする。アンドゥには常に u を使う。\n"
+  },
+  {
+    "id": "tier-3-01-text-objects",
+    "tier": 3,
+    "order": 1,
+    "title_en": "Text objects: quotes and brackets",
+    "title_ja": "テキストオブジェクト: クォートと括弧",
+    "concept_en": "Text objects let you operate on structured regions — not just by cursor position.\n\ni = inner (content only), a = around (includes delimiters)\n\ndi\"  — Delete inside double quotes\nda\"  — Delete around double quotes (including the quotes)\nci\"  — Change inside double quotes\nci(  — Change inside parentheses\ndi{  — Delete inside curly braces\n\nCombine with any operator: d, c, y, v, etc.\n",
+    "concept_ja": "テキストオブジェクトはカーソル位置ではなく構造的な範囲に対して操作できる。\n\ni = inner（中身のみ）, a = around（区切り文字含む）\n\ndi\"  — ダブルクォート内を削除\nda\"  — ダブルクォートごと削除（クォートマーク含む）\nci\"  — ダブルクォート内を変更\nci(  — 括弧内を変更\ndi{  — 波括弧内を削除\n\nd / c / y / v など任意のオペレータと組み合わせられる。\n"
+  },
+  {
+    "id": "tier-3-02-search",
+    "tier": 3,
+    "order": 2,
+    "title_en": "Search motions: / ? n N *",
+    "title_ja": "検索モーション: / ? n N *",
+    "concept_en": "/pattern<Enter>  — Search forward for pattern\n?pattern<Enter>  — Search backward for pattern\nn                — Repeat last search (same direction)\nN                — Repeat last search (opposite direction)\n*                — Search forward for word under cursor\n#                — Search backward for word under cursor\n\nSearch jumps go into the jump list — use Ctrl+o to go back.\n",
+    "concept_ja": "/pattern<Enter>  — pattern を前方検索\n?pattern<Enter>  — pattern を後方検索\nn                — 直前の検索を同方向に繰り返す\nN                — 直前の検索を逆方向に繰り返す\n*                — カーソル下の単語を前方検索\n#                — カーソル下の単語を後方検索\n\n検索ジャンプはジャンプリストに記録される — Ctrl+o で戻れる。\n"
+  },
+  {
+    "id": "tier-3-03-marks",
+    "tier": 3,
+    "order": 3,
+    "title_en": "Marks and jump list",
+    "title_ja": "マークとジャンプリスト",
+    "concept_en": "Marks let you bookmark positions and jump back instantly.\n\nma       — Set mark 'a' at the current position\n'a       — Jump to the line of mark 'a' (first non-blank column)\n`a       — Jump to the exact position of mark 'a'\nCtrl+o   — Jump to the previous position in the jump list\nCtrl+i   — Jump to the next position in the jump list\n\nMarks persist across the session. Use lowercase a-z for local marks.\n",
+    "concept_ja": "マークは位置をブックマークして即座に戻るための機能。\n\nma       — 現在位置にマーク 'a' を設定\n'a       — マーク 'a' のある行の先頭の非空白文字にジャンプ\n`a       — マーク 'a' の正確な位置にジャンプ\nCtrl+o   — ジャンプリストの前の位置に移動\nCtrl+i   — ジャンプリストの次の位置に移動\n\nマークはセッション中持続する。ローカルマークは小文字 a-z を使う。\n"
+  },
+  {
+    "id": "tier-3-04-dot-repeat",
+    "tier": 3,
+    "order": 4,
+    "title_en": "Dot repeat and count prefix",
+    "title_ja": "ドット繰り返しとカウントプレフィックス",
+    "concept_en": ". (dot) repeats the last change — one of Vim's most powerful features.\n\nx.    — Delete a char, then repeat (delete next char)\ndw.   — Delete a word, then repeat\nciw   then w then .  — Change a word, move to next word, apply same change\n2x    — Delete 2 characters at once (count prefix)\n3dw   — Delete 3 words at once\n\nCombine . with motions to repeat edits efficiently across a file.\n",
+    "concept_ja": ". （ドット）は直前の変更を繰り返す — Vim で最も強力な機能の一つ。\n\nx.    — 1文字削除して繰り返す（次の文字も削除）\ndw.   — 単語を削除して繰り返す\nciw → w → .  — 単語を変更し、次の単語に移動して同じ変更を適用\n2x    — 2文字を一度に削除（カウントプレフィックス）\n3dw   — 3単語を一度に削除\n\n. とモーションを組み合わせてファイル全体で効率よく編集を繰り返せる。\n"
   }
 ]

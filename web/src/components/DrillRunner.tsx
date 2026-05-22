@@ -1,4 +1,4 @@
-import { EditorSelection } from "@codemirror/state";
+import { EditorSelection, StateEffect } from "@codemirror/state";
 import type { EditorView } from "@codemirror/view";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
@@ -13,6 +13,10 @@ import { DrillTimer } from "./DrillTimer";
 import { ShadowOverlay } from "./ShadowOverlay";
 
 type Phase = "idle" | "running" | "success";
+
+// Marks cursor-init dispatches so handleUpdate can ignore them and avoid
+// false-positive goal detection when startOffset === goalOffset.
+const cursorInitEffect = StateEffect.define<null>();
 
 interface Props {
   drill: DrillDef;
@@ -53,6 +57,7 @@ export function DrillRunner({
     (view: EditorView) => {
       view.dispatch({
         selection: EditorSelection.cursor(instance.startOffset),
+        effects: [cursorInitEffect.of(null)],
       });
     },
     [instance.startOffset],
@@ -119,7 +124,10 @@ export function DrillRunner({
       const raf = requestAnimationFrame(() => {
         const view = cmRef.current?.view;
         if (!view) return;
-        view.dispatch({ selection: EditorSelection.cursor(instance.startOffset) });
+        view.dispatch({
+          selection: EditorSelection.cursor(instance.startOffset),
+          effects: [cursorInitEffect.of(null)],
+        });
         view.focus();
       });
       return () => cancelAnimationFrame(raf);
@@ -139,6 +147,10 @@ export function DrillRunner({
     (vu: Parameters<NonNullable<React.ComponentProps<typeof CodeMirror>["onUpdate"]>>[0]) => {
       if (phaseRef.current !== "running") return;
       if (!vu.selectionSet && !vu.docChanged) return;
+
+      // Ignore our own cursor-init dispatches to prevent false-positive goal
+      // detection when startOffset === goalOffset (e.g. marks drills).
+      if (vu.transactions.some((tr) => tr.effects.some((e) => e.is(cursorInitEffect)))) return;
 
       if (instance.def.type === "motion") {
         const pos = vu.state.selection.main.head;
