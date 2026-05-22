@@ -6,9 +6,9 @@ export type TemplateKind =
   | { kind: "fixed"; lines: string[] };
 
 export type DrillGoal =
-  | { type: "col_end" }
+  | { type: "col_end"; row?: number }
   | { type: "col_start" }
-  | { type: "first_nonblank" }
+  | { type: "first_nonblank"; row?: number }
   | { type: "col_N"; n: number }
   | { type: "last_line_start" }
   | { type: "text_equals"; content: string }
