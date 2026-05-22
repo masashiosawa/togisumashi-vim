@@ -61,5 +61,14 @@
     "title_ja": "ヤンクとペースト: yy p P ddp",
     "concept_en": "Yank (copy) and paste without leaving normal mode.\n\n  yy  — yank (copy) the current line\n  p   — paste below the current line (linewise)\n  P   — paste above the current line (linewise)\n\nUseful idioms:\n  yyp  — duplicate a line below (yank + paste below)\n  yyP  — duplicate a line above\n  ddp  — swap current line with the line below (delete + paste below next)\n\nAdd a count before yank to grab multiple lines:\n  2yy  — yank 2 lines\n  yy3p — yank once, paste 3 times\n",
     "concept_ja": "ノーマルモードを離れずにヤンク（コピー）＆ペースト。\n\n  yy  — 現在行をヤンク（コピー）\n  p   — 現在行の下にペースト（行単位）\n  P   — 現在行の上にペースト（行単位）\n\nよく使う慣用句:\n  yyp  — 行を下に複製（ヤンク＋下にペースト）\n  yyP  — 行を上に複製\n  ddp  — 現在行と次の行を入れ替え（削除＋次の行の下にペースト）\n\nカウントでまとめてヤンク:\n  2yy  — 2 行ヤンク\n  yy3p — 1 回ヤンク、3 回ペースト\n"
+  },
+  {
+    "id": "tier-2-03-change",
+    "tier": 2,
+    "order": 3,
+    "title_en": "Change operator: cw cc C ciw r",
+    "title_ja": "変更オペレーター: cw cc C ciw r",
+    "concept_en": "The change operator (c) = delete + enter insert mode.\nIt is the most common editing operation in Vim.\n\n  ciw — change inner word (word under cursor, ignoring spaces)\n  cw  — change from cursor to start of next word\n  cc  — change entire line (clears and enters insert mode)\n  C   — change to end of line (same as c$)\n  r{x} — replace a single character without entering insert mode\n\nAfter c, you're in insert mode: type the new text, then press <Esc>.\n\nciw vs cw:\n  ciw works from anywhere in the word and never eats surrounding spaces.\n  cw is faster when the cursor is already at the word's first character.\n\nBonus: r{x} is the fastest single-char fix — no insert mode needed.\n",
+    "concept_ja": "変更オペレーター（c）= 削除 ＋ インサートモード突入。\nVim で最も使う编集操作のひとつです。\n\n  ciw — 内側の単語を変更（カーソル位置問わず、周囲のスペースは保持）\n  cw  — カーソルから次の単語の先頭まで変更\n  cc  — 行全体を変更（クリア後にインサートモード）\n  C   — 行末まで変更（c$ と同じ）\n  r{x} — インサートモードなしで 1 文字だけ置換\n\nc の後はインサートモード: 新しいテキストを打ち、<Esc> で抜ける。\n\nciw と cw の使い分け:\n  ciw はカーソルが単語のどこにあっても動作し、周囲のスペースを維持。\n  cw はカーソルが単語の先頭にある場合に素早い。\n\nおまけ: r{x} はインサートモード不要の最速 1 文字修正。\n"
   }
 ]
