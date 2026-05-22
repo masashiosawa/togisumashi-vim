@@ -31,10 +31,10 @@ No install required. Open the app, pick your level and mode in the left panel, a
 | Tier | Level | Lessons | Drills |
 |------|-------|---------|--------|
 | 1 | Beginner | `hjkl` · word motion (`w b e`) · line jumps (`0 $ ^ g_`) · file jumps (`gg G {N}G`) · inline find (`f F t ; ,`) | ✅ 25 |
-| 2 | Intermediate | delete (`dw dd D diw`) · yank/paste (`yy p P ddp`) · change (`cw cc C ciw r`) | ✅ 15 |
+| 2 | Intermediate | delete (`dw dd D diw`) · yank/paste (`yy p P ddp`) · change (`cw cc C ciw r`) · undo/redo (`u Ctrl+r`) | ✅ 20 |
 | 3 | Advanced | — | 🚧 roadmap |
 
-Total: **40 drills across 8 lessons**. New drills ship continuously.
+Total: **45 drills across 9 lessons**. New drills ship continuously.
 
 ## Repository Structure
 
