@@ -70,5 +70,14 @@
     "title_ja": "変更オペレーター: cw cc C ciw r",
     "concept_en": "The change operator (c) = delete + enter insert mode.\nIt is the most common editing operation in Vim.\n\n  ciw — change inner word (word under cursor, ignoring spaces)\n  cw  — change from cursor to start of next word\n  cc  — change entire line (clears and enters insert mode)\n  C   — change to end of line (same as c$)\n  r{x} — replace a single character without entering insert mode\n\nAfter c, you're in insert mode: type the new text, then press <Esc>.\n\nciw vs cw:\n  ciw works from anywhere in the word and never eats surrounding spaces.\n  cw is faster when the cursor is already at the word's first character.\n\nBonus: r{x} is the fastest single-char fix — no insert mode needed.\n",
     "concept_ja": "変更オペレーター（c）= 削除 ＋ インサートモード突入。\nVim で最も使う编集操作のひとつです。\n\n  ciw — 内側の単語を変更（カーソル位置問わず、周囲のスペースは保持）\n  cw  — カーソルから次の単語の先頭まで変更\n  cc  — 行全体を変更（クリア後にインサートモード）\n  C   — 行末まで変更（c$ と同じ）\n  r{x} — インサートモードなしで 1 文字だけ置換\n\nc の後はインサートモード: 新しいテキストを打ち、<Esc> で抜ける。\n\nciw と cw の使い分け:\n  ciw はカーソルが単語のどこにあっても動作し、周囲のスペースを維持。\n  cw はカーソルが単語の先頭にある場合に素早い。\n\nおまけ: r{x} はインサートモード不要の最速 1 文字修正。\n"
+  },
+  {
+    "id": "tier-2-04-undo-redo",
+    "tier": 2,
+    "order": 4,
+    "title_en": "Undo and redo: u Ctrl+r",
+    "title_ja": "アンドゥ・リドゥ: u Ctrl+r",
+    "concept_en": "Every change in Vim is tracked. You can always step backwards — and forwards.\n\n  u      — undo the last change\n  Ctrl+r — redo (re-apply an undone change)\n\nCount prefix works with u:\n  2u — undo the last two changes (same as pressing u twice)\n  3u — undo the last three changes\n\nKey insight: each x, d, c is recorded as a separate change.\nu undoes one change at a time, not one keystroke.\n\nNote: in terminal Vim, Ctrl+z suspends the process. Always use u to undo.\n",
+    "concept_ja": "Vim はすべての変更を記録しています。いつでも過去に戻り、また未来に進めます。\n\n  u        — 直前の変更を元に戻す\n  Ctrl+r   — リドゥ（元に戻した変更を再適用する）\n\nカウントプレフィックスも使えます:\n  2u — 直前の 2 つの変更を元に戻す（u を 2 回押すのと同じ）\n  3u — 直前の 3 つの変更を元に戻す\n\nポイント: x・d・c はそれぞれ別の変更として記録される。\nu は 1 回の変更だけを元に戻す（1 キーストロークではなく）。\n\n注意: ターミナル Vim では Ctrl+z はプロセスをサスペンドする。アンドゥには常に u を使う。\n"
   }
 ]
