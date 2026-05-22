@@ -2,8 +2,8 @@
 id: tier-1-05-find-char
 tier: 1
 order: 5
-title_en: "Inline find: f F t T ; ,"
-title_ja: "行内検索: f F t T ; ,"
+title_en: "Inline find: f F t ; ,"
+title_ja: "行内検索: f F t ; ,"
 concept_en: |
   Jump to any character on the current line in one keystroke.
 
