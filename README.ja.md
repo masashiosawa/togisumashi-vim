@@ -1,10 +1,10 @@
 # togisumashi-vim
 
-> **寿司打型 Vim ドリル — Vim を 2 時間で極める**
+> **寿司打型 Vim ドリル — タイピングゲーム速度で Vim を極める**
 
 [English](README.md) | [日本語](README.ja.md)
 
-togisumashi-vim は Neovim 向けのスピードドリル練習アプリです。日本語タイピングゲーム「[寿司打](https://sushida.net/play.html)」にインスパイアされ、タイム計測と反復練習で Vim の操作を体に染み込ませます。Web アプリと Neovim プラグインの両形式で提供します。
+togisumashi-vim は Neovim 向けのスピードドリル練習アプリです。日本語タイピングゲーム「[寿司打](https://sushida.net/play.html)」にインスパイアされ、タイム計測と反復練習で Vim の操作を体に染み込ませます。Web アプリと（近日）Neovim プラグインで提供します。
 
 ## 特徴
 
@@ -13,48 +13,38 @@ togisumashi-vim は Neovim 向けのスピードドリル練習アプリです�
 - **Practice & Test モード** — Practice ではヒントキーをオンデマンドで表示。Test ではヒントを非表示にしてライブタイマーを表示
 - **2 カラムレイアウト** — 左に設定・コンセプト、右にターミナルコンソール。スクロール不要
 - **進捗追跡** — localStorage で全試行を記録。セッション終了後に苦手ドリルを Focus オプションで再練習可能
-- **Neovim ネイティブ** — エディタを離れずに練習できる（プラグイン開発中）
 - **英語・日本語の両言語対応** — first-class として同等に対応
 
 ## Web アプリ
 
 👉 [vim.togisumashi.dev](https://vim.togisumashi.dev)
 
-インストール不要。ブラウザを開き、左パネルでレベルとモードを選び、ターミナルの Start ボタンをクリックするだけで練習を始められます。
+インストール不要。ブラウザを開き、左パネルでレベルとモードを選んで Start ボタンをクリックするだけ。
 
 ## Neovim プラグイン
 
-> プラグインは monorepo で開発し、専用のミラーリポジトリから配布しています。
+> 開発中 — 完成次第、専用のミラーリポジトリから配布予定。
+> このリポジトリをウォッチしてアップデートをお待ちください。
 
-[lazy.nvim](https://github.com/folke/lazy.nvim) でインストール:
+## ドリル一覧
 
-```lua
-{
-  "masashiosawa/togisumashi-vim-nvim",
-  cmd = "Togisumashi",
-  opts = {},
-}
-```
+| Tier | レベル | レッスン | ドリル数 |
+|------|--------|---------|---------|
+| 1 | 初級 | `hjkl` · 単語移動（`w b e`）· 行端移動（`0 $ ^ g_`）· ファイル内ジャンプ（`gg G {N}G`）· 行内検索（`f F t ; ,`） | ✅ 25 問 |
+| 2 | 中級 | 削除（`dw dd D diw`）· ヤンク/ペースト（`yy p P ddp`）· 変更（`cw cc C ciw r`） | ✅ 15 問 |
+| 3 | 上級 | — | 🚧 ロードマップ |
 
-`:Togisumashi` でドリルセッションを開始します。Neovim 0.10+ が必要です。
-
-## ドリル Tier 一覧
-
-| Tier | 内容 | 状況 |
-|------|------|------|
-| 1 | 基本移動 — `hjkl`、行端移動（`0` `$`） | ✅ 5 問 |
-| 2 | 削除オペレータ — `dw` `dd` `D` `diw` `2dw` | ✅ 5 問 |
-| 3 | テキストオブジェクト — `iw` `i"` `i(` `it` | 🚧 ロードマップ |
-| 4 | 上級 — マクロ、マーク、レジスタ | 🚧 ロードマップ |
+合計: **8 レッスン 40 ドリル**。新しいドリルを継続追加中。
 
 ## リポジトリ構成
 
 ```
 togisumashi-vim/
 ├── web/            # Web アプリ（Vite + React + TypeScript + CodeMirror 6）
-├── neovim-plugin/  # Neovim プラグイン（Lua、Neovim 0.10+）
+├── neovim-plugin/  # Neovim プラグイン — 開発中
 ├── drills/         # 共有ドリル定義（Markdown + YAML frontmatter）
-├── docs/           # ドキュメント（英語・日本語）
+├── docs/           # ドキュメント
+├── scripts/        # ビルドスクリプト（ドリル JSON 生成）
 ├── README.md
 ├── README.ja.md
 ├── CONTRIBUTING.md
@@ -68,15 +58,14 @@ togisumashi-vim/
 | レイヤー | 採用技術 |
 |---------|---------|
 | Web フロント | Vite · React · TypeScript · CodeMirror 6 · `@replit/codemirror-vim` |
-| Web API | Hono on Cloudflare Workers |
-| データベース | Cloudflare D1（SQLite）· Drizzle ORM |
+| i18n | Lingui v5 |
 | ホスティング | Cloudflare Pages |
-| プラグイン | Lua · Neovim 0.10+ |
 | ドリル定義 | Markdown + YAML frontmatter（Web とプラグインで共有） |
 
 ## コントリビュート
 
 コントリビューションを歓迎します。開発環境のセットアップや PR の手順は [CONTRIBUTING.ja.md](CONTRIBUTING.ja.md) をご確認ください。
+ドリルを追加するには [docs/drill-format.md](docs/drill-format.md) を参照してください。
 
 ## セキュリティ
 
