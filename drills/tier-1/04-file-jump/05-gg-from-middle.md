@@ -13,7 +13,7 @@ template:
       - "const e = 5;"
 start_row: 2
 goal:
-  type: col_start
+  type: first_nonblank
 solution_keys:
   - "gg"
 i18n:
