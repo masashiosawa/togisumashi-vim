@@ -144,6 +144,7 @@ export function DrillRunner({
         const pos = vu.state.selection.main.head;
         if (pos === instance.goalOffset) handleSuccess();
       } else {
+        if (!vu.docChanged) return;
         const text = vu.state.doc.toString().trimEnd();
         const goal = (instance.goalText ?? "").trimEnd();
         if (text === goal) handleSuccess();
