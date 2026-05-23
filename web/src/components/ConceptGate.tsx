@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { useEffect } from "react";
 import type { Lesson } from "../types/drill";
 
@@ -27,9 +26,7 @@ export function ConceptGate({ lesson, locale, onDismiss }: Props) {
   return (
     <div className="concept-gate">
       <div className="concept-gate-header">
-        <span className="concept-gate-eyebrow">
-          <Trans>Lesson</Trans>
-        </span>
+        <span className="concept-gate-eyebrow">{locale === "ja" ? "レッスン" : "Lesson"}</span>
         <h3 className="concept-gate-title">{title}</h3>
       </div>
       {concept && (
@@ -39,7 +36,7 @@ export function ConceptGate({ lesson, locale, onDismiss }: Props) {
       )}
       <div className="concept-gate-actions">
         <button type="button" className="btn-primary" onClick={onDismiss}>
-          <Trans>Start drills</Trans>
+          {locale === "ja" ? "ドリルを始める" : "Start drills"}
           <span className="btn-hint">Space</span>
         </button>
       </div>
