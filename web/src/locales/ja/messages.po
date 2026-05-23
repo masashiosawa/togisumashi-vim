@@ -13,159 +13,55 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/SessionSummary.tsx
-#: src/pages/HomePage.tsx
+#: src/pages/HonePage.tsx:178
+msgid "Achievement"
+msgstr "実績"
+
+#: src/components/SessionSummary.tsx:59
+#: src/pages/HomePage.tsx:179
+#: src/pages/HomePage.tsx:305
 msgid "Advanced"
 msgstr "上級"
-
-#: src/components/SessionSummary.tsx
-#: src/pages/HomePage.tsx
-msgid "Beginner"
-msgstr "初級"
-
-#: src/components/DrillRunner.tsx
-msgid "Concept"
-msgstr "解説"
-
-#: src/pages/HomePage.tsx
-msgid "Count"
-msgstr "問数"
-
-#: src/pages/HomePage.tsx
-msgid "drills available"
-msgstr "問"
-
-#: src/components/SessionSummary.tsx
-msgid "drills"
-msgstr "問"
-
-#: src/pages/HomePage.tsx
-msgid "Focus"
-msgstr "復習"
-
-#: src/components/SessionSummary.tsx
-msgid "Focus practice"
-msgstr "苦手だけ復習"
-
-#: src/components/DrillRunner.tsx
-msgid "Goal:"
-msgstr "目標:"
-
-#: src/pages/HomePage.tsx
-msgid "Guided"
-msgstr "ガイド"
-
-#: src/components/DrillRunner.tsx
-msgid "Hide hint"
-msgstr "ヒントを隠す"
-
-#: src/components/ShadowOverlay.tsx
-msgid "Hint:"
-msgstr "ヒント:"
-
-#: src/components/SessionSummary.tsx
-#: src/pages/HomePage.tsx
-msgid "Intermediate"
-msgstr "中級"
-
-#: src/pages/HomePage.tsx
-msgid "Lesson"
-msgstr "レッスン"
-
-#: src/pages/HomePage.tsx
-msgid "Level"
-msgstr "レベル"
-
-#: src/pages/HomePage.tsx
-msgid "Loading drills…"
-msgstr "ドリルを読み込み中…"
-
-#: src/components/SessionSummary.tsx
-msgid "Menu"
-msgstr "メニュー"
-
-#: src/pages/HomePage.tsx
-msgid "Mode"
-msgstr "モード"
-
-#: src/components/DrillResult.tsx
-msgid "Next drill"
-msgstr "次の問題"
-
-#: src/pages/HomePage.tsx
-msgid "No drills available for this selection."
-msgstr "この選択に該当するドリルがありません。"
-
-#: src/components/SessionSummary.tsx
-msgid "Play again"
-msgstr "もう一度"
-
-#: src/pages/HomePage.tsx
-msgid "Practice"
-msgstr "練習"
-
-#: src/components/DrillResult.tsx
-msgid "Retry"
-msgstr "もう一度"
-
-#: src/components/DrillResult.tsx
-msgid "See results"
-msgstr "結果を見る"
-
-#: src/components/SessionSummary.tsx
-msgid "Session complete"
-msgstr "セッション完了"
-
-#: src/pages/HomePage.tsx
-msgid "Settings"
-msgstr "設定に戻る"
-
-#: src/pages/HomePage.tsx
-msgid "Sharpen your Vim. One drill at a time."
-msgstr "Vim を研ぎ澄ます。1 問ずつ。"
-
-#: src/components/DrillRunner.tsx
-msgid "Show hint"
-msgstr "ヒントを表示"
-
-#: src/pages/HomePage.tsx
-msgid "Skip"
-msgstr "スキップ"
-
-#: src/components/SessionSummary.tsx
-msgid "Slower than target — practice these:"
-msgstr "目標タイム未達 — 復習推奨:"
-
-#: src/components/DrillRunner.tsx
-#: src/pages/HomePage.tsx
-msgid "Start"
-msgstr "開始"
-
-#: src/pages/HomePage.tsx
-msgid "Test"
-msgstr "テスト"
-
-#: src/components/DrillResult.tsx
-msgid "target {target}s"
-msgstr "目標 {target}s"
-
-#: src/components/SessionSummary.tsx
-msgid "total"
-msgstr "合計"
-
-#: src/components/DrillResult.tsx
-msgid "under {target}s ✦"
-msgstr "{target}s 未満 ✦"
-
-#: src/components/SessionSummary.tsx
-msgid "under target"
-msgstr "目標達成"
 
 #~ msgid "Back"
 #~ msgstr "戻る"
 
+#: src/pages/HonePage.tsx:131
+msgid "Back to Practice"
+msgstr "練習に戻る"
+
 #~ msgid "Basic motions"
 #~ msgstr "基本モーション"
+
+#: src/components/SessionSummary.tsx:57
+#: src/pages/HomePage.tsx:177
+#: src/pages/HomePage.tsx:303
+msgid "Beginner"
+msgstr "初級"
+
+#: src/pages/HonePage.tsx:145
+msgid "Challenges"
+msgstr "チャレンジ"
+
+#: src/pages/HonePage.tsx:183
+msgid "Cleared"
+msgstr "クリア"
+
+#: src/components/DrillRunner.tsx:
+#~ msgid "Concept"
+#~ msgstr "解説"
+
+#: src/pages/HomePage.tsx:233
+msgid "Count"
+msgstr "問数"
+
+#: src/components/SessionSummary.tsx:73
+msgid "drills"
+msgstr "問"
+
+#: src/pages/HomePage.tsx:
+#~ msgid "drills available"
+#~ msgstr "問"
 
 #~ msgid "Edit commands"
 #~ msgstr "編集コマンド"
@@ -173,17 +69,168 @@ msgstr "目標達成"
 #~ msgid "Failed to load drills."
 #~ msgstr "ドリルの読み込みに失敗しました。"
 
+#: src/pages/HomePage.tsx:300
+msgid "Focus"
+msgstr "復習"
+
+#: src/components/SessionSummary.tsx:108
+msgid "Focus practice"
+msgstr "苦手だけ復習"
+
+#: src/components/DrillRunner.tsx:191
+msgid "Goal:"
+msgstr "目標:"
+
+#: src/pages/HomePage.tsx:217
+msgid "Guided"
+msgstr "ガイド"
+
+#: src/components/DrillRunner.tsx:225
+msgid "Hide hint"
+msgstr "ヒントを隠す"
+
+#: src/components/ShadowOverlay.tsx:11
+msgid "Hint:"
+msgstr "ヒント:"
+
+#: src/pages/HonePage.tsx:192
+msgid "Honed"
+msgstr "研ぎ澄まし"
+
+#: src/components/SessionSummary.tsx:58
+#: src/pages/HomePage.tsx:178
+#: src/pages/HomePage.tsx:304
+msgid "Intermediate"
+msgstr "中級"
+
 #~ msgid "jump & start"
 #~ msgstr "直接開始"
+
+#: src/pages/HomePage.tsx:209
+msgid "Lesson"
+msgstr "レッスン"
+
+#: src/components/LessonList.tsx:34
+msgid "Lessons"
+msgstr "レッスン一覧"
+
+#: src/pages/HomePage.tsx:167
+msgid "Level"
+msgstr "レベル"
+
+#: src/pages/HomePage.tsx:274
+msgid "Loading drills…"
+msgstr "ドリルを読み込み中…"
+
+#: src/pages/HonePage.tsx:149
+msgid "Loading…"
+msgstr "読み込み中…"
 
 #~ msgid "Master Vim, drill by drill."
 #~ msgstr "ドリルで Vim を極める。"
 
+#: src/components/SessionSummary.tsx:120
+msgid "Menu"
+msgstr "メニュー"
+
 #~ msgid "Mixed challenge"
 #~ msgstr "総合チャレンジ"
+
+#: src/pages/HomePage.tsx:187
+msgid "Mode"
+msgstr "モード"
+
+#: src/pages/HonePage.tsx:299
+msgid "Next Challenge"
+msgstr "次のチャレンジ"
+
+#: src/components/DrillResult.tsx:29
+msgid "Next drill"
+msgstr "次の問題"
+
+#: src/pages/HomePage.tsx:287
+msgid "No drills available for this selection."
+msgstr "この選択に該当するドリルがありません。"
 
 #~ msgid "Pick a level. Press Space."
 #~ msgstr "レベルを選んで Space。"
 
+#: src/components/SessionSummary.tsx:116
+msgid "Play again"
+msgstr "もう一度"
+
+#: src/pages/HomePage.tsx:195
+msgid "Practice"
+msgstr "練習"
+
+#: src/components/DrillResult.tsx:33
+#: src/pages/HonePage.tsx:295
+msgid "Retry"
+msgstr "もう一度"
+
+#: src/components/DrillResult.tsx:29
+msgid "See results"
+msgstr "結果を見る"
+
+#: src/components/SessionSummary.tsx:66
+msgid "Session complete"
+msgstr "セッション完了"
+
+#: src/pages/HomePage.tsx:
+#~ msgid "Settings"
+#~ msgstr "設定に戻る"
+
+#: src/pages/HomePage.tsx:
+#~ msgid "Sharpen your Vim. One drill at a time."
+#~ msgstr "Vim を研ぎ澄ます。1 問ずつ。"
+
+#: src/components/DrillRunner.tsx:225
+msgid "Show hint"
+msgstr "ヒントを表示"
+
+#: src/pages/HomePage.tsx:224
+msgid "Skip"
+msgstr "スキップ"
+
+#: src/components/SessionSummary.tsx:93
+msgid "Slower than target — practice these:"
+msgstr "目標タイム未達 — 復習推奨:"
+
+#: src/components/DrillRunner.tsx:219
+msgid "Start"
+msgstr "開始"
+
+#: src/pages/HonePage.tsx:251
+msgid "Start Challenge"
+msgstr "チャレンジ開始"
+
 #~ msgid "switch"
 #~ msgstr "切替"
+
+#: src/pages/HonePage.tsx:281
+msgid "target"
+msgstr "目標"
+
+#: src/components/DrillResult.tsx:23
+msgid "target {target}s"
+msgstr "目標 {target}s"
+
+#: src/pages/HonePage.tsx:235
+msgid "Target:"
+msgstr "目標:"
+
+#: src/pages/HomePage.tsx:202
+msgid "Test"
+msgstr "テスト"
+
+#: src/components/SessionSummary.tsx:85
+msgid "total"
+msgstr "合計"
+
+#: src/components/DrillResult.tsx:23
+msgid "under {target}s ✦"
+msgstr "{target}s 未満 ✦"
+
+#: src/components/SessionSummary.tsx:79
+msgid "under target"
+msgstr "目標達成"

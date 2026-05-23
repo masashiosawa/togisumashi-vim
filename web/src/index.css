@@ -1317,21 +1317,54 @@ kbd {
   border-color: var(--gold);
 }
 
+/* ── Hone divine background ───────────────────────── */
+body.hone-active {
+  background: radial-gradient(
+      ellipse 90% 35% at 50% -5%,
+      rgba(240, 192, 64, 0.11) 0%,
+      transparent 65%
+    ), radial-gradient(ellipse 70% 40% at 20% 60%, rgba(139, 124, 248, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 70%, rgba(100, 60, 200, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #0c0820 0%, #08061a 45%, #050412 100%);
+}
+
+[data-theme="light"] body.hone-active {
+  background: radial-gradient(
+      ellipse 90% 35% at 50% -5%,
+      rgba(176, 120, 0, 0.1) 0%,
+      transparent 65%
+    ), radial-gradient(ellipse 70% 40% at 20% 60%, rgba(107, 92, 231, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #edeaf8 0%, #f0eeff 45%, #f4f2ff 100%);
+}
+
+body.hone-active .app {
+  background: transparent;
+}
+
+body.hone-active .app-header {
+  background: rgba(12, 8, 32, 0.88);
+  border-bottom-color: rgba(240, 192, 64, 0.1);
+}
+
+[data-theme="light"] body.hone-active .app-header {
+  background: rgba(237, 234, 248, 0.88);
+  border-bottom-color: rgba(176, 120, 0, 0.15);
+}
+
 /* ── Hone Page Layout ─────────────────────────────── */
 .hone-page {
+  flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 3fr 7fr;
   gap: 24px;
-  min-height: calc(100vh - 60px);
-  padding: 24px 32px;
-  max-width: 1100px;
-  margin: 0 auto;
+  padding: 20px 0;
 }
 
 @media (max-width: 720px) {
   .hone-page {
     grid-template-columns: 1fr;
-    padding: 16px;
+    padding: 16px 0;
   }
 }
 
@@ -1340,6 +1373,8 @@ kbd {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-self: start;
+  overflow-y: auto;
 }
 
 .hone-back {
@@ -1361,15 +1396,18 @@ kbd {
 }
 
 .hone-hero-title {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--gold);
-  line-height: 1.2;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, #f0c040 0%, #fde68a 50%, #f0c040 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hone-hero-sub {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.5;
@@ -1416,13 +1454,14 @@ kbd {
 }
 
 .hone-challenge-item:hover {
-  background: var(--bg-overlay);
+  background: rgba(240, 192, 64, 0.05);
+  border-color: rgba(240, 192, 64, 0.12);
   color: var(--text);
 }
 
 .hone-challenge-item.active {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
+  background: rgba(240, 192, 64, 0.08);
+  border-color: rgba(240, 192, 64, 0.25);
   color: var(--text);
 }
 
@@ -1507,17 +1546,21 @@ kbd {
 .hone-right {
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .hone-right .terminal-window {
   flex: 1;
   display: flex;
   flex-direction: column;
+  border-color: rgba(240, 192, 64, 0.2);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(240, 192, 64, 0.12), 0 0 40px
+    rgba(240, 192, 64, 0.06);
 }
 
 .hone-right .terminal-body {
   flex: 1;
-  min-height: 500px;
+  min-height: 0;
 }
 
 /* ── Hone Empty State ─────────────────────────────── */
@@ -1525,7 +1568,8 @@ kbd {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
+  flex: 1;
+  min-height: 200px;
   color: var(--text-subtle);
   font-size: 14px;
 }
@@ -1598,6 +1642,32 @@ kbd {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.5;
+}
+
+.hone-info-goal {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+}
+
+.hone-info-goal-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.hone-info-goal-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  word-break: break-all;
 }
 
 .hone-info-actions {

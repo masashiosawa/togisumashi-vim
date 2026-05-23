@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { DrillRunner } from "../components/DrillRunner";
 import { useDrills } from "../hooks/useDrills";
+import { instantiateDrill } from "../lib/instantiateDrill";
 import { loadAttempts, recordAttempt } from "../lib/storage";
 import type { Attempt } from "../lib/storage";
 import type { DrillDef } from "../types/drill";
@@ -43,6 +44,11 @@ export function HonePage() {
   const { i18n } = useLingui();
   const lang = (i18n.locale ?? "en") as "en" | "ja";
   const { drills, loading } = useDrills();
+
+  useEffect(() => {
+    document.body.classList.add("hone-active");
+    return () => document.body.classList.remove("hone-active");
+  }, []);
 
   const challenges = useMemo(() => drills.filter((d) => d.tier === 4), [drills]);
 
@@ -224,36 +230,49 @@ export function HonePage() {
               </div>
             )}
 
-            {selected && phase === "info" && (
-              <div className="hone-info">
-                <div className="hone-info-header">
-                  <span className="hone-info-num">
-                    #{String(challenges.indexOf(selected) + 1).padStart(2, "0")}
-                  </span>
-                  <h2 className="hone-info-title">{drillI18n?.title}</h2>
-                  <span className="hone-info-target">
-                    <Trans>Target:</Trans> {formatTime(selected.target_time_ms)}
-                  </span>
-                </div>
-                <p className="hone-info-desc">{drillI18n?.description}</p>
-                {drillI18n?.steps && (
-                  <ol className="hone-steps">
-                    {drillI18n.steps.map((step, i) => (
-                      // biome-ignore lint/suspicious/noArrayIndexKey: stable ordered list
-                      <li key={i} className="hone-step">
-                        {step}
-                      </li>
-                    ))}
-                  </ol>
-                )}
-                <div className="hone-info-actions">
-                  <button type="button" className="btn-primary" onClick={handleStart}>
-                    <Trans>Start Challenge</Trans>
-                    <span className="btn-hint">Space</span>
-                  </button>
-                </div>
-              </div>
-            )}
+            {selected &&
+              phase === "info" &&
+              (() => {
+                const previewInstance = instantiateDrill(selected);
+                return (
+                  <div className="hone-info">
+                    <div className="hone-info-header">
+                      <span className="hone-info-num">
+                        #{String(challenges.indexOf(selected) + 1).padStart(2, "0")}
+                      </span>
+                      <h2 className="hone-info-title">{drillI18n?.title}</h2>
+                      <span className="hone-info-target">
+                        <Trans>Target:</Trans> {formatTime(selected.target_time_ms)}
+                      </span>
+                    </div>
+                    <p className="hone-info-desc">{drillI18n?.description}</p>
+                    {drillI18n?.steps && (
+                      <ol className="hone-steps">
+                        {drillI18n.steps.map((step, i) => (
+                          // biome-ignore lint/suspicious/noArrayIndexKey: stable ordered list
+                          <li key={i} className="hone-step">
+                            {step}
+                          </li>
+                        ))}
+                      </ol>
+                    )}
+                    {selected.type === "edit" && previewInstance.goalText && (
+                      <div className="hone-info-goal">
+                        <span className="hone-info-goal-label">
+                          <Trans>Goal:</Trans>
+                        </span>
+                        <code className="hone-info-goal-text">{previewInstance.goalText}</code>
+                      </div>
+                    )}
+                    <div className="hone-info-actions">
+                      <button type="button" className="btn-primary" onClick={handleStart}>
+                        <Trans>Start Challenge</Trans>
+                        <span className="btn-hint">Space</span>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })()}
 
             {selected && phase === "running" && (
               <DrillRunner
@@ -265,7 +284,7 @@ export function HonePage() {
                 isLast={challenges.indexOf(selected) + 1 >= challenges.length}
                 showTimer={true}
                 hintsEnabled={false}
-                showGoal={false}
+                showGoal={true}
               />
             )}
 
