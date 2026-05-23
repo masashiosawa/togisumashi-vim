@@ -1,7 +1,9 @@
 import { Trans } from "@lingui/react/macro";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ConceptGate } from "../components/ConceptGate";
 import { DrillRunner } from "../components/DrillRunner";
+import { LessonList } from "../components/LessonList";
 import { SessionSummary } from "../components/SessionSummary";
 import { useDrills } from "../hooks/useDrills";
 import { useLessons } from "../hooks/useLessons";
@@ -39,6 +41,8 @@ export function HomePage() {
   const [attempts, setAttempts] = useState<Attempt[]>([]);
   const [finished, setFinished] = useState(false);
   const [focusIds, setFocusIds] = useState<string[]>([]);
+  const [conceptGateVisible, setConceptGateVisible] = useState(false);
+  const prevLessonIdRef = useRef<string | undefined>(undefined);
 
   // focusIds is always passed explicitly — never read from state implicitly
   const makePool = useCallback(
@@ -60,6 +64,8 @@ export function HomePage() {
   );
 
   const resetDrill = useCallback((newPool: DrillDef[]) => {
+    prevLessonIdRef.current = undefined;
+    setConceptGateVisible(false);
     setPool(newPool);
     setIndex(0);
     setAttempts([]);
@@ -120,12 +126,30 @@ export function HomePage() {
 
   const currentDrill = pool[index];
   const currentLesson = lessons.find((l) => l.id === currentDrill?.lesson);
-  const concept =
-    lessonMode === "guided" && currentLesson
-      ? locale === "ja"
-        ? currentLesson.concept_ja
-        : currentLesson.concept_en
-      : undefined;
+
+  // Show concept gate when entering a new lesson in guided mode
+  useEffect(() => {
+    if (lessonMode !== "guided" || !currentDrill?.lesson) {
+      prevLessonIdRef.current = currentDrill?.lesson;
+      return;
+    }
+    if (currentDrill.lesson !== prevLessonIdRef.current) {
+      setConceptGateVisible(true);
+    }
+    prevLessonIdRef.current = currentDrill.lesson;
+  }, [currentDrill, lessonMode]);
+
+  const handleDismissConceptGate = useCallback(() => {
+    setConceptGateVisible(false);
+  }, []);
+
+  const handleSelectLesson = useCallback(
+    (lessonId: string) => {
+      const ids = drills.filter((d) => d.lesson === lessonId).map((d) => d.id);
+      setFocusIds(ids);
+    },
+    [drills],
+  );
 
   return (
     <div className="home">
@@ -224,13 +248,14 @@ export function HomePage() {
           </div>
         </section>
 
-        {concept && (
-          <div className="concept-block">
-            <span className="concept-label">
-              <Trans>Concept</Trans>
-            </span>
-            {concept}
-          </div>
+        {lessonMode === "guided" && (
+          <LessonList
+            lessons={lessons}
+            drills={drills}
+            level={level}
+            currentLessonId={currentLesson?.id}
+            onSelectLesson={handleSelectLesson}
+          />
         )}
       </div>
 
@@ -261,6 +286,12 @@ export function HomePage() {
                 <p className="drill-empty">
                   <Trans>No drills available for this selection.</Trans>
                 </p>
+              ) : conceptGateVisible && currentLesson ? (
+                <ConceptGate
+                  lesson={currentLesson}
+                  locale={locale as "en" | "ja"}
+                  onDismiss={handleDismissConceptGate}
+                />
               ) : (
                 <>
                   <div className="terminal-session-bar">
