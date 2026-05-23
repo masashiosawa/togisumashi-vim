@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { LocaleSwitcher } from "./components/LocaleSwitcher";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { LOCALES, type Locale, i18n, setLocale } from "./i18n";
