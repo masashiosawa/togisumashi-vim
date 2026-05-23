@@ -1,4 +1,3 @@
-import { Trans } from "@lingui/react/macro";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeToggle } from "../components/ThemeToggle";
@@ -74,24 +73,6 @@ export function LandingPage() {
             </p>
           </div>
         </section>
-
-        <div className="lp-stat-bar">
-          <span className="lp-stat">
-            <Trans>65+ drills</Trans>
-          </span>
-          <span className="lp-stat-sep">·</span>
-          <span className="lp-stat">
-            <Trans>10 lessons</Trans>
-          </span>
-          <span className="lp-stat-sep">·</span>
-          <span className="lp-stat">
-            <Trans>Tier 1–4</Trans>
-          </span>
-          <span className="lp-stat-sep">·</span>
-          <span className="lp-stat">
-            <Trans>EN / JA</Trans>
-          </span>
-        </div>
       </main>
 
       <footer className="lp-footer">
@@ -118,9 +99,7 @@ interface LpLocaleSwitcherProps {
 function LpLocaleSwitcher({ current, onChange }: LpLocaleSwitcherProps) {
   return (
     <fieldset className="locale-switcher">
-      <legend className="sr-only">
-        <Trans>Language</Trans>
-      </legend>
+      <legend className="sr-only">Language</legend>
       {LOCALES.map((loc) => (
         <button
           key={loc}
