@@ -16,9 +16,11 @@ interface ChallengeResult {
   withinTarget: boolean;
 }
 
-function getChallengeStatus(
-  challengeId: string,
-): { cleared: boolean; honed: boolean; bestMs: number | null } {
+function getChallengeStatus(challengeId: string): {
+  cleared: boolean;
+  honed: boolean;
+  bestMs: number | null;
+} {
   const attempts = loadAttempts().filter((a) => a.drillId === challengeId && a.success);
   if (attempts.length === 0) return { cleared: false, honed: false, bestMs: null };
   const bestMs = Math.min(...attempts.map((a) => a.elapsedMs));
@@ -81,7 +83,11 @@ export function HonePage() {
   const handleComplete = useCallback(
     (a: Attempt) => {
       recordAttempt(a);
-      setResult({ elapsedMs: a.elapsedMs, targetMs: a.targetMs, withinTarget: a.elapsedMs <= a.targetMs });
+      setResult({
+        elapsedMs: a.elapsedMs,
+        targetMs: a.targetMs,
+        withinTarget: a.elapsedMs <= a.targetMs,
+      });
       setPhase("done");
       refreshStatus();
     },
@@ -139,7 +145,9 @@ export function HonePage() {
             <Trans>Challenges</Trans>
           </span>
           {loading ? (
-            <p className="hone-loading"><Trans>Loading…</Trans></p>
+            <p className="hone-loading">
+              <Trans>Loading…</Trans>
+            </p>
           ) : (
             challenges.map((c, i) => {
               const st = statusMap[c.id];
@@ -269,7 +277,8 @@ export function HonePage() {
                 <div className="hone-result-time">
                   {formatTime(result.elapsedMs)}
                   <span className="hone-result-target">
-                    {" "}/ {formatTime(result.targetMs)} <Trans>target</Trans>
+                    {" "}
+                    / {formatTime(result.targetMs)} <Trans>target</Trans>
                   </span>
                 </div>
                 <p className="hone-result-msg">

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { DrillDef } from "../../types/drill";
