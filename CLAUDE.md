@@ -27,6 +27,19 @@ Squash merge only. 1 branch = 1 Issue = 1 commit on main.
 The PR body `Closes #XX` is NOT carried into the squash commit and will not auto-close the Issue.
 Always include `(closes #XX)` in the PR title when creating PRs.
 
+## Pre-commit checklist
+
+Run these before every `git commit`:
+
+```sh
+pnpm --filter web lint:fix   # auto-fix import order and formatting
+pnpm typecheck               # TypeScript clean
+pnpm test                    # all tests pass
+```
+
+`pnpm lint:fix` rewrites files in place. Stage the changes it makes before committing.  
+If lint errors remain after `--fix`, resolve them manually before committing.
+
 ## Domain
 
 Production: `https://vim.togisumashi.dev` (Cloudflare Pages)
