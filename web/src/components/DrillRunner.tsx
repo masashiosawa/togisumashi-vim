@@ -26,6 +26,7 @@ interface Props {
   isLast?: boolean;
   showTimer?: boolean;
   hintsEnabled?: boolean;
+  showGoal?: boolean;
 }
 
 export function DrillRunner({
@@ -36,6 +37,7 @@ export function DrillRunner({
   isLast,
   showTimer = true,
   hintsEnabled = true,
+  showGoal = true,
 }: Props) {
   const { i18n } = useLingui();
   const locale = (i18n.locale ?? "en") as "en" | "ja";
@@ -183,7 +185,7 @@ export function DrillRunner({
 
       <p className="drill-description">{drillI18n.description}</p>
 
-      {instance.def.type === "edit" && instance.goalText && (
+      {showGoal && instance.def.type === "edit" && instance.goalText && (
         <div className="drill-goal-text">
           <span className="drill-goal-label">
             <Trans>Goal:</Trans>

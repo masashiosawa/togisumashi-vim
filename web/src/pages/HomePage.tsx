@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { DrillRunner } from "../components/DrillRunner";
 import { SessionSummary } from "../components/SessionSummary";
 import { useDrills } from "../hooks/useDrills";
@@ -132,6 +132,9 @@ export function HomePage() {
       <div className="home-left">
         <section className="hero">
           <div className="hero-kanji">{locale === "ja" ? "Vimを研ぎ澄ます" : "Hone."}</div>
+          <Link to={`/${locale}/hone`} className="hone-entry-link">
+            {locale === "ja" ? "研ぎ澄ましモード ⚡" : "Hone Mode ⚡"}
+          </Link>
         </section>
 
         <section className="settings-panel">

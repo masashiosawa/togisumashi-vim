@@ -19,6 +19,7 @@ export interface DrillI18n {
   title: string;
   description: string;
   concept?: string;
+  steps?: string[];
 }
 
 export interface DrillDef {

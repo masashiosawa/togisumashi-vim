@@ -973,3 +973,362 @@ kbd {
   color: var(--text);
   background: var(--bg-overlay);
 }
+
+/* ── Hone Entry Link (on HomePage) ────────────────── */
+.hone-entry-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.hone-entry-link:hover {
+  background: rgba(240, 192, 64, 0.18);
+  border-color: var(--gold);
+}
+
+/* ── Hone Page Layout ─────────────────────────────── */
+.hone-page {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  min-height: calc(100vh - 60px);
+  padding: 24px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 720px) {
+  .hone-page {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+}
+
+/* ── Hone Left Panel ──────────────────────────────── */
+.hone-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hone-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color var(--transition);
+}
+
+.hone-back:hover {
+  color: var(--text);
+}
+
+.hone-hero {
+  padding: 8px 0;
+}
+
+.hone-hero-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--gold);
+  line-height: 1.2;
+}
+
+.hone-hero-sub {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Section Label ────────────────────────────────── */
+.hone-section-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: 8px;
+}
+
+/* ── Challenge List ───────────────────────────────── */
+.hone-challenge-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hone-loading {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.hone-challenge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+  width: 100%;
+}
+
+.hone-challenge-item:hover {
+  background: var(--bg-overlay);
+  color: var(--text);
+}
+
+.hone-challenge-item.active {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--text);
+}
+
+.hone-challenge-item.cleared .hone-challenge-status {
+  color: var(--accent);
+}
+
+.hone-challenge-item.honed .hone-challenge-status {
+  color: var(--gold);
+}
+
+.hone-challenge-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-subtle);
+  flex-shrink: 0;
+}
+
+.hone-challenge-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hone-challenge-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+.hone-challenge-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-subtle);
+}
+
+/* ── Achievement ──────────────────────────────────── */
+.hone-achievement {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hone-achievement-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 13px;
+  transition: color var(--transition);
+}
+
+.hone-achievement-row.achieved {
+  color: var(--accent);
+}
+
+.hone-achievement-row.honed {
+  color: var(--gold);
+}
+
+.hone-achievement-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.hone-achievement-name {
+  flex: 1;
+}
+
+.hone-achievement-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-subtle);
+}
+
+/* ── Hone Right Panel ─────────────────────────────── */
+.hone-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.hone-right .terminal-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hone-right .terminal-body {
+  flex: 1;
+  min-height: 500px;
+}
+
+/* ── Hone Empty State ─────────────────────────────── */
+.hone-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--text-subtle);
+  font-size: 14px;
+}
+
+/* ── Mastery Banner ───────────────────────────────── */
+.hone-mastery-banner {
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ── Hone Info Phase ──────────────────────────────── */
+.hone-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hone-info-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hone-info-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-subtle);
+  flex-shrink: 0;
+}
+
+.hone-info-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  flex: 1;
+}
+
+.hone-info-target {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.hone-info-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.hone-steps {
+  margin: 0;
+  padding: 0 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hone-step {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.hone-info-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ── Hone Result Phase ────────────────────────────── */
+.hone-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 0;
+  text-align: center;
+}
+
+.hone-result-badge {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.hone-result-badge.honed {
+  filter: drop-shadow(0 0 12px var(--gold));
+}
+
+.hone-result-badge.cleared {
+  color: var(--accent);
+}
+
+.hone-result-time {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.hone-result-target {
+  font-size: 14px;
+  color: var(--text-subtle);
+}
+
+.hone-result-msg {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.hone-result-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}

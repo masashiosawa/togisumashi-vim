@@ -4,6 +4,7 @@ import { LocaleSwitcher } from "./components/LocaleSwitcher";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { LOCALES, type Locale, detectLocale, i18n, setLocale } from "./i18n";
 import { HomePage } from "./pages/HomePage";
+import { HonePage } from "./pages/HonePage";
 
 export function App() {
   return (
@@ -11,6 +12,7 @@ export function App() {
       <Route path="/" element={<Navigate to={`/${detectLocale()}`} replace />} />
       <Route path="/:locale" element={<LocaleLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="hone" element={<HonePage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
