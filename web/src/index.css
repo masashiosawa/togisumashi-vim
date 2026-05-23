@@ -1103,6 +1103,197 @@ kbd {
   background: var(--bg-overlay);
 }
 
+/* ── Landing Page ─────────────────────────────────── */
+.lp {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 52px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.lp-logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  font-family: var(--font-mono);
+}
+
+.lp-logo span {
+  color: var(--accent);
+}
+
+.lp-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  padding: 80px 32px 64px;
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── LP Hero ───────────────────────────────────────── */
+.lp-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.lp-hero-headline {
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1.0;
+  background: linear-gradient(135deg, #8b7cf8 0%, #c4aeff 50%, #f0c040 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.lp-hero-sub {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.lp-cta {
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lp-cta-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ── LP Features ───────────────────────────────────── */
+.lp-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .lp-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lp-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.lp-feature-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.lp-feature-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.lp-feature-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── LP Stat Bar ───────────────────────────────────── */
+.lp-stat-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lp-stat {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-subtle);
+  letter-spacing: 0.3px;
+}
+
+.lp-stat-sep {
+  color: var(--border);
+  font-size: 16px;
+}
+
+/* ── LP Footer ─────────────────────────────────────── */
+.lp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.lp-footer-link {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.lp-footer-link:hover {
+  color: var(--text);
+}
+
+.lp-footer-sep {
+  color: var(--border);
+}
+
+.lp-footer-copy {
+  font-size: 13px;
+  color: var(--text-subtle);
+}
+
 /* ── Hone Entry Link (on HomePage) ────────────────── */
 .hone-entry-link {
   display: inline-flex;
