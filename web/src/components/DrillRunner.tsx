@@ -1,5 +1,5 @@
-import { EditorSelection, StateEffect } from "@codemirror/state";
-import type { EditorView } from "@codemirror/view";
+import { EditorSelection, Prec, StateEffect } from "@codemirror/state";
+import { type EditorView, keymap } from "@codemirror/view";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { vim } from "@replit/codemirror-vim";
@@ -17,6 +17,16 @@ type Phase = "idle" | "running" | "success";
 // Marks cursor-init dispatches so handleUpdate can ignore them and avoid
 // false-positive goal detection when startOffset === goalOffset.
 const cursorInitEffect = StateEffect.define<null>();
+
+// Block arrow-key navigation so users practice hjkl movement.
+const noArrowKeys = Prec.highest(
+  keymap.of([
+    { key: "ArrowLeft", run: () => true },
+    { key: "ArrowRight", run: () => true },
+    { key: "ArrowUp", run: () => true },
+    { key: "ArrowDown", run: () => true },
+  ]),
+);
 
 interface Props {
   drill: DrillDef;
@@ -205,7 +215,7 @@ export function DrillRunner({
           key={`${instance.def.id}-${instance.text}`}
           ref={cmRef}
           value={instance.text}
-          extensions={[vim()]}
+          extensions={[vim(), noArrowKeys]}
           onUpdate={handleUpdate}
           onCreateEditor={handleEditorCreate}
           theme="dark"

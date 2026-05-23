@@ -13,159 +13,55 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/SessionSummary.tsx
-#: src/pages/HomePage.tsx
+#: src/pages/HonePage.tsx:178
+msgid "Achievement"
+msgstr "Achievement"
+
+#: src/components/SessionSummary.tsx:59
+#: src/pages/HomePage.tsx:179
+#: src/pages/HomePage.tsx:305
 msgid "Advanced"
 msgstr "Advanced"
-
-#: src/components/SessionSummary.tsx
-#: src/pages/HomePage.tsx
-msgid "Beginner"
-msgstr "Beginner"
-
-#: src/components/DrillRunner.tsx
-msgid "Concept"
-msgstr "Concept"
-
-#: src/pages/HomePage.tsx
-msgid "Count"
-msgstr "Count"
-
-#: src/pages/HomePage.tsx
-msgid "drills available"
-msgstr "drills available"
-
-#: src/components/SessionSummary.tsx
-msgid "drills"
-msgstr "drills"
-
-#: src/pages/HomePage.tsx
-msgid "Focus"
-msgstr "Focus"
-
-#: src/components/SessionSummary.tsx
-msgid "Focus practice"
-msgstr "Focus practice"
-
-#: src/components/DrillRunner.tsx
-msgid "Goal:"
-msgstr "Goal:"
-
-#: src/pages/HomePage.tsx
-msgid "Guided"
-msgstr "Guided"
-
-#: src/components/DrillRunner.tsx
-msgid "Hide hint"
-msgstr "Hide hint"
-
-#: src/components/ShadowOverlay.tsx
-msgid "Hint:"
-msgstr "Hint:"
-
-#: src/components/SessionSummary.tsx
-#: src/pages/HomePage.tsx
-msgid "Intermediate"
-msgstr "Intermediate"
-
-#: src/pages/HomePage.tsx
-msgid "Lesson"
-msgstr "Lesson"
-
-#: src/pages/HomePage.tsx
-msgid "Level"
-msgstr "Level"
-
-#: src/pages/HomePage.tsx
-msgid "Loading drills…"
-msgstr "Loading drills…"
-
-#: src/components/SessionSummary.tsx
-msgid "Menu"
-msgstr "Menu"
-
-#: src/pages/HomePage.tsx
-msgid "Mode"
-msgstr "Mode"
-
-#: src/components/DrillResult.tsx
-msgid "Next drill"
-msgstr "Next drill"
-
-#: src/pages/HomePage.tsx
-msgid "No drills available for this selection."
-msgstr "No drills available for this selection."
-
-#: src/components/SessionSummary.tsx
-msgid "Play again"
-msgstr "Play again"
-
-#: src/pages/HomePage.tsx
-msgid "Practice"
-msgstr "Practice"
-
-#: src/components/DrillResult.tsx
-msgid "Retry"
-msgstr "Retry"
-
-#: src/components/DrillResult.tsx
-msgid "See results"
-msgstr "See results"
-
-#: src/components/SessionSummary.tsx
-msgid "Session complete"
-msgstr "Session complete"
-
-#: src/pages/HomePage.tsx
-msgid "Settings"
-msgstr "Settings"
-
-#: src/pages/HomePage.tsx
-msgid "Sharpen your Vim. One drill at a time."
-msgstr "Sharpen your Vim. One drill at a time."
-
-#: src/components/DrillRunner.tsx
-msgid "Show hint"
-msgstr "Show hint"
-
-#: src/pages/HomePage.tsx
-msgid "Skip"
-msgstr "Skip"
-
-#: src/components/SessionSummary.tsx
-msgid "Slower than target — practice these:"
-msgstr "Slower than target — practice these:"
-
-#: src/components/DrillRunner.tsx
-#: src/pages/HomePage.tsx
-msgid "Start"
-msgstr "Start"
-
-#: src/pages/HomePage.tsx
-msgid "Test"
-msgstr "Test"
-
-#: src/components/DrillResult.tsx
-msgid "target {target}s"
-msgstr "target {target}s"
-
-#: src/components/SessionSummary.tsx
-msgid "total"
-msgstr "total"
-
-#: src/components/DrillResult.tsx
-msgid "under {target}s ✦"
-msgstr "under {target}s ✦"
-
-#: src/components/SessionSummary.tsx
-msgid "under target"
-msgstr "under target"
 
 #~ msgid "Back"
 #~ msgstr "Back"
 
+#: src/pages/HonePage.tsx:131
+msgid "Back to Practice"
+msgstr "Back to Practice"
+
 #~ msgid "Basic motions"
 #~ msgstr "Basic motions"
+
+#: src/components/SessionSummary.tsx:57
+#: src/pages/HomePage.tsx:177
+#: src/pages/HomePage.tsx:303
+msgid "Beginner"
+msgstr "Beginner"
+
+#: src/pages/HonePage.tsx:145
+msgid "Challenges"
+msgstr "Challenges"
+
+#: src/pages/HonePage.tsx:183
+msgid "Cleared"
+msgstr "Cleared"
+
+#: src/components/DrillRunner.tsx:
+#~ msgid "Concept"
+#~ msgstr "Concept"
+
+#: src/pages/HomePage.tsx:233
+msgid "Count"
+msgstr "Count"
+
+#: src/components/SessionSummary.tsx:73
+msgid "drills"
+msgstr "drills"
+
+#: src/pages/HomePage.tsx:
+#~ msgid "drills available"
+#~ msgstr "drills available"
 
 #~ msgid "Edit commands"
 #~ msgstr "Edit commands"
@@ -173,17 +69,168 @@ msgstr "under target"
 #~ msgid "Failed to load drills."
 #~ msgstr "Failed to load drills."
 
+#: src/pages/HomePage.tsx:300
+msgid "Focus"
+msgstr "Focus"
+
+#: src/components/SessionSummary.tsx:108
+msgid "Focus practice"
+msgstr "Focus practice"
+
+#: src/components/DrillRunner.tsx:191
+msgid "Goal:"
+msgstr "Goal:"
+
+#: src/pages/HomePage.tsx:217
+msgid "Guided"
+msgstr "Guided"
+
+#: src/components/DrillRunner.tsx:225
+msgid "Hide hint"
+msgstr "Hide hint"
+
+#: src/components/ShadowOverlay.tsx:11
+msgid "Hint:"
+msgstr "Hint:"
+
+#: src/pages/HonePage.tsx:192
+msgid "Honed"
+msgstr "Honed"
+
+#: src/components/SessionSummary.tsx:58
+#: src/pages/HomePage.tsx:178
+#: src/pages/HomePage.tsx:304
+msgid "Intermediate"
+msgstr "Intermediate"
+
 #~ msgid "jump & start"
 #~ msgstr "jump & start"
+
+#: src/pages/HomePage.tsx:209
+msgid "Lesson"
+msgstr "Lesson"
+
+#: src/components/LessonList.tsx:34
+msgid "Lessons"
+msgstr "Lessons"
+
+#: src/pages/HomePage.tsx:167
+msgid "Level"
+msgstr "Level"
+
+#: src/pages/HomePage.tsx:274
+msgid "Loading drills…"
+msgstr "Loading drills…"
+
+#: src/pages/HonePage.tsx:149
+msgid "Loading…"
+msgstr "Loading…"
 
 #~ msgid "Master Vim, drill by drill."
 #~ msgstr "Master Vim, drill by drill."
 
+#: src/components/SessionSummary.tsx:120
+msgid "Menu"
+msgstr "Menu"
+
 #~ msgid "Mixed challenge"
 #~ msgstr "Mixed challenge"
+
+#: src/pages/HomePage.tsx:187
+msgid "Mode"
+msgstr "Mode"
+
+#: src/pages/HonePage.tsx:299
+msgid "Next Challenge"
+msgstr "Next Challenge"
+
+#: src/components/DrillResult.tsx:29
+msgid "Next drill"
+msgstr "Next drill"
+
+#: src/pages/HomePage.tsx:287
+msgid "No drills available for this selection."
+msgstr "No drills available for this selection."
 
 #~ msgid "Pick a level. Press Space."
 #~ msgstr "Pick a level. Press Space."
 
+#: src/components/SessionSummary.tsx:116
+msgid "Play again"
+msgstr "Play again"
+
+#: src/pages/HomePage.tsx:195
+msgid "Practice"
+msgstr "Practice"
+
+#: src/components/DrillResult.tsx:33
+#: src/pages/HonePage.tsx:295
+msgid "Retry"
+msgstr "Retry"
+
+#: src/components/DrillResult.tsx:29
+msgid "See results"
+msgstr "See results"
+
+#: src/components/SessionSummary.tsx:66
+msgid "Session complete"
+msgstr "Session complete"
+
+#: src/pages/HomePage.tsx:
+#~ msgid "Settings"
+#~ msgstr "Settings"
+
+#: src/pages/HomePage.tsx:
+#~ msgid "Sharpen your Vim. One drill at a time."
+#~ msgstr "Sharpen your Vim. One drill at a time."
+
+#: src/components/DrillRunner.tsx:225
+msgid "Show hint"
+msgstr "Show hint"
+
+#: src/pages/HomePage.tsx:224
+msgid "Skip"
+msgstr "Skip"
+
+#: src/components/SessionSummary.tsx:93
+msgid "Slower than target — practice these:"
+msgstr "Slower than target — practice these:"
+
+#: src/components/DrillRunner.tsx:219
+msgid "Start"
+msgstr "Start"
+
+#: src/pages/HonePage.tsx:251
+msgid "Start Challenge"
+msgstr "Start Challenge"
+
 #~ msgid "switch"
 #~ msgstr "switch"
+
+#: src/pages/HonePage.tsx:281
+msgid "target"
+msgstr "target"
+
+#: src/components/DrillResult.tsx:23
+msgid "target {target}s"
+msgstr "target {target}s"
+
+#: src/pages/HonePage.tsx:235
+msgid "Target:"
+msgstr "Target:"
+
+#: src/pages/HomePage.tsx:202
+msgid "Test"
+msgstr "Test"
+
+#: src/components/SessionSummary.tsx:85
+msgid "total"
+msgstr "total"
+
+#: src/components/DrillResult.tsx:23
+msgid "under {target}s ✦"
+msgstr "under {target}s ✦"
+
+#: src/components/SessionSummary.tsx:79
+msgid "under target"
+msgstr "under target"
