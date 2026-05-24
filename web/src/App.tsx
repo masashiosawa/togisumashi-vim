@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { Link, Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Link, Navigate, Outlet, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { LocaleSwitcher } from "./components/LocaleSwitcher";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { LOCALES, type Locale, i18n, setLocale } from "./i18n";
 import { AtlasArticlePage } from "./pages/AtlasArticlePage";
 import { AtlasIndexPage } from "./pages/AtlasIndexPage";
+import { AtlasShell } from "./pages/AtlasShell";
 import { HomePage } from "./pages/HomePage";
 import { HonePage } from "./pages/HonePage";
 import { LandingPage } from "./pages/LandingPage";
@@ -16,8 +17,10 @@ export function App() {
       <Route path="/:locale" element={<LocaleLayout />}>
         <Route index element={<HomePage />} />
         <Route path="hone" element={<HonePage />} />
-        <Route path="atlas" element={<AtlasIndexPage />} />
-        <Route path="atlas/:id" element={<AtlasArticlePage />} />
+        <Route path="atlas" element={<AtlasShell />}>
+          <Route index element={<AtlasIndexPage />} />
+          <Route path=":id" element={<AtlasArticlePage />} />
+        </Route>
       </Route>
       <Route path="*" element={<LandingPage />} />
     </Routes>
@@ -26,6 +29,8 @@ export function App() {
 
 function LocaleLayout() {
   const { locale } = useParams<{ locale: string }>();
+  const location = useLocation();
+  const isAtlas = /\/atlas(\/|$)/.test(location.pathname);
 
   useEffect(() => {
     if (locale && LOCALES.includes(locale as Locale) && i18n.locale !== locale) {
@@ -53,7 +58,7 @@ function LocaleLayout() {
           <ThemeToggle />
         </div>
       </header>
-      <main className="app-main">
+      <main className={`app-main ${isAtlas ? "app-main--atlas" : ""}`}>
         <Outlet />
       </main>
     </div>

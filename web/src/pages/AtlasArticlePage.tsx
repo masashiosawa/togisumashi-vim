@@ -1,18 +1,32 @@
 import { Trans } from "@lingui/react/macro";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { Link, useParams } from "react-router-dom";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import remarkGfm from "remark-gfm";
-import { useAtlas } from "../hooks/useAtlas";
 import { useLessons } from "../hooks/useLessons";
+import type { AtlasArticle } from "../types/atlas";
+
+type AtlasOutletContext = {
+  articles: AtlasArticle[];
+  loading: boolean;
+  error: Error | null;
+};
 
 export function AtlasArticlePage() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
-  const { articles, loading, error } = useAtlas();
+  const { articles, loading, error } = useOutletContext<AtlasOutletContext>();
   const { lessons } = useLessons();
 
   const article = useMemo(() => articles.find((a) => a.id === id), [articles, id]);
   const lang = locale === "ja" ? "ja" : "en";
+
+  // Reset the right pane scroll when switching articles so readers land on the
+  // new article's heading instead of inheriting the previous scroll position.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: id is the navigation trigger; effect body doesn't read it.
+  useEffect(() => {
+    const pane = document.querySelector(".atlas-pane");
+    pane?.scrollTo({ top: 0, behavior: "auto" });
+  }, [id]);
 
   if (loading) {
     return (
@@ -55,11 +69,6 @@ export function AtlasArticlePage() {
 
   return (
     <article className="atlas-article">
-      <nav className="atlas-breadcrumb">
-        <Link to={`/${locale}/atlas`}>
-          <Trans>← Atlas</Trans>
-        </Link>
-      </nav>
       <div className="atlas-body">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
       </div>
