@@ -46,3 +46,7 @@ web/.vite/
 
 # Generated
 web/public/drills.json
+web/public/atlas.json
+
+# Claude Code local config
+.claude/

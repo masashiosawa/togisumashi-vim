@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { ConceptGate } from "../components/ConceptGate";
 import { DrillRunner } from "../components/DrillRunner";
 import { LessonList } from "../components/LessonList";
@@ -28,6 +28,7 @@ import type { DrillDef } from "../types/drill";
 
 export function HomePage() {
   const { locale } = useParams<{ locale: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { drills, loading } = useDrills();
   const { lessons } = useLessons();
 
@@ -150,6 +151,19 @@ export function HomePage() {
     },
     [drills],
   );
+
+  // Deep-link from Atlas: ?lesson=<id> launches that lesson as a focus session.
+  // Consume the param once drills are loaded, then clear it so reloads don't
+  // keep re-applying the focus over user changes.
+  useEffect(() => {
+    if (drills.length === 0) return;
+    const lessonId = searchParams.get("lesson");
+    if (!lessonId) return;
+    const ids = drills.filter((d) => d.lesson === lessonId).map((d) => d.id);
+    if (ids.length > 0) setFocusIds(ids);
+    searchParams.delete("lesson");
+    setSearchParams(searchParams, { replace: true });
+  }, [drills, searchParams, setSearchParams]);
 
   return (
     <div className="home">
