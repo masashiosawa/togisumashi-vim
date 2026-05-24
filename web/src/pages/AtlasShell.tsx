@@ -1,5 +1,5 @@
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { useAtlas } from "../hooks/useAtlas";
 import type { AtlasArticle, AtlasCategory } from "../types/atlas";
@@ -49,8 +49,25 @@ export function AtlasShell() {
   const location = useLocation();
   const { articles, loading, error } = useAtlas();
   const [query, setQuery] = useState("");
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const lang = locale === "ja" ? "ja" : "en";
+
+  // Close the mobile drawer whenever the route changes (e.g. user picks an article).
+  // biome-ignore lint/correctness/useExhaustiveDependencies: the effect intentionally re-fires on pathname change to dismiss the drawer.
+  useEffect(() => {
+    setDrawerOpen(false);
+  }, [location.pathname]);
+
+  // ESC closes the drawer.
+  useEffect(() => {
+    if (!drawerOpen) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setDrawerOpen(false);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [drawerOpen]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -72,8 +89,28 @@ export function AtlasShell() {
   const activeId = location.pathname.match(/\/atlas\/([^/]+)$/)?.[1];
 
   return (
-    <div className="atlas-shell">
-      <aside className="atlas-sidebar" aria-label="Atlas navigation">
+    <div className={`atlas-shell ${drawerOpen ? "atlas-shell--drawer-open" : ""}`}>
+      <button
+        type="button"
+        className="atlas-drawer-toggle"
+        aria-expanded={drawerOpen}
+        aria-controls="atlas-sidebar"
+        onClick={() => setDrawerOpen((v) => !v)}
+      >
+        <span aria-hidden="true">{drawerOpen ? "✕" : "☰"}</span>
+        <span className="atlas-drawer-toggle-label">
+          {drawerOpen ? <Trans>Close</Trans> : <Trans>Contents</Trans>}
+        </span>
+      </button>
+      {drawerOpen && (
+        <button
+          type="button"
+          className="atlas-drawer-backdrop"
+          aria-label={t`Close navigation`}
+          onClick={() => setDrawerOpen(false)}
+        />
+      )}
+      <aside id="atlas-sidebar" className="atlas-sidebar" aria-label="Atlas navigation">
         <div className="atlas-sidebar-head">
           <Link to={`/${locale}/atlas`} className="atlas-sidebar-title">
             <Trans>Atlas</Trans>
