@@ -87,7 +87,7 @@ Web Vim emulations are themselves the "GUI" — running in the browser. This art
 ## Pitfalls
 
 - `guifont` spaces must be escaped with `\`: `set guifont=Source\ Code\ Pro:h12`.
-- Some GUI options (`a` for auto-yank to clipboard) clash with Vim's register model — disable them.
+- `a` auto-yanks every Visual selection into the `*` register (`P` does the same for `+`) — disable when you want yank to stay explicit.
 - gvim with `-f` (or `--nofork`) runs in foreground (useful for git commit messages, etc.). Neovim GUIs use their own flags (e.g. Neovide's `--no-fork`).
 - Many GUIs read additional config files: `~/.gvimrc` (gvim), `~/.config/nvim/ginit.vim` (Neovide). Don't put GUI options in `~/.vimrc` — they error in terminal Vim.
 - Ligature support varies and requires both **GUI support** and a **ligature-enabled font** (Fira Code, JetBrains Mono, etc.): Neovide draws ligatures from whatever font `guifont` selects; **MacVim has explicit `:set macligatures`** (off by default); gvim depends on build; terminal Vim depends on the host terminal emulator.

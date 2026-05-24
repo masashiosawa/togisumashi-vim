@@ -87,7 +87,7 @@ Web Vim エミュレーション自体が「GUI」のようなもの — ブラ�
 ## 落とし穴
 
 - `guifont` のスペースは `\` でエスケープ: `set guifont=Source\ Code\ Pro:h12`
-- 一部 GUI オプション（`a` で visual 選択を自動コピー）は Vim 流ではない — 無効化を推奨。
+- `a` は Visual 選択を毎回 `*` レジスタに自動ヤンク（`P` は `+` で同じ）— 明示ヤンクに揃えたいなら無効化を推奨。
 - `-f`（または `--nofork`）で gvim はフォアグラウンド実行（git commit メッセージ等に有用）。Neovim 系 GUI は別フラグ（Neovide なら `--no-fork` 等、実装ごと）
 - 多くの GUI は追加設定ファイルを読む: `~/.gvimrc`（gvim）、`~/.config/nvim/ginit.vim`（Neovide）。GUI オプションを `~/.vimrc` に書かない — ターミナル Vim でエラーになる
 - リガチャ対応は **GUI 側の対応**と**リガチャ対応フォント**（Fira Code、JetBrains Mono 等）の両方が必要: Neovide は `guifont` のフォント次第で描画、**MacVim は `:set macligatures`**（既定 off）、gvim はビルド次第、ターミナル Vim はホスト端末次第
