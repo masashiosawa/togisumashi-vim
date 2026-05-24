@@ -37,17 +37,16 @@ describe("filterByLevel", () => {
     expect(result).toHaveLength(2);
   });
 
-  it("intermediate returns tier 1 and 2", () => {
+  it("intermediate returns only tier 2", () => {
     const result = filterByLevel(drills, "intermediate");
-    expect(result.every((d) => d.tier <= 2)).toBe(true);
-    expect(result).toHaveLength(4);
+    expect(result.every((d) => d.tier === 2)).toBe(true);
+    expect(result).toHaveLength(2);
   });
 
-  it("advanced returns tier 1, 2, 3 but NOT tier 4", () => {
+  it("advanced returns only tier 3", () => {
     const result = filterByLevel(drills, "advanced");
-    expect(result.every((d) => d.tier <= 3)).toBe(true);
-    expect(result.some((d) => d.tier === 4)).toBe(false);
-    expect(result).toHaveLength(6);
+    expect(result.every((d) => d.tier === 3)).toBe(true);
+    expect(result).toHaveLength(2);
   });
 });
 
@@ -55,7 +54,7 @@ describe("buildSkipPool", () => {
   it("respects count limit", () => {
     const pool = buildSkipPool(drills, "advanced", 10);
     expect(pool.length).toBeLessThanOrEqual(10);
-    expect(pool.every((d) => d.tier <= 3)).toBe(true);
+    expect(pool.every((d) => d.tier === 3)).toBe(true);
   });
 
   it("returns at most available drills when count exceeds pool size", () => {
@@ -63,10 +62,10 @@ describe("buildSkipPool", () => {
     expect(pool.length).toBeLessThanOrEqual(2);
   });
 
-  it("never includes tier 4 drills", () => {
+  it("never includes drills from other tiers", () => {
     for (let i = 0; i < 10; i++) {
       const pool = buildSkipPool(drills, "advanced", 30);
-      expect(pool.every((d) => d.tier <= 3)).toBe(true);
+      expect(pool.every((d) => d.tier === 3)).toBe(true);
     }
   });
 });
@@ -87,9 +86,9 @@ describe("buildGuidedPool", () => {
     }
   });
 
-  it("excludes tier 4 drills", () => {
+  it("returns only the selected tier", () => {
     const pool = buildGuidedPool(drills, "advanced");
-    expect(pool.every((d) => d.tier <= 3)).toBe(true);
-    expect(pool).toHaveLength(6);
+    expect(pool.every((d) => d.tier === 3)).toBe(true);
+    expect(pool).toHaveLength(2);
   });
 });

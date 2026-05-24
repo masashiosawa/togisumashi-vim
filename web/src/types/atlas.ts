@@ -11,7 +11,9 @@ export type AtlasCategory =
   | "power"
   | "display";
 
-export type AtlasStatus = "drill-backed" | "concept-only" | "meta";
+export type AtlasDifficulty = "beginner" | "intermediate" | "advanced" | "master";
+
+export type AtlasFrequency = "high" | "mid" | "low";
 
 export interface AtlasArticleI18n {
   title: string;
@@ -23,7 +25,9 @@ export interface AtlasArticle {
   id: string;
   order: number;
   category: AtlasCategory;
-  status: AtlasStatus;
+  drillable: boolean;
+  difficulty: AtlasDifficulty;
+  frequency: AtlasFrequency;
   related_drills: string[];
   related_articles: string[];
   help_tags: string[];

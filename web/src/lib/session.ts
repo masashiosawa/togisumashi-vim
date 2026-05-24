@@ -24,8 +24,8 @@ function shuffle<T>(arr: T[]): T[] {
 
 export function filterByLevel(drills: DrillDef[], level: Level): DrillDef[] {
   if (level === "beginner") return drills.filter((d) => d.tier === 1);
-  if (level === "intermediate") return drills.filter((d) => d.tier <= 2);
-  return drills.filter((d) => d.tier <= 3);
+  if (level === "intermediate") return drills.filter((d) => d.tier === 2);
+  return drills.filter((d) => d.tier === 3);
 }
 
 export function buildPool(
@@ -50,12 +50,6 @@ export function buildGuidedPool(drills: DrillDef[], level: Level): DrillDef[] {
 
 export function buildSkipPool(drills: DrillDef[], level: Level, count: Count): DrillDef[] {
   return shuffle(filterByLevel(drills, level)).slice(0, count);
-}
-
-export function levelTier(level: Level): 1 | 2 | "mixed" {
-  if (level === "beginner") return 1;
-  if (level === "intermediate") return 2;
-  return "mixed";
 }
 
 export function buildPoolFromIds(drills: DrillDef[], ids: string[]): DrillDef[] {
