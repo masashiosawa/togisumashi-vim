@@ -40,7 +40,7 @@ help_tags:
 | `za`     | カーソル下の fold を切替                            |
 | `zA`     | 再帰切替                                            |
 | `zR`     | 全 fold を開く（Reduce）                            |
-| `zM`     | 全 fold を閉じる（More）                            |
+| `zM`     | 全 fold を閉じる（More）— **`'foldenable'` も on になる** |
 | `zv`     | カーソルを見えるようにする最小限の fold を開く       |
 | `zx`     | fold を再計算し `'foldlevel'` の状態にリセット、**最後に** `zv`（カーソル可視化）も適用 |
 | `zX`     | `zx` と同じだが**最後の `zv` を行わない** — カーソル可視化なし |
@@ -72,7 +72,7 @@ help_tags:
 - **`indent` vs `syntax`**: `indent` は filetype 非依存、`syntax` は言語定義使用 — より意味的（関数を fold、ただのインデントブロックでなく）。利用可能なら `syntax`、無ければ fallback
 - **`marker` vs その他**: `marker` はファイルに醜い `{{{` `}}}` を埋め込む。明示的 fold 境界が欲しい共有 dotfile では有用。ソースコードでは避ける
 - **`za` vs `zo`/`zc`**: `za` は切替 — 1 キーで両方向。`zo`/`zc` は明示的。頻繁な開閉には `za`
-- **`zR` vs `zM`**: 反対。`zR` は全開、`zM` は全閉。覚え方: Reduce / More folding
+- **`zR` vs `zM`**: 反対。`zR` は全開、`zM` は全閉。覚え方: Reduce / More folding。副作用: `zM` は `'foldenable'` も on にするので、`zi` で fold を切っていた場合も `zM` で再度 on に戻る
 - **`zv` vs `zo`**: `zv` はカーソルを表示する**最小限**の fold を開く、`zo` は直近の fold を開く。検索で閉じた fold に着地した直後は `zv`
 
 ## fold レベル系オプション
