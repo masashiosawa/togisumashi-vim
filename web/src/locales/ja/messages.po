@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: filtered.length
-#: src/pages/AtlasShell.tsx:90
+#: src/pages/AtlasShell.tsx:161
 msgid "{0} match(es)"
 msgstr "{0} 件ヒット"
 
@@ -40,7 +40,7 @@ msgstr "上級"
 msgid "Article not found: {id}"
 msgstr "記事が見つかりません: {id}"
 
-#: src/pages/AtlasShell.tsx:79
+#: src/pages/AtlasShell.tsx:150
 msgid "Atlas"
 msgstr "Atlas"
 
@@ -76,9 +76,21 @@ msgstr "初級"
 #~ msgid "Cleared"
 #~ msgstr "クリア"
 
+#: src/pages/AtlasShell.tsx:136
+msgid "Close"
+msgstr "閉じる"
+
+#: src/pages/AtlasShell.tsx:143
+msgid "Close navigation"
+msgstr "ナビゲーションを閉じる"
+
 #: src/components/DrillRunner.tsx:
 #~ msgid "Concept"
 #~ msgstr "解説"
+
+#: src/pages/AtlasShell.tsx:136
+msgid "Contents"
+msgstr "目次"
 
 #: src/pages/HomePage.tsx:245
 msgid "Count"
@@ -98,7 +110,7 @@ msgstr "問"
 #. placeholder {0}: error.message
 #: src/pages/AtlasArticlePage.tsx:42
 #: src/pages/AtlasIndexPage.tsx:69
-#: src/pages/AtlasShell.tsx:102
+#: src/pages/AtlasShell.tsx:173
 msgid "Failed to load atlas: {0}"
 msgstr "Atlas の読み込みに失敗しました: {0}"
 
@@ -168,7 +180,7 @@ msgstr "ドリルを読み込み中…"
 
 #: src/pages/AtlasArticlePage.tsx:34
 #: src/pages/AtlasIndexPage.tsx:61
-#: src/pages/AtlasShell.tsx:97
+#: src/pages/AtlasShell.tsx:168
 msgid "Loading…"
 msgstr "読み込み中…"
 
@@ -200,7 +212,7 @@ msgstr "モード"
 msgid "Next drill"
 msgstr "次の問題"
 
-#: src/pages/AtlasShell.tsx:107
+#: src/pages/AtlasShell.tsx:178
 msgid "No articles match \"{query}\"."
 msgstr "「{query}」に一致する記事はありません。"
 
@@ -231,7 +243,7 @@ msgstr "関連記事"
 msgid "Retry"
 msgstr "もう一度"
 
-#: src/pages/AtlasShell.tsx:84
+#: src/pages/AtlasShell.tsx:155
 msgid "Search by title, summary, or :h tag…"
 msgstr "タイトル・概要・:h タグで検索…"
 
