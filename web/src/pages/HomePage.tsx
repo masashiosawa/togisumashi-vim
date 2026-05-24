@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { ConceptGate } from "../components/ConceptGate";
 import { DrillRunner } from "../components/DrillRunner";
 import { LessonList } from "../components/LessonList";
@@ -170,9 +170,6 @@ export function HomePage() {
       <div className="home-left">
         <section className="hero">
           <div className="hero-kanji">{locale === "ja" ? "Vimを研ぎ澄ます" : "Hone."}</div>
-          <Link to={`/${locale}/hone`} className="hone-entry-link">
-            {locale === "ja" ? "研ぎ澄ましモード ⚡" : "Hone Mode ⚡"}
-          </Link>
         </section>
 
         <section className="settings-panel">
@@ -191,6 +188,7 @@ export function HomePage() {
                   {lvl === "beginner" && <Trans>Beginner</Trans>}
                   {lvl === "intermediate" && <Trans>Intermediate</Trans>}
                   {lvl === "advanced" && <Trans>Advanced</Trans>}
+                  {lvl === "master" && <Trans>Master</Trans>}
                 </button>
               ))}
             </div>
@@ -317,6 +315,7 @@ export function HomePage() {
                           {level === "beginner" && <Trans>Beginner</Trans>}
                           {level === "intermediate" && <Trans>Intermediate</Trans>}
                           {level === "advanced" && <Trans>Advanced</Trans>}
+                          {level === "master" && <Trans>Master</Trans>}
                         </>
                       )}
                     </span>

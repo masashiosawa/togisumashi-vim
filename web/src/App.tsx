@@ -7,7 +7,6 @@ import { AtlasArticlePage } from "./pages/AtlasArticlePage";
 import { AtlasIndexPage } from "./pages/AtlasIndexPage";
 import { AtlasShell } from "./pages/AtlasShell";
 import { HomePage } from "./pages/HomePage";
-import { HonePage } from "./pages/HonePage";
 import { LandingPage } from "./pages/LandingPage";
 
 export function App() {
@@ -16,7 +15,6 @@ export function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/:locale" element={<LocaleLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="hone" element={<HonePage />} />
         <Route path="atlas" element={<AtlasShell />}>
           <Route index element={<AtlasIndexPage />} />
           <Route path=":id" element={<AtlasArticlePage />} />

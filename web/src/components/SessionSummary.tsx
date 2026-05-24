@@ -57,6 +57,7 @@ export function SessionSummary({ level, attempts, pool, onReplay, onHome, onFocu
     beginner: <Trans>Beginner</Trans>,
     intermediate: <Trans>Intermediate</Trans>,
     advanced: <Trans>Advanced</Trans>,
+    master: <Trans>Master</Trans>,
   };
 
   return (
