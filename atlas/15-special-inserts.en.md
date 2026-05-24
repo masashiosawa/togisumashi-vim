@@ -1,7 +1,9 @@
 ---
 id: special-inserts
 category: insert
-status: concept-only
+drillable: false
+difficulty: advanced
+frequency: low
 related_drills: []
 related_articles:
   - files

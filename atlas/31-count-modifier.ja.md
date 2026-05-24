@@ -1,7 +1,9 @@
 ---
 id: count-modifier
 category: meta
-status: meta
+drillable: false
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-1-11-count-modifier
 related_articles:

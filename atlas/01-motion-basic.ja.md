@@ -1,7 +1,9 @@
 ---
 id: motion-basic
 category: motion
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-1-01-hjkl
   - tier-1-02-line-edges

@@ -1,7 +1,9 @@
 ---
 id: registers
 category: repeat
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: mid
 related_drills:
   - tier-3-05-registers
 related_articles:

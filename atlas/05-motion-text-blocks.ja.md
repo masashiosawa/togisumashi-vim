@@ -1,7 +1,9 @@
 ---
 id: motion-text-blocks
 category: motion
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: mid
 related_drills:
   - tier-1-05-paragraph
 related_articles:

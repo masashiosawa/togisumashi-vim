@@ -1,7 +1,9 @@
 ---
 id: substitute
 category: edit
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: high
 related_drills:
   - tier-3-07-substitute
 related_articles:

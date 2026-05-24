@@ -1,7 +1,9 @@
 ---
 id: starting-vim
 category: environment
-status: concept-only
+drillable: false
+difficulty: beginner
+frequency: mid
 related_drills: []
 related_articles:
   - argument-list

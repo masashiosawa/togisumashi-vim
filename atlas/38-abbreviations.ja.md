@@ -1,7 +1,9 @@
 ---
 id: abbreviations
 category: config
-status: concept-only
+drillable: false
+difficulty: advanced
+frequency: low
 related_drills: []
 related_articles:
   - mappings

@@ -1,7 +1,9 @@
 ---
 id: marks-and-jumps
 category: motion
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: mid
 related_drills:
   - tier-3-04-marks-jumps
 related_articles:

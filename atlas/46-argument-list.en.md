@@ -1,7 +1,9 @@
 ---
 id: argument-list
 category: environment
-status: concept-only
+drillable: false
+difficulty: advanced
+frequency: low
 related_drills: []
 related_articles:
   - buffers

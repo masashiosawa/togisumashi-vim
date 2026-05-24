@@ -1,7 +1,9 @@
 ---
 id: search-navigation
 category: search
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-1-10-search-basic
   - tier-3-03-search-extra

@@ -1,7 +1,9 @@
 ---
 id: yank-paste
 category: edit
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-2-05-yank-paste
 related_articles:

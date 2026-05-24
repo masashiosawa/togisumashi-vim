@@ -1,7 +1,9 @@
 ---
 id: macros
 category: repeat
-status: drill-backed
+drillable: true
+difficulty: advanced
+frequency: mid
 related_drills:
   - tier-3-06-macros
 related_articles:

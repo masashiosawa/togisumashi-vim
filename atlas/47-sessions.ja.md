@@ -1,7 +1,9 @@
 ---
 id: sessions
 category: environment
-status: concept-only
+drillable: false
+difficulty: master
+frequency: low
 related_drills: []
 related_articles:
   - starting-vim

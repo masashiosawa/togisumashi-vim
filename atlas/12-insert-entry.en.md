@@ -1,7 +1,9 @@
 ---
 id: insert-entry
 category: insert
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-2-01-insert-entry
 related_articles:

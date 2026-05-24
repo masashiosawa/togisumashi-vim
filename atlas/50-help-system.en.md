@@ -1,7 +1,9 @@
 ---
 id: help-system
 category: meta
-status: concept-only
+drillable: false
+difficulty: beginner
+frequency: mid
 related_drills: []
 related_articles:
   - plugins
