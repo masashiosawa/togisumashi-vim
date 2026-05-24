@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: filtered.length
-#: src/pages/AtlasShell.tsx:90
+#: src/pages/AtlasShell.tsx:161
 msgid "{0} match(es)"
 msgstr "{0} match(es)"
 
@@ -40,7 +40,7 @@ msgstr "Advanced"
 msgid "Article not found: {id}"
 msgstr "Article not found: {id}"
 
-#: src/pages/AtlasShell.tsx:79
+#: src/pages/AtlasShell.tsx:150
 msgid "Atlas"
 msgstr "Atlas"
 
@@ -76,9 +76,21 @@ msgstr "Beginner"
 #~ msgid "Cleared"
 #~ msgstr "Cleared"
 
+#: src/pages/AtlasShell.tsx:136
+msgid "Close"
+msgstr "Close"
+
+#: src/pages/AtlasShell.tsx:143
+msgid "Close navigation"
+msgstr "Close navigation"
+
 #: src/components/DrillRunner.tsx:
 #~ msgid "Concept"
 #~ msgstr "Concept"
+
+#: src/pages/AtlasShell.tsx:136
+msgid "Contents"
+msgstr "Contents"
 
 #: src/pages/HomePage.tsx:245
 msgid "Count"
@@ -98,7 +110,7 @@ msgstr "drills"
 #. placeholder {0}: error.message
 #: src/pages/AtlasArticlePage.tsx:42
 #: src/pages/AtlasIndexPage.tsx:69
-#: src/pages/AtlasShell.tsx:102
+#: src/pages/AtlasShell.tsx:173
 msgid "Failed to load atlas: {0}"
 msgstr "Failed to load atlas: {0}"
 
@@ -168,7 +180,7 @@ msgstr "Loading drills…"
 
 #: src/pages/AtlasArticlePage.tsx:34
 #: src/pages/AtlasIndexPage.tsx:61
-#: src/pages/AtlasShell.tsx:97
+#: src/pages/AtlasShell.tsx:168
 msgid "Loading…"
 msgstr "Loading…"
 
@@ -200,7 +212,7 @@ msgstr "Mode"
 msgid "Next drill"
 msgstr "Next drill"
 
-#: src/pages/AtlasShell.tsx:107
+#: src/pages/AtlasShell.tsx:178
 msgid "No articles match \"{query}\"."
 msgstr "No articles match \"{query}\"."
 
@@ -231,7 +243,7 @@ msgstr "Related articles"
 msgid "Retry"
 msgstr "Retry"
 
-#: src/pages/AtlasShell.tsx:84
+#: src/pages/AtlasShell.tsx:155
 msgid "Search by title, summary, or :h tag…"
 msgstr "Search by title, summary, or :h tag…"
 
