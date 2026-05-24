@@ -99,7 +99,7 @@ The path Vim chose for the user vimrc is exposed as **`$MYVIMRC`** — `:e $MYVI
 ## Pitfalls
 
 - `-c` runs commands **after** sourcing vimrc. To override vimrc settings, `-c` is the right place.
-- `-u NONE` produces a near-blank Vim — many users find it disorienting. Use it intentionally for debugging.
+- `-u NONE` produces a near-blank Vim — disorienting on purpose. Reach for it only when debugging.
 - Multiple `+` arguments: only the last `+{cmd}` takes effect. To run several commands, use `-c "{cmd1}" -c "{cmd2}"`.
 - `-O` distributes file count across splits — opening 10 files with `-O` makes 10 splits, often too cramped. Practical for 2-4 files.
 - `vim` vs `vi`: on many systems `vi` is a Vim alias in compatible mode. To force Vim behavior, run `vim` directly.

@@ -56,7 +56,7 @@ So `iabbrev teh the` is full-id (won't fire mid-word). `iabbrev <-- ←` is non-
 - **Abbreviation vs mapping**: Abbreviations expand on a **trigger character**, only in Insert/Cmdline modes. Mappings fire instantly on key press, in chosen modes. Use abbreviations for **word-like text expansion**, mappings for actions.
 - **`:iab` vs snippet plugin**: `:iab` is built-in, simple, single-line text. Snippet plugins (UltiSnips, vim-snippets, LuaSnip) handle multi-line, tab stops, dynamic content. For real templating, use a snippet plugin.
 - **`:iab teh the` vs autocorrect**: Abbreviations only fix typos when you remember to set them. Spell-check (`:set spell`) flags typos visually for manual fix.
-- **`:cab` vs alias**: `:cabbrev` rewrites the command line as you type — clever but can surprise. Many users prefer `:command -nargs=... MyCmd ...` (proper command alias) over `:cabbrev`.
+- **`:cab` vs alias**: `:cabbrev` rewrites the command line as you type — clever but can surprise. Use `:command -nargs=... MyCmd ...` (a proper command alias) over `:cabbrev` for non-trivial expansions.
 - **`:noreabbrev` vs `:abbreviate`**: As with mappings, the non-recursive form is safer. Use `:noreabbrev` unless you specifically want chained expansions.
 
 ## Examples

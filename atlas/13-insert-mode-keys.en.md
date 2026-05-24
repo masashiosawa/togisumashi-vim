@@ -99,7 +99,7 @@ You spend half your editing time in Insert. These shortcuts let you fix mistakes
 - **`<C-r>"` vs Normal-mode `p`**: `<C-r>` pastes within Insert mode without leaving. Use `<C-r>0` to paste last yank without exit; use `p` when you've already left.
 - **`<C-r>"` vs `<C-r><C-r>"`**: The double version pastes **literally** — control chars in the register are inserted as data, not executed (e.g., a literal `<Tab>` stays a Tab character). `'textwidth'` / `'formatoptions'` / auto-indent still apply to both. Use double for register content containing keystroke-like text.
 - **`<C-r><C-o>` vs `<C-r><C-p>`**: Both insert literally; both bypass mappings. **`<C-r><C-o>` suppresses auto-indent** entirely (use when pasting code that already has its own indentation). **`<C-r><C-p>` fixes the indent** to align with the current line (use when you want the paste to inherit the surrounding indent level). When indent matters either way, prefer one of these over plain `<C-r>` / `<C-r><C-r>`.
-- **`<C-n>` vs LSP completion**: `<C-n>` is built-in keyword completion from current buffer. LSP gives semantic completion. They coexist — many users map `<C-Space>` to LSP and keep `<C-n>` as fallback.
+- **`<C-n>` vs LSP completion**: `<C-n>` is built-in keyword completion from current buffer. LSP gives semantic completion. They coexist — map `<C-Space>` to LSP and keep `<C-n>` as fallback.
 
 ## Examples
 

@@ -37,7 +37,7 @@ Move across the buffer by line number or relative position. The cornerstone of "
 
 - **`gg`/`G` vs `:1`/`:$`**: Identical effect. `gg`/`G` is faster (no `<CR>`). Use ex form when you're building a range like `:1,42d`.
 - **`{n}G` vs `:{n}`**: Same destination. `{n}G` is faster for keyboard flow; `:{n}` is what compiler/linter messages give you to paste.
-- **`{n}G` vs `{n}%`**: `{n}G` jumps to literal line `{n}`. `{n}%` jumps to percentage of file (e.g., `50%` is the middle). Use `%` when you don't know line count but want "roughly halfway".
+- **`{n}G` vs `{n}%`**: `{n}G` jumps to literal line `{n}`. `{n}%` jumps to percentage of file (e.g., `50%` is the middle). Use `%` when you don't know line count but want roughly the middle.
 - **`+`/`-` vs `j^`/`k^`**: `+` is exactly `j^` (next line, first non-blank). One keystroke shorter; use when threading through indented code.
 - **`{n}G` vs `m{a}` + `'{a}`**: `{n}G` for known line numbers. Marks for "I'll come back here" — you don't need to remember the number.
 

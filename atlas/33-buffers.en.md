@@ -87,7 +87,7 @@ Apply macro to each buffer:   :bufdo normal! @a
 
 ## Web environment note
 
-Web Vim emulations typically don't have multiple buffers — only the single visible editor. This article is for real Vim/Neovim.
+Web Vim emulations don't have multiple buffers — only the single visible editor. This article is for real Vim/Neovim.
 
 ## Pitfalls
 

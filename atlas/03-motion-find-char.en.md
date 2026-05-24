@@ -37,7 +37,7 @@ Jump to a specific character on the **current line**. Fast, line-anchored, and c
 - **`f` vs `/`**: `f` is single-char, current-line only, no `<CR>` needed. `/` is full pattern, multi-line, requires `<CR>` (or `<C-g>`/`<C-t>` to step). For a visible target on the current line, `f` is always faster.
 - **`;` vs `n`**: `;` repeats `f`/`t`, `n` repeats `/`/`?`. They're independent — `;` doesn't repeat your last search.
 - **`;` vs `.`**: `;` repeats the find. `.` repeats the last **edit**. Used together: `f.x;.;.` removes every period on the line.
-- **`f` for spaces**: `f<Space>` jumps to next space. Often the fastest word-style hop in dense code (faster than `w` when punctuation is involved).
+- **`f` for spaces**: `f<Space>` jumps to next space. The fastest word-style hop in dense code — beats `w` when punctuation is involved.
 
 ## Grammar
 

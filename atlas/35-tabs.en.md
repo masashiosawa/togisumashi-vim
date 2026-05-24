@@ -80,7 +80,7 @@ The tab line at the top shows tab numbers and short names. Configure with `'tabl
 
 ## Web environment note
 
-Web Vim emulations typically have no tab pages.
+Web Vim emulations have no tab pages.
 
 ## Pitfalls
 
