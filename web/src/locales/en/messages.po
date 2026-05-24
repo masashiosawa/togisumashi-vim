@@ -13,20 +13,45 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/HonePage.tsx:178
+#. placeholder {0}: filtered.length
+#: src/pages/AtlasIndexPage.tsx:94
+msgid "{0} match(es)"
+msgstr "{0} match(es)"
+
+#: src/pages/AtlasArticlePage.tsx:60
+msgid "← Atlas"
+msgstr "← Atlas"
+
+#: src/pages/AtlasIndexPage.tsx:78
+msgid "51 articles covering the Vim/Neovim surface: motions, edits, registers, sessions, plugins. Each article includes a \"Choosing between\" section comparing similar commands."
+msgstr "51 articles covering the Vim/Neovim surface: motions, edits, registers, sessions, plugins. Each article includes a \"Choosing between\" section comparing similar commands."
+
+#: src/pages/HonePage.tsx:184
 msgid "Achievement"
 msgstr "Achievement"
 
 #: src/components/SessionSummary.tsx:59
-#: src/pages/HomePage.tsx:179
-#: src/pages/HomePage.tsx:305
+#: src/pages/HomePage.tsx:193
+#: src/pages/HomePage.tsx:319
 msgid "Advanced"
 msgstr "Advanced"
+
+#: src/pages/AtlasArticlePage.tsx:37
+msgid "Article not found: {id}"
+msgstr "Article not found: {id}"
+
+#: src/pages/AtlasIndexPage.tsx:75
+msgid "Atlas — Reading reference"
+msgstr "Atlas — Reading reference"
 
 #~ msgid "Back"
 #~ msgstr "Back"
 
-#: src/pages/HonePage.tsx:131
+#: src/pages/AtlasArticlePage.tsx:41
+msgid "Back to atlas"
+msgstr "Back to atlas"
+
+#: src/pages/HonePage.tsx:137
 msgid "Back to Practice"
 msgstr "Back to Practice"
 
@@ -34,16 +59,16 @@ msgstr "Back to Practice"
 #~ msgstr "Basic motions"
 
 #: src/components/SessionSummary.tsx:57
-#: src/pages/HomePage.tsx:177
-#: src/pages/HomePage.tsx:303
+#: src/pages/HomePage.tsx:191
+#: src/pages/HomePage.tsx:317
 msgid "Beginner"
 msgstr "Beginner"
 
-#: src/pages/HonePage.tsx:145
+#: src/pages/HonePage.tsx:151
 msgid "Challenges"
 msgstr "Challenges"
 
-#: src/pages/HonePage.tsx:183
+#: src/pages/HonePage.tsx:189
 msgid "Cleared"
 msgstr "Cleared"
 
@@ -51,7 +76,7 @@ msgstr "Cleared"
 #~ msgid "Concept"
 #~ msgstr "Concept"
 
-#: src/pages/HomePage.tsx:233
+#: src/pages/HomePage.tsx:247
 msgid "Count"
 msgstr "Count"
 
@@ -66,10 +91,16 @@ msgstr "drills"
 #~ msgid "Edit commands"
 #~ msgstr "Edit commands"
 
+#. placeholder {0}: error.message
+#: src/pages/AtlasArticlePage.tsx:28
+#: src/pages/AtlasIndexPage.tsx:67
+msgid "Failed to load atlas: {0}"
+msgstr "Failed to load atlas: {0}"
+
 #~ msgid "Failed to load drills."
 #~ msgstr "Failed to load drills."
 
-#: src/pages/HomePage.tsx:300
+#: src/pages/HomePage.tsx:314
 msgid "Focus"
 msgstr "Focus"
 
@@ -78,12 +109,17 @@ msgid "Focus practice"
 msgstr "Focus practice"
 
 #: src/components/DrillRunner.tsx:191
+#: src/pages/HonePage.tsx:262
 msgid "Goal:"
 msgstr "Goal:"
 
-#: src/pages/HomePage.tsx:217
+#: src/pages/HomePage.tsx:231
 msgid "Guided"
 msgstr "Guided"
+
+#: src/pages/AtlasArticlePage.tsx:110
+msgid "Help tags:"
+msgstr "Help tags:"
 
 #: src/components/DrillRunner.tsx:225
 msgid "Hide hint"
@@ -93,20 +129,24 @@ msgstr "Hide hint"
 msgid "Hint:"
 msgstr "Hint:"
 
-#: src/pages/HonePage.tsx:192
+#: src/pages/HonePage.tsx:198
 msgid "Honed"
 msgstr "Honed"
 
 #: src/components/SessionSummary.tsx:58
-#: src/pages/HomePage.tsx:178
-#: src/pages/HomePage.tsx:304
+#: src/pages/HomePage.tsx:192
+#: src/pages/HomePage.tsx:318
 msgid "Intermediate"
 msgstr "Intermediate"
 
 #~ msgid "jump & start"
 #~ msgstr "jump & start"
 
-#: src/pages/HomePage.tsx:209
+#: src/pages/AtlasArticlePage.tsx:79
+msgid "Launch this lesson as a focus session →"
+msgstr "Launch this lesson as a focus session →"
+
+#: src/pages/HomePage.tsx:223
 msgid "Lesson"
 msgstr "Lesson"
 
@@ -114,15 +154,17 @@ msgstr "Lesson"
 msgid "Lessons"
 msgstr "Lessons"
 
-#: src/pages/HomePage.tsx:167
+#: src/pages/HomePage.tsx:181
 msgid "Level"
 msgstr "Level"
 
-#: src/pages/HomePage.tsx:274
+#: src/pages/HomePage.tsx:288
 msgid "Loading drills…"
 msgstr "Loading drills…"
 
-#: src/pages/HonePage.tsx:149
+#: src/pages/AtlasArticlePage.tsx:20
+#: src/pages/AtlasIndexPage.tsx:59
+#: src/pages/HonePage.tsx:155
 msgid "Loading…"
 msgstr "Loading…"
 
@@ -136,11 +178,11 @@ msgstr "Menu"
 #~ msgid "Mixed challenge"
 #~ msgstr "Mixed challenge"
 
-#: src/pages/HomePage.tsx:187
+#: src/pages/HomePage.tsx:201
 msgid "Mode"
 msgstr "Mode"
 
-#: src/pages/HonePage.tsx:299
+#: src/pages/HonePage.tsx:318
 msgid "Next Challenge"
 msgstr "Next Challenge"
 
@@ -148,7 +190,11 @@ msgstr "Next Challenge"
 msgid "Next drill"
 msgstr "Next drill"
 
-#: src/pages/HomePage.tsx:287
+#: src/pages/AtlasIndexPage.tsx:101
+msgid "No articles match \"{query}\"."
+msgstr "No articles match \"{query}\"."
+
+#: src/pages/HomePage.tsx:301
 msgid "No drills available for this selection."
 msgstr "No drills available for this selection."
 
@@ -159,14 +205,26 @@ msgstr "No drills available for this selection."
 msgid "Play again"
 msgstr "Play again"
 
-#: src/pages/HomePage.tsx:195
+#: src/pages/HomePage.tsx:209
 msgid "Practice"
 msgstr "Practice"
 
+#: src/pages/AtlasArticlePage.tsx:69
+msgid "Practice with drills"
+msgstr "Practice with drills"
+
+#: src/pages/AtlasArticlePage.tsx:90
+msgid "Related articles"
+msgstr "Related articles"
+
 #: src/components/DrillResult.tsx:33
-#: src/pages/HonePage.tsx:295
+#: src/pages/HonePage.tsx:314
 msgid "Retry"
 msgstr "Retry"
+
+#: src/pages/AtlasIndexPage.tsx:88
+msgid "Search by title, summary, or :h tag…"
+msgstr "Search by title, summary, or :h tag…"
 
 #: src/components/DrillResult.tsx:29
 msgid "See results"
@@ -188,7 +246,7 @@ msgstr "Session complete"
 msgid "Show hint"
 msgstr "Show hint"
 
-#: src/pages/HomePage.tsx:224
+#: src/pages/HomePage.tsx:238
 msgid "Skip"
 msgstr "Skip"
 
@@ -200,14 +258,14 @@ msgstr "Slower than target — practice these:"
 msgid "Start"
 msgstr "Start"
 
-#: src/pages/HonePage.tsx:251
+#: src/pages/HonePage.tsx:269
 msgid "Start Challenge"
 msgstr "Start Challenge"
 
 #~ msgid "switch"
 #~ msgstr "switch"
 
-#: src/pages/HonePage.tsx:281
+#: src/pages/HonePage.tsx:300
 msgid "target"
 msgstr "target"
 
@@ -215,11 +273,11 @@ msgstr "target"
 msgid "target {target}s"
 msgstr "target {target}s"
 
-#: src/pages/HonePage.tsx:235
+#: src/pages/HonePage.tsx:245
 msgid "Target:"
 msgstr "Target:"
 
-#: src/pages/HomePage.tsx:202
+#: src/pages/HomePage.tsx:216
 msgid "Test"
 msgstr "Test"
 

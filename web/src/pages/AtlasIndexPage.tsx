@@ -1,7 +1,6 @@
-import { Trans, useLingui } from "@lingui/react/macro";
-import { useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useAtlas } from "../hooks/useAtlas";
+import { Trans } from "@lingui/react/macro";
+import { useMemo } from "react";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import type { AtlasArticle, AtlasCategory } from "../types/atlas";
 
 const CATEGORY_ORDER: AtlasCategory[] = [
@@ -18,6 +17,26 @@ const CATEGORY_ORDER: AtlasCategory[] = [
   "display",
 ];
 
+const CATEGORY_LABEL: Record<AtlasCategory, { en: string; ja: string }> = {
+  motion: { en: "Motion", ja: "モーション" },
+  search: { en: "Search", ja: "検索" },
+  insert: { en: "Insert", ja: "挿入" },
+  edit: { en: "Edit", ja: "編集" },
+  composition: { en: "Composition", ja: "コンポジション" },
+  repeat: { en: "Repeat", ja: "繰り返し" },
+  meta: { en: "Meta", ja: "メタ" },
+  environment: { en: "Environment", ja: "環境" },
+  config: { en: "Config", ja: "設定" },
+  power: { en: "Power", ja: "応用" },
+  display: { en: "Display", ja: "表示" },
+};
+
+type AtlasOutletContext = {
+  articles: AtlasArticle[];
+  loading: boolean;
+  error: Error | null;
+};
+
 function groupByCategory(articles: AtlasArticle[]): Map<AtlasCategory, AtlasArticle[]> {
   const map = new Map<AtlasCategory, AtlasArticle[]>();
   for (const cat of CATEGORY_ORDER) map.set(cat, []);
@@ -31,27 +50,10 @@ function groupByCategory(articles: AtlasArticle[]): Map<AtlasCategory, AtlasArti
 
 export function AtlasIndexPage() {
   const { locale } = useParams<{ locale: string }>();
-  const { t } = useLingui();
-  const { articles, loading, error } = useAtlas();
-  const [query, setQuery] = useState("");
+  const { articles, loading, error } = useOutletContext<AtlasOutletContext>();
 
   const lang = locale === "ja" ? "ja" : "en";
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return articles;
-    return articles.filter((a) => {
-      const i18n = a.i18n[lang];
-      return (
-        a.id.toLowerCase().includes(q) ||
-        i18n.title.toLowerCase().includes(q) ||
-        i18n.summary.toLowerCase().includes(q) ||
-        a.help_tags.some((tag) => tag.toLowerCase().includes(q))
-      );
-    });
-  }, [articles, lang, query]);
-
-  const grouped = useMemo(() => groupByCategory(filtered), [filtered]);
+  const grouped = useMemo(() => groupByCategory(articles), [articles]);
 
   if (loading) {
     return (
@@ -81,33 +83,12 @@ export function AtlasIndexPage() {
         </Trans>
       </p>
 
-      <div className="atlas-search">
-        <input
-          type="search"
-          className="atlas-search-input"
-          placeholder={t`Search by title, summary, or :h tag…`}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        {query && (
-          <span className="atlas-search-count">
-            <Trans>{filtered.length} match(es)</Trans>
-          </span>
-        )}
-      </div>
-
-      {filtered.length === 0 && query && (
-        <p className="atlas-summary">
-          <Trans>No articles match "{query}".</Trans>
-        </p>
-      )}
-
       {CATEGORY_ORDER.map((category) => {
         const list = grouped.get(category) ?? [];
         if (list.length === 0) return null;
         return (
           <section key={category} className="atlas-category">
-            <h2>{category}</h2>
+            <h2>{CATEGORY_LABEL[category][lang]}</h2>
             <ul>
               {list.map((article) => (
                 <li key={article.id}>
