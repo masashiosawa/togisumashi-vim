@@ -97,7 +97,41 @@ export function AtlasShell() {
         aria-controls="atlas-sidebar"
         onClick={() => setDrawerOpen((v) => !v)}
       >
-        <span aria-hidden="true">{drawerOpen ? "✕" : "☰"}</span>
+        <span aria-hidden="true">
+          {drawerOpen ? (
+            <svg
+              aria-hidden="true"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 2L12 12M12 2L2 12"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              aria-hidden="true"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 3.5h10M2 7h10M2 10.5h10"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
+        </span>
         <span className="atlas-drawer-toggle-label">
           {drawerOpen ? <Trans>Close</Trans> : <Trans>Contents</Trans>}
         </span>
