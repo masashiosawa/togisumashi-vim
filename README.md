@@ -13,6 +13,7 @@ togisumashi-vim is a speed-drill trainer for Neovim, inspired by the classic Jap
 - **Practice & Test modes** — Practice reveals hint keys on demand; Test mode hides hints and shows a live timer
 - **Two-panel layout** — settings and concept on the left, terminal console on the right; no scrolling required
 - **Progress tracking** — localStorage records every attempt; session summary surfaces slow drills with a Focus option to re-drill them
+- **Atlas — reading reference** — 51 terse articles (EN/JA) covering the Vim/Neovim surface, with command tables, "Choosing between" comparisons, and deep-links into matching drill lessons
 - **Bilingual** — English and Japanese as first-class languages
 
 ## Web App
@@ -36,6 +37,19 @@ No install required. Open the app, pick your level and mode in the left panel, a
 
 Total: **45 drills across 9 lessons**. New drills ship continuously.
 
+## Atlas — Reading Reference
+
+In addition to drills, the Atlas covers **51 topics** spanning motions, search, insert/edit, composition, registers, files, buffers/windows/tabs, settings, mappings, autocommands, quickfix, folding, sessions, plugins, and more — all in **English and Japanese** (102 markdown files). Each article includes:
+
+- A **Commands** table (key / action)
+- A **Choosing between** section comparing similar commands (e.g. `0` vs `^`, `dw` vs `daw`)
+- **Pitfalls**, **examples**, and authoritative `:h` tag citations
+- Cross-references to related drills — open an article and click _Practice with drills_ to launch the matching lesson
+
+Browse at [`/en/atlas`](https://vim.togisumashi.dev/en/atlas) and [`/ja/atlas`](https://vim.togisumashi.dev/ja/atlas).
+
+Source articles live in [`atlas/`](atlas/README.md) (Markdown + YAML frontmatter). To author a new article, follow the frontmatter schema and editorial standards in `atlas/README.md`.
+
 ## Repository Structure
 
 ```
@@ -43,8 +57,9 @@ togisumashi-vim/
 ├── web/            # Web app (Vite + React + TypeScript + CodeMirror 6)
 ├── neovim-plugin/  # Neovim plugin — in development
 ├── drills/         # Shared drill definitions (Markdown + YAML frontmatter)
+├── atlas/          # Reading reference (51 topics × EN/JA, shared with the plugin)
 ├── docs/           # Documentation
-├── scripts/        # Build scripts (drill JSON generation)
+├── scripts/        # Build scripts (drill + atlas JSON generation)
 ├── README.md
 ├── README.ja.md
 ├── CONTRIBUTING.md
@@ -58,14 +73,15 @@ togisumashi-vim/
 | Layer | Technology |
 |-------|-----------|
 | Web frontend | Vite · React · TypeScript · CodeMirror 6 · `@replit/codemirror-vim` |
+| Atlas rendering | `react-markdown` + `remark-gfm` |
 | i18n | Lingui v5 |
 | Hosting | Cloudflare Pages |
-| Drills | Markdown + YAML frontmatter (shared across web and plugin) |
+| Drills & Atlas | Markdown + YAML frontmatter (shared across web and plugin) |
 
 ## Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and guidelines.
-To add drills, see [docs/drill-format.md](docs/drill-format.md).
+To add drills, see [docs/drill-format.md](docs/drill-format.md). To author an Atlas article, see [atlas/README.md](atlas/README.md).
 
 ## Security
 

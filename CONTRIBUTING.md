@@ -31,12 +31,16 @@ pnpm install
 All commands run from the **repo root**:
 
 ```bash
-pnpm dev        # start dev server
-pnpm typecheck  # TypeScript check
-pnpm lint       # Biome lint + format check
-pnpm test       # Vitest unit tests
-pnpm build      # production build
+pnpm dev            # start dev server (regenerates drills + atlas first)
+pnpm typecheck      # TypeScript check
+pnpm lint           # Biome lint + format check
+pnpm test           # Vitest unit tests
+pnpm build          # production build (includes build:content)
+pnpm build:content  # regenerate drills.json + atlas.json from source
+pnpm build:atlas    # rebuild atlas.json only
 ```
+
+`web/public/drills.json` and `web/public/atlas.json` are generated artifacts (gitignored). They are rebuilt automatically by `pnpm dev` / `pnpm build` and by CI during deploy.
 
 #### Neovim plugin
 
@@ -49,6 +53,11 @@ selene .   # lint
 ### Environment Variables
 
 Copy `.env.example` to `.env.local` and fill in the values. Never commit `.env.local` or `.dev.vars`.
+
+### Authoring content
+
+- **Drills** — see [docs/drill-format.md](docs/drill-format.md) for the YAML frontmatter schema, template/random kinds, and goal types.
+- **Atlas articles** — see [atlas/README.md](atlas/README.md) for the frontmatter schema (`id`, `category`, `status`, `related_drills`, `related_articles`, `help_tags`), editorial standards ("Choosing between" section required where commands compete, distinguish Vim vs Neovim defaults, cite authoritative `:h` tags), and the article structure template.
 
 ## Pull Request Guidelines
 
