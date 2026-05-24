@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Link, Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { LocaleSwitcher } from "./components/LocaleSwitcher";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { LOCALES, type Locale, i18n, setLocale } from "./i18n";
+import { AtlasArticlePage } from "./pages/AtlasArticlePage";
+import { AtlasIndexPage } from "./pages/AtlasIndexPage";
 import { HomePage } from "./pages/HomePage";
 import { HonePage } from "./pages/HonePage";
 import { LandingPage } from "./pages/LandingPage";
@@ -14,6 +16,8 @@ export function App() {
       <Route path="/:locale" element={<LocaleLayout />}>
         <Route index element={<HomePage />} />
         <Route path="hone" element={<HonePage />} />
+        <Route path="atlas" element={<AtlasIndexPage />} />
+        <Route path="atlas/:id" element={<AtlasArticlePage />} />
       </Route>
       <Route path="*" element={<LandingPage />} />
     </Routes>
@@ -39,6 +43,11 @@ function LocaleLayout() {
         <a href={`/${locale}`} className="app-logo">
           togisumashi<span>-vim</span>
         </a>
+        <nav className="app-nav">
+          <Link to={`/${locale}/atlas`} className="app-nav-link">
+            Atlas
+          </Link>
+        </nav>
         <div className="app-header-controls">
           <LocaleSwitcher />
           <ThemeToggle />

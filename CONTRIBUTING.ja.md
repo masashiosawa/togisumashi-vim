@@ -31,12 +31,16 @@ pnpm install
 すべてのコマンドを**リポジトリルート**から実行します:
 
 ```bash
-pnpm dev        # 開発サーバ起動
-pnpm typecheck  # TypeScript チェック
-pnpm lint       # Biome lint + フォーマットチェック
-pnpm test       # Vitest ユニットテスト
-pnpm build      # プロダクションビルド
+pnpm dev            # 開発サーバ起動（事前に drills + atlas を再生成）
+pnpm typecheck      # TypeScript チェック
+pnpm lint           # Biome lint + フォーマットチェック
+pnpm test           # Vitest ユニットテスト
+pnpm build          # プロダクションビルド（build:content を含む）
+pnpm build:content  # drills.json + atlas.json をソースから再生成
+pnpm build:atlas    # atlas.json のみ再生成
 ```
+
+`web/public/drills.json` と `web/public/atlas.json` は生成物（gitignore 対象）です。`pnpm dev` / `pnpm build` と CI のデプロイ時に自動で再生成されます。
 
 #### Neovim プラグイン
 
@@ -49,6 +53,11 @@ selene .   # lint
 ### 環境変数
 
 `.env.example` を `.env.local` にコピーして値を設定してください。`.env.local` や `.dev.vars` は絶対にコミットしないでください。
+
+### コンテンツ執筆
+
+- **ドリル** — YAML frontmatter スキーマ、`template` / `random` の kind、goal type の詳細は [docs/drill-format.md](docs/drill-format.md) を参照してください。
+- **Atlas 記事** — frontmatter スキーマ（`id`, `category`, `status`, `related_drills`, `related_articles`, `help_tags`）、編集規約（類似コマンドが競合する記事は "Choosing between" セクション必須、Vim と Neovim の既定値の差異を明記、信頼できる `:h` タグを引用）、記事構造テンプレートは [atlas/README.md](atlas/README.md) を参照してください。
 
 ## PR の手順
 

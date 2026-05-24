@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "build:drills": "tsx scripts/build-drills.ts",
-    "dev": "pnpm build:drills && pnpm --filter web dev",
-    "build": "pnpm build:drills && pnpm --filter web build",
+    "build:atlas": "tsx scripts/build-atlas.ts",
+    "build:content": "pnpm build:drills && pnpm build:atlas",
+    "dev": "pnpm build:content && pnpm --filter web dev",
+    "build": "pnpm build:content && pnpm --filter web build",
     "preview": "pnpm --filter web preview",
     "typecheck": "pnpm --filter web typecheck",
     "lint": "pnpm --filter web lint",
