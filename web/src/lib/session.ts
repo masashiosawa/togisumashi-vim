@@ -52,12 +52,6 @@ export function buildSkipPool(drills: DrillDef[], level: Level, count: Count): D
   return shuffle(filterByLevel(drills, level)).slice(0, count);
 }
 
-export function levelTier(level: Level): 1 | 2 | "mixed" {
-  if (level === "beginner") return 1;
-  if (level === "intermediate") return 2;
-  return "mixed";
-}
-
 export function buildPoolFromIds(drills: DrillDef[], ids: string[]): DrillDef[] {
   return ids.map((id) => drills.find((d) => d.id === id)).filter((d): d is DrillDef => !!d);
 }
