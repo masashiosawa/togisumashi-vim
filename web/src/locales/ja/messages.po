@@ -14,73 +14,77 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: filtered.length
-#: src/pages/AtlasIndexPage.tsx:94
+#: src/pages/AtlasShell.tsx:90
 msgid "{0} match(es)"
 msgstr "{0} 件ヒット"
 
 #: src/pages/AtlasArticlePage.tsx:60
-msgid "← Atlas"
-msgstr "← Atlas に戻る"
+#~ msgid "← Atlas"
+#~ msgstr "← Atlas に戻る"
 
-#: src/pages/AtlasIndexPage.tsx:78
+#: src/pages/AtlasIndexPage.tsx:80
 msgid "51 articles covering the Vim/Neovim surface: motions, edits, registers, sessions, plugins. Each article includes a \"Choosing between\" section comparing similar commands."
 msgstr "Vim/Neovim 全域を網羅する 51 記事。モーション、編集、レジスタ、セッション、プラグインなど。各記事に類似コマンドを比較する「使い分け」セクションを掲載。"
 
 #: src/pages/HonePage.tsx:184
-msgid "Achievement"
-msgstr "実績"
+#~ msgid "Achievement"
+#~ msgstr "実績"
 
 #: src/components/SessionSummary.tsx:59
-#: src/pages/HomePage.tsx:193
-#: src/pages/HomePage.tsx:319
+#: src/pages/HomePage.tsx:190
+#: src/pages/HomePage.tsx:317
 msgid "Advanced"
 msgstr "上級"
 
-#: src/pages/AtlasArticlePage.tsx:37
+#: src/pages/AtlasArticlePage.tsx:51
 msgid "Article not found: {id}"
 msgstr "記事が見つかりません: {id}"
 
-#: src/pages/AtlasIndexPage.tsx:75
+#: src/pages/AtlasShell.tsx:79
+msgid "Atlas"
+msgstr "Atlas"
+
+#: src/pages/AtlasIndexPage.tsx:77
 msgid "Atlas — Reading reference"
 msgstr "Atlas — 読み物リファレンス"
 
 #~ msgid "Back"
 #~ msgstr "戻る"
 
-#: src/pages/AtlasArticlePage.tsx:41
+#: src/pages/AtlasArticlePage.tsx:55
 msgid "Back to atlas"
 msgstr "Atlas 一覧へ戻る"
 
 #: src/pages/HonePage.tsx:137
-msgid "Back to Practice"
-msgstr "練習に戻る"
+#~ msgid "Back to Practice"
+#~ msgstr "練習に戻る"
 
 #~ msgid "Basic motions"
 #~ msgstr "基本モーション"
 
 #: src/components/SessionSummary.tsx:57
-#: src/pages/HomePage.tsx:191
-#: src/pages/HomePage.tsx:317
+#: src/pages/HomePage.tsx:188
+#: src/pages/HomePage.tsx:315
 msgid "Beginner"
 msgstr "初級"
 
 #: src/pages/HonePage.tsx:151
-msgid "Challenges"
-msgstr "チャレンジ"
+#~ msgid "Challenges"
+#~ msgstr "チャレンジ"
 
 #: src/pages/HonePage.tsx:189
-msgid "Cleared"
-msgstr "クリア"
+#~ msgid "Cleared"
+#~ msgstr "クリア"
 
 #: src/components/DrillRunner.tsx:
 #~ msgid "Concept"
 #~ msgstr "解説"
 
-#: src/pages/HomePage.tsx:247
+#: src/pages/HomePage.tsx:245
 msgid "Count"
 msgstr "問数"
 
-#: src/components/SessionSummary.tsx:73
+#: src/components/SessionSummary.tsx:74
 msgid "drills"
 msgstr "問"
 
@@ -92,32 +96,32 @@ msgstr "問"
 #~ msgstr "編集コマンド"
 
 #. placeholder {0}: error.message
-#: src/pages/AtlasArticlePage.tsx:28
-#: src/pages/AtlasIndexPage.tsx:67
+#: src/pages/AtlasArticlePage.tsx:42
+#: src/pages/AtlasIndexPage.tsx:69
+#: src/pages/AtlasShell.tsx:102
 msgid "Failed to load atlas: {0}"
 msgstr "Atlas の読み込みに失敗しました: {0}"
 
 #~ msgid "Failed to load drills."
 #~ msgstr "ドリルの読み込みに失敗しました。"
 
-#: src/pages/HomePage.tsx:314
+#: src/pages/HomePage.tsx:312
 msgid "Focus"
 msgstr "復習"
 
-#: src/components/SessionSummary.tsx:108
+#: src/components/SessionSummary.tsx:109
 msgid "Focus practice"
 msgstr "苦手だけ復習"
 
 #: src/components/DrillRunner.tsx:191
-#: src/pages/HonePage.tsx:262
 msgid "Goal:"
 msgstr "目標:"
 
-#: src/pages/HomePage.tsx:231
+#: src/pages/HomePage.tsx:229
 msgid "Guided"
 msgstr "ガイド"
 
-#: src/pages/AtlasArticlePage.tsx:110
+#: src/pages/AtlasArticlePage.tsx:119
 msgid "Help tags:"
 msgstr "ヘルプタグ:"
 
@@ -130,99 +134,104 @@ msgid "Hint:"
 msgstr "ヒント:"
 
 #: src/pages/HonePage.tsx:198
-msgid "Honed"
-msgstr "研ぎ澄まし"
+#~ msgid "Honed"
+#~ msgstr "研ぎ澄まし"
 
 #: src/components/SessionSummary.tsx:58
-#: src/pages/HomePage.tsx:192
-#: src/pages/HomePage.tsx:318
+#: src/pages/HomePage.tsx:189
+#: src/pages/HomePage.tsx:316
 msgid "Intermediate"
 msgstr "中級"
 
 #~ msgid "jump & start"
 #~ msgstr "直接開始"
 
-#: src/pages/AtlasArticlePage.tsx:79
+#: src/pages/AtlasArticlePage.tsx:88
 msgid "Launch this lesson as a focus session →"
 msgstr "このレッスンを集中セッションで開始 →"
 
-#: src/pages/HomePage.tsx:223
+#: src/pages/HomePage.tsx:221
 msgid "Lesson"
 msgstr "レッスン"
 
-#: src/components/LessonList.tsx:34
+#: src/components/LessonList.tsx:35
 msgid "Lessons"
 msgstr "レッスン一覧"
 
-#: src/pages/HomePage.tsx:181
+#: src/pages/HomePage.tsx:178
 msgid "Level"
 msgstr "レベル"
 
-#: src/pages/HomePage.tsx:288
+#: src/pages/HomePage.tsx:286
 msgid "Loading drills…"
 msgstr "ドリルを読み込み中…"
 
-#: src/pages/AtlasArticlePage.tsx:20
-#: src/pages/AtlasIndexPage.tsx:59
-#: src/pages/HonePage.tsx:155
+#: src/pages/AtlasArticlePage.tsx:34
+#: src/pages/AtlasIndexPage.tsx:61
+#: src/pages/AtlasShell.tsx:97
 msgid "Loading…"
 msgstr "読み込み中…"
+
+#: src/components/SessionSummary.tsx:60
+#: src/pages/HomePage.tsx:191
+#: src/pages/HomePage.tsx:318
+msgid "Master"
+msgstr "マスター"
 
 #~ msgid "Master Vim, drill by drill."
 #~ msgstr "ドリルで Vim を極める。"
 
-#: src/components/SessionSummary.tsx:120
+#: src/components/SessionSummary.tsx:121
 msgid "Menu"
 msgstr "メニュー"
 
 #~ msgid "Mixed challenge"
 #~ msgstr "総合チャレンジ"
 
-#: src/pages/HomePage.tsx:201
+#: src/pages/HomePage.tsx:199
 msgid "Mode"
 msgstr "モード"
 
 #: src/pages/HonePage.tsx:318
-msgid "Next Challenge"
-msgstr "次のチャレンジ"
+#~ msgid "Next Challenge"
+#~ msgstr "次のチャレンジ"
 
 #: src/components/DrillResult.tsx:29
 msgid "Next drill"
 msgstr "次の問題"
 
-#: src/pages/AtlasIndexPage.tsx:101
+#: src/pages/AtlasShell.tsx:107
 msgid "No articles match \"{query}\"."
 msgstr "「{query}」に一致する記事はありません。"
 
-#: src/pages/HomePage.tsx:301
+#: src/pages/HomePage.tsx:299
 msgid "No drills available for this selection."
 msgstr "この選択に該当するドリルがありません。"
 
 #~ msgid "Pick a level. Press Space."
 #~ msgstr "レベルを選んで Space。"
 
-#: src/components/SessionSummary.tsx:116
+#: src/components/SessionSummary.tsx:117
 msgid "Play again"
 msgstr "もう一度"
 
-#: src/pages/HomePage.tsx:209
+#: src/pages/HomePage.tsx:207
 msgid "Practice"
 msgstr "練習"
 
-#: src/pages/AtlasArticlePage.tsx:69
+#: src/pages/AtlasArticlePage.tsx:78
 msgid "Practice with drills"
 msgstr "対応ドリルで練習"
 
-#: src/pages/AtlasArticlePage.tsx:90
+#: src/pages/AtlasArticlePage.tsx:99
 msgid "Related articles"
 msgstr "関連記事"
 
 #: src/components/DrillResult.tsx:33
-#: src/pages/HonePage.tsx:314
 msgid "Retry"
 msgstr "もう一度"
 
-#: src/pages/AtlasIndexPage.tsx:88
+#: src/pages/AtlasShell.tsx:84
 msgid "Search by title, summary, or :h tag…"
 msgstr "タイトル・概要・:h タグで検索…"
 
@@ -230,7 +239,7 @@ msgstr "タイトル・概要・:h タグで検索…"
 msgid "See results"
 msgstr "結果を見る"
 
-#: src/components/SessionSummary.tsx:66
+#: src/components/SessionSummary.tsx:67
 msgid "Session complete"
 msgstr "セッション完了"
 
@@ -246,11 +255,11 @@ msgstr "セッション完了"
 msgid "Show hint"
 msgstr "ヒントを表示"
 
-#: src/pages/HomePage.tsx:238
+#: src/pages/HomePage.tsx:236
 msgid "Skip"
 msgstr "スキップ"
 
-#: src/components/SessionSummary.tsx:93
+#: src/components/SessionSummary.tsx:94
 msgid "Slower than target — practice these:"
 msgstr "目標タイム未達 — 復習推奨:"
 
@@ -259,29 +268,29 @@ msgid "Start"
 msgstr "開始"
 
 #: src/pages/HonePage.tsx:269
-msgid "Start Challenge"
-msgstr "チャレンジ開始"
+#~ msgid "Start Challenge"
+#~ msgstr "チャレンジ開始"
 
 #~ msgid "switch"
 #~ msgstr "切替"
 
 #: src/pages/HonePage.tsx:300
-msgid "target"
-msgstr "目標"
+#~ msgid "target"
+#~ msgstr "目標"
 
 #: src/components/DrillResult.tsx:23
 msgid "target {target}s"
 msgstr "目標 {target}s"
 
 #: src/pages/HonePage.tsx:245
-msgid "Target:"
-msgstr "目標:"
+#~ msgid "Target:"
+#~ msgstr "目標:"
 
-#: src/pages/HomePage.tsx:216
+#: src/pages/HomePage.tsx:214
 msgid "Test"
 msgstr "テスト"
 
-#: src/components/SessionSummary.tsx:85
+#: src/components/SessionSummary.tsx:86
 msgid "total"
 msgstr "合計"
 
@@ -289,6 +298,6 @@ msgstr "合計"
 msgid "under {target}s ✦"
 msgstr "{target}s 未満 ✦"
 
-#: src/components/SessionSummary.tsx:79
+#: src/components/SessionSummary.tsx:80
 msgid "under target"
 msgstr "目標達成"

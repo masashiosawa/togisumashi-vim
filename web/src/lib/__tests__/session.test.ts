@@ -48,6 +48,12 @@ describe("filterByLevel", () => {
     expect(result.every((d) => d.tier === 3)).toBe(true);
     expect(result).toHaveLength(2);
   });
+
+  it("master returns only tier 4", () => {
+    const result = filterByLevel(drills, "master");
+    expect(result.every((d) => d.tier === 4)).toBe(true);
+    expect(result).toHaveLength(2);
+  });
 });
 
 describe("buildSkipPool", () => {

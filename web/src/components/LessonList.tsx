@@ -14,16 +14,17 @@ interface Props {
 function tierForLevel(level: Level): number {
   if (level === "beginner") return 1;
   if (level === "intermediate") return 2;
-  return 3;
+  if (level === "advanced") return 3;
+  return 4;
 }
 
 export function LessonList({ lessons, drills, level, currentLessonId, onSelectLesson }: Props) {
   const { i18n } = useLingui();
   const locale = (i18n.locale ?? "en") as "en" | "ja";
 
-  const maxTier = tierForLevel(level);
+  const tier = tierForLevel(level);
   const visible = lessons
-    .filter((l) => l.tier <= maxTier)
+    .filter((l) => l.tier === tier)
     .sort((a, b) => a.order - b.order || a.id.localeCompare(b.id));
 
   if (visible.length === 0) return null;

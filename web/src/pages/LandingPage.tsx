@@ -50,8 +50,8 @@ export function LandingPage() {
             <h3 className="lp-feature-title">{isJa ? "65 問以上のドリル" : "65+ drills"}</h3>
             <p className="lp-feature-desc">
               {isJa
-                ? "Tier 1（hjkl）から Tier 4（研ぎ澄ましモード）まで段階的に習熟。"
-                : "Progress from Tier 1 (hjkl) through Tier 4 Hone Mode at your own pace."}
+                ? "Tier 1（hjkl）から Tier 4（マスター）まで段階的に習熟。"
+                : "Progress from Tier 1 (hjkl) through Tier 4 master challenges at your own pace."}
             </p>
           </div>
           <div className="lp-feature">

@@ -1,4 +1,4 @@
-export type Level = "beginner" | "intermediate" | "advanced";
+export type Level = "beginner" | "intermediate" | "advanced" | "master";
 export type Mode = "practice" | "test";
 export type LessonMode = "guided" | "skip";
 export type Count = 10 | 20 | 30;

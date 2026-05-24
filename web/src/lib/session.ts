@@ -1,7 +1,7 @@
 import type { DrillDef } from "../types/drill";
 import type { Count, LessonMode, Level } from "./storage";
 
-export const LEVELS: Level[] = ["beginner", "intermediate", "advanced"];
+export const LEVELS: Level[] = ["beginner", "intermediate", "advanced", "master"];
 export const COUNTS: Count[] = [10, 20, 30];
 
 export interface SessionSummary {
@@ -25,7 +25,8 @@ function shuffle<T>(arr: T[]): T[] {
 export function filterByLevel(drills: DrillDef[], level: Level): DrillDef[] {
   if (level === "beginner") return drills.filter((d) => d.tier === 1);
   if (level === "intermediate") return drills.filter((d) => d.tier === 2);
-  return drills.filter((d) => d.tier === 3);
+  if (level === "advanced") return drills.filter((d) => d.tier === 3);
+  return drills.filter((d) => d.tier === 4);
 }
 
 export function buildPool(
