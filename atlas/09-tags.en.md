@@ -38,7 +38,7 @@ Jump to function and class definitions across files using a pre-built **tags fil
 ## Choosing between
 
 - **`<C-]>` vs `gd` vs `gD`**: `<C-]>` uses the tags file (full project, all files indexed). `gd` searches within the **current function** for the first declaration-like occurrence (uses `[[` to find function start, falls back to line 1). `gD` searches the **whole file** from line 1. Use `gd` for function-local variables, `gD` for file-wide lookup, `<C-]>` for cross-file symbols.
-- **`<C-]>` vs LSP go-to-definition**: tags are language-agnostic, fast, simple — but stale unless you rebuild. LSP is precise, semantic, live — but requires a server per language. Modern setups often use LSP; legacy / multi-language / quick setups still use tags.
+- **`<C-]>` vs LSP go-to-definition**: tags are language-agnostic, fast, simple — but stale unless you rebuild. LSP is precise, semantic, live — but requires a server per language. Modern setups use LSP; legacy, multi-language, or zero-setup workflows still use tags.
 - **`:tag` vs `:tjump`**: `:tag` jumps to the first match silently. `:tjump` prompts when ambiguous. Use `:tjump` (or `g<C-]>`) when you don't trust the first hit.
 - **`:tag` vs `:ptag`**: `:tag` replaces your buffer. `:ptag` opens a preview split — keeps your current location visible. Use `:ptag` to peek without losing place.
 - **Tags vs `:grep`**: Tags are an indexed lookup (fast, definitions only). `:grep` searches text in all files (slow, finds usage and definitions). Use grep for "where is this called from".
@@ -76,7 +76,7 @@ Search by pattern:       :tag /^my_prefix
 - `<C-]>` requires the cursor to be **on** a tag word. Punctuation breaks the match.
 - Tag lookup case sensitivity follows `'tagcase'` (default `followic`, which means "follow `'ignorecase'`"). Since `'ignorecase'` defaults to off, the practical result is case-sensitive — but the direct default is `followic`, not "case-sensitive".
 - For monorepos with thousands of files, generation can be slow — `universal-ctags` with `--exclude` patterns helps.
-- LSP and tags can coexist; many users map `<C-]>` to LSP definition and keep tags as fallback.
+- LSP and tags can coexist — map `<C-]>` to LSP definition and keep tags as fallback.
 
 ## See also
 

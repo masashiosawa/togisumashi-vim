@@ -70,7 +70,7 @@ Move the cursor within the current screen, or scroll the screen with the cursor.
 
 ## Choosing between
 
-- **`<C-d>` vs `<C-f>`**: Half-page vs full-page. `<C-d>` keeps half the previous screen visible — better for tracking context. `<C-f>` is faster for skim. Most users prefer `<C-d>`/`<C-u>` daily.
+- **`<C-d>` vs `<C-f>`**: Half-page vs full-page. `<C-d>` keeps half the previous screen visible — better for tracking context. `<C-f>` is faster for skim. Use `<C-d>`/`<C-u>` as the daily default.
 - **`H`/`M`/`L` vs `<C-d>`**: `H`/`M`/`L` move within the **current screen** (no scrolling — context fully preserved). `<C-d>` scrolls. Use `H`/`L` for short hops that keep your map intact.
 - **`zz` vs `zt` vs `zb`**: All keep the cursor where it is, but adjust the window. `zz` centers (balanced context). `zt` puts cursor at the top — most context **below** (use after a search to see what's coming). `zb` at bottom — most context **above** (use when navigating call chains backward).
 - **`<C-e>`/`<C-y>` vs `<C-d>`/`<C-u>`**: `<C-e>` scrolls the window but the cursor stays on its line of text (until pushed off screen). `<C-d>` moves the cursor too. Use `<C-e>` when reading code but not editing.
@@ -95,7 +95,7 @@ Scroll without moving:      <C-e><C-e>  (drift down 2 lines, cursor follows if p
 
 ## Pitfalls
 
-- `<C-f>` skips a screen so quickly you can lose your bearings. Newcomers often prefer `<C-d>` for that reason.
+- `<C-f>` skips a screen so quickly you can lose your bearings. Stick to `<C-d>` until full-page scrolling feels safe.
 - `zz`/`zt`/`zb` don't move the cursor — they only adjust the window. If you confuse them with `H`/`M`/`L`, the screen lurches and nothing happens at the cursor.
 - `zh`/`zl` only matter with `:set nowrap`. With wrap on (default), horizontal scrolling does nothing.
 - Counts on `H`/`L` count from the **screen edge**, not from cursor — `5H` is "line 5 of the screen", not "5 lines above cursor".

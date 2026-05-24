@@ -68,7 +68,7 @@ Custom digraph:  :dig sn 9731  (now <C-k>sn inserts ☃ U+2603, snowman)
 
 ## Pitfalls
 
-- Many digraphs are registered in **both orders** (`e'` and `'e` both map to `é`), so either typing direction often works. Vim does not auto-swap — it's just that the table contains both entries.
+- Many digraphs are registered in **both orders** (`e'` and `'e` both map to `é`), so either typing direction works for those entries. Vim does not auto-swap — it's just that the table contains both.
 - Most Unicode digraphs (`Eu`, `0u`, `cH`, `,.`, `->`, etc.) require **`'encoding'`=utf-8** (Vim default in modern builds; Neovim is always UTF-8). On `latin1` only the Latin-1 range works.
 - There is **no built-in digraph for ♥ (BLACK HEART SUIT, U+2665)**. Only ♡ (`cH`, white heart) and ♢ (`cD`, white diamond) are defined. If you need ♥, use `<C-v>u2665` (codepoint insert).
 - `<C-k>` in insert mode shows nothing until both chars are typed — easy to think it failed and bail. Just press both.

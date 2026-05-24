@@ -53,7 +53,7 @@ Once you know vanilla Vim, plugins multiply your power. This is the gateway from
 
 ## Choosing between
 
-- **vim-plug vs lazy.nvim**: Both work. vim-plug is older, simpler, cross-version. lazy.nvim is modern, faster startup with lazy loading, Neovim-only. New Neovim users default to lazy.nvim; long-time Vim users often stay with vim-plug.
+- **vim-plug vs lazy.nvim**: Both work. vim-plug is older, simpler, cross-version. lazy.nvim is modern, faster startup with lazy loading, Neovim-only. For new Neovim setups, pick lazy.nvim; if you need cross-version (Vim + Neovim) compatibility, pick vim-plug.
 - **vim-commentary vs nvim-comment**: Identical surface API. Use whichever your manager makes easy.
 - **NERDTree vs oil.nvim**: NERDTree is a tree sidebar. oil.nvim shows directory as a buffer (edit names to rename!). Different paradigms; pick what fits your mental model.
 - **fzf vs telescope**: fzf uses external `fzf` binary, very fast. Telescope is Lua-native, deeply integrated with Neovim APIs. Both fuzzy-find.

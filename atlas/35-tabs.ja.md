@@ -80,7 +80,7 @@ help をタブで:                  :tab help motion.txt
 
 ## Web 環境について
 
-Web Vim エミュレーションは通常タブページを持たない。
+Web Vim エミュレーションはタブページを持たない。
 
 ## 落とし穴
 

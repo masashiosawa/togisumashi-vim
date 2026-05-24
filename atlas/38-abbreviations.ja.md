@@ -56,7 +56,7 @@ Vim は `{lhs}` の文字構成で分類する:
 - **略語 vs マッピング**: 略語は**トリガー文字**で Insert/Cmdline モードのみ展開、マッピングはキー押下で即発火・指定モードで動作。**単語的テキスト展開**は略語、**動作**はマッピング
 - **`:iab` vs スニペットプラグイン**: `:iab` は内蔵・単純・単行テキスト。スニペットプラグイン（UltiSnips、vim-snippets、LuaSnip）は複数行・タブストップ・動的内容を扱う。本格テンプレートはプラグイン
 - **`:iab teh the` vs 自動修正**: 略語は登録した分しか直さない。スペルチェック（`:set spell`）は視覚的にタイポを示し手動修正
-- **`:cab` vs alias**: `:cabbrev` は cmdline 入力中に書換 — 賢いが驚く。`:command -nargs=... MyCmd ...`（適切なコマンド alias）を好む人が多い
+- **`:cab` vs alias**: `:cabbrev` は cmdline 入力中に書換 — 賢いが驚く。コマンド alias なら `:command -nargs=... MyCmd ...` を使う。
 - **`:noreabbrev` vs `:abbreviate`**: マッピング同様、非再帰版が安全。チェーン展開が必要でない限り `:noreabbrev`
 
 ## 実例

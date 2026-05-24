@@ -53,7 +53,7 @@ help_tags:
 
 ## 使い分け
 
-- **vim-plug vs lazy.nvim**: 両方動く。vim-plug は古く単純・バージョン跨ぎ、lazy.nvim はモダン・遅延読込で起動高速・Neovim 専用。新規 Neovim ユーザは lazy.nvim、長年 Vim 派は vim-plug 継続が多い
+- **vim-plug vs lazy.nvim**: 両方動く。vim-plug は古く単純・バージョン跨ぎ、lazy.nvim はモダン・遅延読込で起動高速・Neovim 専用。新規 Neovim 環境なら lazy.nvim、Vim 互換が要るなら vim-plug。
 - **vim-commentary vs nvim-comment**: ほぼ同 API。マネージャが扱いやすい方
 - **NERDTree vs oil.nvim**: NERDTree はツリーサイドバー、oil.nvim はディレクトリをバッファ表示（名前編集でリネーム！）。パラダイムが違う、好みで
 - **fzf vs telescope**: fzf は外部 `fzf` バイナリ使用で高速、telescope は Lua ネイティブで Neovim API 深統合。両者ファジー検索
