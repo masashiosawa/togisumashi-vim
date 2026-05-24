@@ -24,8 +24,8 @@ function shuffle<T>(arr: T[]): T[] {
 
 export function filterByLevel(drills: DrillDef[], level: Level): DrillDef[] {
   if (level === "beginner") return drills.filter((d) => d.tier === 1);
-  if (level === "intermediate") return drills.filter((d) => d.tier <= 2);
-  return drills.filter((d) => d.tier <= 3);
+  if (level === "intermediate") return drills.filter((d) => d.tier === 2);
+  return drills.filter((d) => d.tier === 3);
 }
 
 export function buildPool(

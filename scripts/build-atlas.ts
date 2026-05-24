@@ -13,11 +13,16 @@ interface ArticleI18n {
   body: string;
 }
 
+type AtlasDifficulty = "beginner" | "intermediate" | "advanced" | "master";
+type AtlasFrequency = "high" | "mid" | "low";
+
 interface ArticleEntry {
   id: string;
   order: number;
   category: string;
-  status: string;
+  drillable: boolean;
+  difficulty: AtlasDifficulty;
+  frequency: AtlasFrequency;
   related_drills: string[];
   related_articles: string[];
   help_tags: string[];
@@ -30,13 +35,52 @@ interface ArticleEntry {
 interface ArticleFrontmatter {
   id?: string;
   category?: string;
+  /**
+   * Legacy enum (`"drill-backed" | "concept-only" | "meta"`) retained only so
+   * existing markdown still parses while the migration to the explicit
+   * `drillable` boolean lands. New articles should set `drillable` directly.
+   */
   status?: string;
+  drillable?: boolean;
+  difficulty?: string;
+  frequency?: string;
   related_drills?: string[];
   related_articles?: string[];
   help_tags?: string[];
 }
 
-const REQUIRED_FIELDS = ["id", "category", "status"] as const;
+const REQUIRED_FIELDS = ["id", "category"] as const;
+const DIFFICULTY_VALUES: AtlasDifficulty[] = ["beginner", "intermediate", "advanced", "master"];
+const FREQUENCY_VALUES: AtlasFrequency[] = ["high", "mid", "low"];
+const DEFAULT_DIFFICULTY: AtlasDifficulty = "intermediate";
+const DEFAULT_FREQUENCY: AtlasFrequency = "mid";
+
+function deriveDrillable(fm: ArticleFrontmatter): boolean {
+  if (typeof fm.drillable === "boolean") return fm.drillable;
+  return fm.status === "drill-backed";
+}
+
+function deriveDifficulty(fm: ArticleFrontmatter, filePath: string): AtlasDifficulty {
+  if (fm.difficulty == null) return DEFAULT_DIFFICULTY;
+  if (!(DIFFICULTY_VALUES as string[]).includes(fm.difficulty)) {
+    console.warn(
+      `⚠ ${filePath}: invalid difficulty "${fm.difficulty}", falling back to "${DEFAULT_DIFFICULTY}"`,
+    );
+    return DEFAULT_DIFFICULTY;
+  }
+  return fm.difficulty as AtlasDifficulty;
+}
+
+function deriveFrequency(fm: ArticleFrontmatter, filePath: string): AtlasFrequency {
+  if (fm.frequency == null) return DEFAULT_FREQUENCY;
+  if (!(FREQUENCY_VALUES as string[]).includes(fm.frequency)) {
+    console.warn(
+      `⚠ ${filePath}: invalid frequency "${fm.frequency}", falling back to "${DEFAULT_FREQUENCY}"`,
+    );
+    return DEFAULT_FREQUENCY;
+  }
+  return fm.frequency as AtlasFrequency;
+}
 
 function fileStem(name: string): { stem: string; lang: "en" | "ja" } | null {
   const enMatch = name.match(/^(.+)\.en\.md$/);
@@ -114,8 +158,7 @@ function extractTitleAndSummary(body: string): { title: string; summary: string;
 function validateFrontmatter(
   data: Record<string, unknown>,
   filePath: string,
-): data is Required<Pick<ArticleFrontmatter, "id" | "category" | "status">> &
-  ArticleFrontmatter {
+): data is Required<Pick<ArticleFrontmatter, "id" | "category">> & ArticleFrontmatter {
   for (const field of REQUIRED_FIELDS) {
     if (data[field] == null) {
       console.warn(`⚠ ${filePath}: missing required field "${field}", skipping article`);
@@ -144,7 +187,6 @@ function collect(): Map<string, ArticleEntry> {
     const fm = data as ArticleFrontmatter & {
       id: string;
       category: string;
-      status: string;
     };
 
     if (fm.id !== slug) {
@@ -161,7 +203,9 @@ function collect(): Map<string, ArticleEntry> {
         id: fm.id,
         order,
         category: fm.category,
-        status: fm.status,
+        drillable: deriveDrillable(fm),
+        difficulty: deriveDifficulty(fm, fullPath),
+        frequency: deriveFrequency(fm, fullPath),
         related_drills: fm.related_drills ?? [],
         related_articles: fm.related_articles ?? [],
         help_tags: fm.help_tags ?? [],
