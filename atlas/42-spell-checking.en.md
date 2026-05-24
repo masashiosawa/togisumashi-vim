@@ -1,7 +1,9 @@
 ---
 id: spell-checking
 category: power
-status: concept-only
+drillable: false
+difficulty: intermediate
+frequency: low
 related_drills: []
 related_articles:
   - settings

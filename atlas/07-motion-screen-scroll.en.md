@@ -1,7 +1,9 @@
 ---
 id: motion-screen-scroll
 category: motion
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-1-07-screen-pos
   - tier-1-08-scroll

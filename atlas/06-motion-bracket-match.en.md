@@ -1,7 +1,9 @@
 ---
 id: motion-bracket-match
 category: motion
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: mid
 related_drills:
   - tier-1-09-bracket-match
 related_articles:

@@ -1,7 +1,9 @@
 ---
 id: motion-find-char
 category: motion
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: high
 related_drills:
   - tier-1-06-find-char
 related_articles:

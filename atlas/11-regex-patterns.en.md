@@ -1,7 +1,9 @@
 ---
 id: regex-patterns
 category: search
-status: meta
+drillable: false
+difficulty: advanced
+frequency: mid
 related_drills:
   - tier-3-08-regex
 related_articles:

@@ -1,7 +1,9 @@
 ---
 id: global-command
 category: repeat
-status: concept-only
+drillable: false
+difficulty: advanced
+frequency: mid
 related_drills: []
 related_articles:
   - substitute

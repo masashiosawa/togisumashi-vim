@@ -1,7 +1,9 @@
 ---
 id: diff-mode
 category: power
-status: concept-only
+drillable: false
+difficulty: advanced
+frequency: low
 related_drills: []
 related_articles:
   - windows

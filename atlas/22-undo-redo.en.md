@@ -1,7 +1,9 @@
 ---
 id: undo-redo
 category: edit
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-2-09-undo-redo
 related_articles:

@@ -1,7 +1,9 @@
 ---
 id: autocommands
 category: config
-status: concept-only
+drillable: false
+difficulty: master
+frequency: low
 related_drills: []
 related_articles:
   - settings

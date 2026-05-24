@@ -1,7 +1,9 @@
 ---
 id: grammar-of-vim
 category: meta
-status: meta
+drillable: false
+difficulty: intermediate
+frequency: high
 related_drills:
   - tier-2-03-delete
   - tier-2-04-change

@@ -1,7 +1,9 @@
 ---
 id: visual-mode
 category: composition
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-3-01-visual
 related_articles:

@@ -1,7 +1,9 @@
 ---
 id: text-objects
 category: composition
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: high
 related_drills:
   - tier-2-06-text-objects
 related_articles:

@@ -1,7 +1,9 @@
 ---
 id: dot-repeat
 category: composition
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: high
 related_drills:
   - tier-3-09-dot-anatomy
 related_articles:

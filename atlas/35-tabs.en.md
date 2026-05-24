@@ -1,7 +1,9 @@
 ---
 id: tabs
 category: environment
-status: concept-only
+drillable: false
+difficulty: intermediate
+frequency: low
 related_drills: []
 related_articles:
   - windows

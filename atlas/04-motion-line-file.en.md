@@ -1,7 +1,9 @@
 ---
 id: motion-line-file
 category: motion
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-1-04-file-jump
 related_articles:

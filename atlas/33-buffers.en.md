@@ -1,7 +1,9 @@
 ---
 id: buffers
 category: environment
-status: concept-only
+drillable: false
+difficulty: intermediate
+frequency: mid
 related_drills: []
 related_articles:
   - files

@@ -1,7 +1,9 @@
 ---
 id: insert-mode-keys
 category: insert
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: mid
 related_drills:
   - tier-2-02-insert-mode-keys
 related_articles:

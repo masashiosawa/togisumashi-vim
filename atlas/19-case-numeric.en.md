@@ -1,7 +1,9 @@
 ---
 id: case-numeric
 category: edit
-status: drill-backed
+drillable: true
+difficulty: intermediate
+frequency: mid
 related_drills:
   - tier-2-07-indent-case-num
 related_articles:

@@ -1,7 +1,9 @@
 ---
 id: external-commands
 category: composition
-status: concept-only
+drillable: false
+difficulty: intermediate
+frequency: mid
 related_drills: []
 related_articles:
   - special-inserts

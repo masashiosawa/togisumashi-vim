@@ -1,7 +1,9 @@
 ---
 id: plugins
 category: meta
-status: concept-only
+drillable: false
+difficulty: master
+frequency: low
 related_drills: []
 related_articles:
   - mappings

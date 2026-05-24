@@ -1,7 +1,9 @@
 ---
 id: motion-word
 category: motion
-status: drill-backed
+drillable: true
+difficulty: beginner
+frequency: high
 related_drills:
   - tier-1-03-word-motion
 related_articles:
