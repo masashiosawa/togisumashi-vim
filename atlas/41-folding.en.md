@@ -40,7 +40,7 @@ Set with `:set foldmethod=indent`.
 | `za`     | Toggle fold under cursor                            |
 | `zA`     | Toggle recursive                                    |
 | `zR`     | Open ALL folds (Reduce)                             |
-| `zM`     | Close ALL folds (More)                              |
+| `zM`     | Close ALL folds (More) — **also sets `'foldenable'`** |
 | `zv`     | Open just enough folds to view cursor               |
 | `zx`     | Recompute folds, reset them to the `'foldlevel'` state, **then** apply `zv` (open enough to show cursor) |
 | `zX`     | Like `zx` but **without** the final `zv` — no view-cursor adjustment |
@@ -72,7 +72,7 @@ Set with `:set foldmethod=indent`.
 - **`indent` vs `syntax`**: `indent` is filetype-agnostic. `syntax` uses language definitions — more semantic (folds functions, not just indent blocks). `syntax` is better when available; falls back if no syntax rules.
 - **`marker` vs everything**: `marker` puts ugly `{{{` `}}}` in your file. Useful for shared dotfiles where you want explicit fold boundaries. Avoid in source code.
 - **`za` vs `zo`/`zc`**: `za` toggles — one key for both directions. `zo`/`zc` are explicit. For frequent open/close, `za`.
-- **`zR` vs `zM`**: Opposites. `zR` opens all, `zM` closes all. Mnemonic: Reduce / More folding.
+- **`zR` vs `zM`**: Opposites. `zR` opens all, `zM` closes all. Mnemonic: Reduce / More folding. Side effect: `zM` also sets `'foldenable'`, so if you had disabled folds with `zi`, `zM` turns them back on.
 - **`zv` vs `zo`**: `zv` opens **only enough** folds to make the cursor visible. `zo` opens the immediate fold. Use `zv` after a search that landed in a closed fold.
 
 ## Fold-level options
