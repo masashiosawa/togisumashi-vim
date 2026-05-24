@@ -1855,14 +1855,72 @@ body.hone-active .app-header {
   padding: 32px 32px 96px;
 }
 
+/* Drawer toggle and backdrop — hidden on desktop, surfaced on mobile via the media query below. */
+.atlas-drawer-toggle {
+  display: none;
+}
+
+.atlas-drawer-backdrop {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .atlas-shell {
     grid-template-columns: 1fr;
+    position: relative;
+  }
+  .atlas-drawer-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: sticky;
+    top: 0;
+    z-index: 50; /* must sit above the .atlas-sidebar drawer so it remains a tappable close button when open. */
+    justify-self: start;
+    width: max-content;
+    margin: 8px 0 0 12px;
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .atlas-drawer-toggle:hover,
+  .atlas-drawer-toggle:focus-visible {
+    border-color: var(--accent-border);
+  }
+  .atlas-drawer-toggle-label {
+    font-size: 12px;
+    letter-spacing: 0.04em;
   }
   .atlas-sidebar {
-    border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
-    max-height: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(86vw, 320px);
+    height: 100%;
+    max-height: none;
+    border-right: 1px solid var(--border-subtle);
+    border-bottom: none;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 40;
+  }
+  .atlas-shell--drawer-open .atlas-sidebar {
+    transform: translateX(0);
+  }
+  .atlas-drawer-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 0;
+    z-index: 35;
+    cursor: pointer;
   }
   .atlas-index,
   .atlas-article {
