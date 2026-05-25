@@ -40,6 +40,16 @@ pnpm test                    # all tests pass
 `pnpm lint:fix` rewrites files in place. Stage the changes it makes before committing.  
 If lint errors remain after `--fix`, resolve them manually before committing.
 
+### When adding or removing `<Trans>`, `t\`\``, or any i18n string
+
+```sh
+pnpm --filter web lingui:extract   # register new/removed messages in .po files
+pnpm --filter web lingui:compile   # regenerate messages.ts from .po files
+```
+
+Stage the updated `.po` and `messages.ts` files together with the source change.  
+Skipping this step causes Lingui to render raw hash IDs (e.g. `SVyf2o`) as visible text at runtime.
+
 ## Domain
 
 Production: `https://vim.togisumashi.dev` (Cloudflare Pages)
