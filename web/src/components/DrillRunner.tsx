@@ -47,6 +47,7 @@ export function DrillRunner({
   const [startTime, setStartTime] = useState(0);
   const [elapsedMs, setElapsedMs] = useState(0);
   const [showShadow, setShowShadow] = useState(false);
+  const [editorKey, setEditorKey] = useState(0);
 
   const phaseRef = useRef<Phase>("idle");
   const successCalledRef = useRef(false);
@@ -89,6 +90,7 @@ export function DrillRunner({
     setStartTime(Date.now());
     setElapsedMs(0);
     setShowShadow(false);
+    setEditorKey((k) => k + 1);
   }, [drill]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: mount only
@@ -202,7 +204,7 @@ export function DrillRunner({
 
       <div className={`editor-wrapper ${!running ? "inactive" : "running"}`}>
         <CodeMirror
-          key={`${instance.def.id}-${instance.text}`}
+          key={`${instance.def.id}-${editorKey}`}
           ref={cmRef}
           value={instance.text}
           extensions={[vim()]}
