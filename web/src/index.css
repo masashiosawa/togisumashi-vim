@@ -1205,6 +1205,20 @@ kbd {
   margin: 0;
 }
 
+.lp-hero-tagline {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+
+.lp-hero-tagline em {
+  font-style: normal;
+  font-weight: 600;
+}
+
 .lp-hero-sub {
   font-size: 18px;
   color: var(--text-muted);

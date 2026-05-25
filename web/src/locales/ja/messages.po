@@ -147,7 +147,7 @@ msgstr "ヒント:"
 
 #: src/pages/HonePage.tsx:198
 #~ msgid "Honed"
-#~ msgstr "研ぎ澄まし"
+#~ msgstr "マスター済み"
 
 #: src/components/SessionSummary.tsx:58
 #: src/pages/HomePage.tsx:189
