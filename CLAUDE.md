@@ -50,6 +50,38 @@ pnpm --filter web lingui:compile   # regenerate messages.ts from .po files
 Stage the updated `.po` and `messages.ts` files together with the source change.  
 Skipping this step causes Lingui to render raw hash IDs (e.g. `SVyf2o`) as visible text at runtime.
 
+## Creating PRs
+
+Always base the PR body on `.github/pull_request_template.md`. Fill in all sections:
+
+- **Summary**: what the PR does
+- **Related issue**: `Closes #XX` here AND in the PR title
+- **Test plan**: check off each item that applies
+- **Notes**: breaking changes, screenshots, anything the reviewer needs
+
+```sh
+# Read the template before drafting the body
+cat .github/pull_request_template.md
+```
+
+PR title format: `<type>: <description> (closes #<issue>)`
+Example: `feat: add shadow mode for tier-2 drills (closes #42)`
+
+## Creating Issues
+
+Always use the appropriate template from `.github/ISSUE_TEMPLATE/`:
+
+- Bug → `bug_report.yml` fields: description, steps to reproduce, expected, actual, platform, environment
+- Feature → `feature_request.yml` fields: use case, proposed solution, area, alternatives
+
+```sh
+# Open in browser to use the GitHub form UI (recommended)
+gh issue create --web
+
+# Or non-interactive — read the template first, then fill in --body
+cat .github/ISSUE_TEMPLATE/bug_report.yml
+```
+
 ## Domain
 
 Production: `https://vim.togisumashi.dev` (Cloudflare Pages)
