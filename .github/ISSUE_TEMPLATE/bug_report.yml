@@ -1,0 +1,65 @@
+name: Bug Report
+description: Report a bug in togisumashi-vim
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug!
+        For **security vulnerabilities**, use [GitHub Private Vulnerability Reporting](https://github.com/masashiosawa/togisumashi-vim/security/advisories/new) instead.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Web (vim.togisumashi.dev)
+        - Neovim plugin
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser / Neovim version
+      placeholder: "e.g. Chrome 124 / macOS 14, or Neovim 0.10.0 / Ubuntu 22.04"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Screenshots, error messages, console output, etc.

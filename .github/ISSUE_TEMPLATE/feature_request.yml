@@ -1,0 +1,49 @@
+name: Feature Request
+description: Suggest a new feature or improvement
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please open an issue **before** implementing — we align on scope before you invest time coding.
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: What problem are you trying to solve? Why do you need this?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe what you'd like to see.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Web app
+        - Neovim plugin
+        - Drill content
+        - Atlas content
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Have you considered other approaches?
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Screenshots, mockups, references, etc.
