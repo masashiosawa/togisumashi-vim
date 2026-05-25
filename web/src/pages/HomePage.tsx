@@ -169,7 +169,7 @@ export function HomePage() {
     <div className="home">
       <div className="home-left">
         <section className="hero">
-          <div className="hero-kanji">{locale === "ja" ? "Vimを研ぎ澄ます" : "Hone."}</div>
+          <div className="hero-kanji">{locale === "ja" ? "研ぎ澄まし" : "Togisumashi"}</div>
         </section>
 
         <section className="settings-panel">

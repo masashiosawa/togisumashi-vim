@@ -32,7 +32,17 @@ export function LandingPage() {
 
       <main className="lp-main">
         <section className="lp-hero">
-          <h1 className="lp-hero-headline">{isJa ? "Vimを研ぎ澄ます" : "Hone your Vim."}</h1>
+          <h1 className="lp-hero-headline">{isJa ? "研ぎ澄まし" : "Togisumashi"}</h1>
+          <p className="lp-hero-tagline">
+            {isJa ? (
+              "研ぎ澄ましとは、極限まで技術を磨き上げること。反復が、動作を本能にする。"
+            ) : (
+              <>
+                <em>Togisumashi</em> (研ぎ澄まし) — a Japanese word for &ldquo;sharpening to the
+                extreme.&rdquo; Mastery through deliberate repetition.
+              </>
+            )}
+          </p>
           <p className="lp-hero-sub">
             {isJa
               ? "Neovim 速度特訓ドリル。65 問以上。インストール不要。"

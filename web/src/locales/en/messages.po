@@ -147,7 +147,7 @@ msgstr "Hint:"
 
 #: src/pages/HonePage.tsx:198
 #~ msgid "Honed"
-#~ msgstr "Honed"
+#~ msgstr "Mastered"
 
 #: src/components/SessionSummary.tsx:58
 #: src/pages/HomePage.tsx:189
