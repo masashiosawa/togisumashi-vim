@@ -125,13 +125,13 @@ msgstr "Focus"
 msgid "Focus practice"
 msgstr "Focus practice"
 
-#: src/components/GoalPreview.tsx:33
+#: src/components/GoalPreview.tsx:30
 msgid "Goal Preview"
 msgstr "Goal Preview"
 
 #: src/components/DrillRunner.tsx:194
-msgid "Goal:"
-msgstr "Goal:"
+#~ msgid "Goal:"
+#~ msgstr "Goal:"
 
 #: src/pages/HomePage.tsx:229
 #~ msgid "Guided"
@@ -141,7 +141,7 @@ msgstr "Goal:"
 msgid "Help tags:"
 msgstr "Help tags:"
 
-#: src/components/DrillRunner.tsx:232
+#: src/components/DrillRunner.tsx:244
 msgid "Hide hint"
 msgstr "Hide hint"
 
@@ -161,6 +161,10 @@ msgstr "Intermediate"
 
 #~ msgid "jump & start"
 #~ msgstr "jump & start"
+
+#: src/components/DrillRunner.tsx:193
+msgid "Keys:"
+msgstr "Keys:"
 
 #: src/pages/AtlasArticlePage.tsx:88
 msgid "Launch this lesson as a focus session →"
@@ -263,7 +267,7 @@ msgstr "Search by title, summary, or :h tag…"
 msgid "See results"
 msgstr "See results"
 
-#: src/components/GoalPreview.tsx:22
+#: src/components/GoalPreview.tsx:19
 msgid "Select a level to begin"
 msgstr "Select a level to begin"
 
@@ -279,7 +283,7 @@ msgstr "Session complete"
 #~ msgid "Sharpen your Vim. One drill at a time."
 #~ msgstr "Sharpen your Vim. One drill at a time."
 
-#: src/components/DrillRunner.tsx:232
+#: src/components/DrillRunner.tsx:244
 msgid "Show hint"
 msgstr "Show hint"
 
@@ -291,7 +295,7 @@ msgstr "Show hint"
 msgid "Slower than target — practice these:"
 msgstr "Slower than target — practice these:"
 
-#: src/components/DrillRunner.tsx:226
+#: src/components/DrillRunner.tsx:238
 msgid "Start"
 msgstr "Start"
 
@@ -310,9 +314,9 @@ msgstr "Start"
 msgid "target {target}s"
 msgstr "target {target}s"
 
-#: src/pages/HonePage.tsx:245
-#~ msgid "Target:"
-#~ msgstr "Target:"
+#: src/components/DrillRunner.tsx:207
+msgid "Target:"
+msgstr "Target:"
 
 #: src/pages/HomePage.tsx:217
 msgid "Test"

@@ -920,20 +920,47 @@ a {
   white-space: pre-line;
 }
 
-.drill-goal-text {
+.drill-instructions {
+  list-style: none;
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.drill-instructions-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  padding: 8px 12px;
-  border-radius: var(--radius);
-  background: var(--bg-overlay);
-  border: 1px solid var(--border-subtle);
 }
 
-.drill-goal-label {
+.drill-instructions-item::before {
+  content: "•";
+  color: var(--text-subtle);
+  flex-shrink: 0;
+}
+
+.drill-instructions-label {
   color: var(--text-subtle);
   font-weight: 500;
+  min-width: 44px;
+}
+
+.drill-instructions-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.drill-instructions-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text);
 }
 
 code {
@@ -962,12 +989,6 @@ code {
 
 pre code {
   white-space: pre;
-}
-
-.drill-goal-code {
-  flex: 1;
-  min-width: 0;
-  overflow-x: auto;
 }
 
 .drill-actions {
