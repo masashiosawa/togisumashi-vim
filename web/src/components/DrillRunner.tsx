@@ -8,7 +8,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { instantiateDrill } from "../lib/instantiateDrill";
 import type { Attempt } from "../lib/storage";
 import type { DrillDef, DrillInstance } from "../types/drill";
-import { CodeBlock } from "./CodeBlock";
 import { DrillResult } from "./DrillResult";
 import { DrillTimer } from "./DrillTimer";
 import { ShadowOverlay } from "./ShadowOverlay";
@@ -27,7 +26,6 @@ interface Props {
   isLast?: boolean;
   showTimer?: boolean;
   hintsEnabled?: boolean;
-  showGoal?: boolean;
 }
 
 export function DrillRunner({
@@ -38,7 +36,6 @@ export function DrillRunner({
   isLast,
   showTimer = true,
   hintsEnabled = true,
-  showGoal = true,
 }: Props) {
   const { i18n } = useLingui();
   const locale = (i18n.locale ?? "en") as "en" | "ja";
@@ -188,17 +185,32 @@ export function DrillRunner({
 
       <p className="drill-description">{drillI18n.description}</p>
 
-      {showGoal && instance.def.type === "edit" && instance.goalText && (
-        <div className="drill-goal-text">
-          <span className="drill-goal-label">
-            <Trans>Goal:</Trans>
-          </span>
-          <CodeBlock
-            code={instance.goalText}
-            lang={instance.def.lang ?? "text"}
-            className="drill-goal-code"
-          />
-        </div>
+      {phase === "idle" && (
+        <ul className="drill-instructions">
+          {hintsEnabled && instance.def.solution_keys.length > 0 && (
+            <li className="drill-instructions-item">
+              <span className="drill-instructions-label">
+                <Trans>Keys:</Trans>
+              </span>
+              <span className="drill-instructions-keys">
+                {instance.def.solution_keys.map((key, i) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: static list from drill definition
+                  <kbd key={i} className="solution-key">
+                    {key}
+                  </kbd>
+                ))}
+              </span>
+            </li>
+          )}
+          <li className="drill-instructions-item">
+            <span className="drill-instructions-label">
+              <Trans>Target:</Trans>
+            </span>
+            <span className="drill-instructions-value">
+              {(instance.def.target_time_ms / 1000).toFixed(1)}s
+            </span>
+          </li>
+        </ul>
       )}
 
       {running && showTimer && (
