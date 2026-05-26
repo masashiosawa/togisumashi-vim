@@ -44,12 +44,13 @@ export function recordAttempt(a: Attempt): void {
   window.localStorage.setItem(ATTEMPT_KEY, JSON.stringify(trimmed));
 }
 
+interface RawPrefs extends Omit<Prefs, "lastLessonMode"> {
+  lastLessonMode?: LessonMode | "guided" | "skip";
+}
+
 function loadPrefs(): Prefs {
   if (typeof window === "undefined") return {};
-  const raw = safeParse<Prefs & { lastLessonMode?: LessonMode | "guided" | "skip" }>(
-    window.localStorage.getItem(PREFS_KEY),
-    {},
-  );
+  const raw = safeParse<RawPrefs>(window.localStorage.getItem(PREFS_KEY), {});
   if (raw.lastLessonMode === "guided") raw.lastLessonMode = "lessons";
   else if (raw.lastLessonMode === "skip") raw.lastLessonMode = "random";
   return raw as Prefs;
