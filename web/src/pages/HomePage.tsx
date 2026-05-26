@@ -4,7 +4,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { ConceptGate } from "../components/ConceptGate";
 import { DrillNavBar } from "../components/DrillNavBar";
 import { DrillRunner } from "../components/DrillRunner";
-import { LessonList } from "../components/LessonList";
+import { GoalPreview } from "../components/GoalPreview";
 import { SessionSummary } from "../components/SessionSummary";
 import { useDrills } from "../hooks/useDrills";
 import { useLessons } from "../hooks/useLessons";
@@ -155,14 +155,6 @@ export function HomePage() {
     setConceptGateVisible(false);
   }, []);
 
-  const handleSelectLesson = useCallback(
-    (lessonId: string) => {
-      const ids = drills.filter((d) => d.lesson === lessonId).map((d) => d.id);
-      setFocusIds(ids);
-    },
-    [drills],
-  );
-
   // Deep-link from Atlas: ?lesson=<id> launches that lesson as a focus session.
   // Consume the param once drills are loaded, then clear it so reloads don't
   // keep re-applying the focus over user changes.
@@ -271,15 +263,7 @@ export function HomePage() {
           </div>
         </section>
 
-        {lessonMode === "lessons" && (
-          <LessonList
-            lessons={lessons}
-            drills={drills}
-            level={level}
-            currentLessonId={currentLesson?.id}
-            onSelectLesson={handleSelectLesson}
-          />
-        )}
+        <GoalPreview drill={currentDrill} locale={(locale ?? "en") as "en" | "ja"} />
       </div>
 
       <div className="home-right">

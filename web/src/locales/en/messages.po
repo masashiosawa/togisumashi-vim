@@ -31,8 +31,8 @@ msgstr "51 articles covering the Vim/Neovim surface: motions, edits, registers, 
 #~ msgstr "Achievement"
 
 #: src/components/SessionSummary.tsx:59
-#: src/pages/HomePage.tsx:190
-#: src/pages/HomePage.tsx:317
+#: src/pages/HomePage.tsx:193
+#: src/pages/HomePage.tsx:316
 msgid "Advanced"
 msgstr "Advanced"
 
@@ -63,8 +63,8 @@ msgstr "Back to atlas"
 #~ msgstr "Basic motions"
 
 #: src/components/SessionSummary.tsx:57
-#: src/pages/HomePage.tsx:188
-#: src/pages/HomePage.tsx:315
+#: src/pages/HomePage.tsx:191
+#: src/pages/HomePage.tsx:314
 msgid "Beginner"
 msgstr "Beginner"
 
@@ -92,7 +92,7 @@ msgstr "Close navigation"
 msgid "Contents"
 msgstr "Contents"
 
-#: src/pages/HomePage.tsx:245
+#: src/pages/HomePage.tsx:248
 msgid "Count"
 msgstr "Count"
 
@@ -117,7 +117,7 @@ msgstr "Failed to load atlas: {0}"
 #~ msgid "Failed to load drills."
 #~ msgstr "Failed to load drills."
 
-#: src/pages/HomePage.tsx:312
+#: src/pages/HomePage.tsx:311
 msgid "Focus"
 msgstr "Focus"
 
@@ -125,7 +125,11 @@ msgstr "Focus"
 msgid "Focus practice"
 msgstr "Focus practice"
 
-#: src/components/DrillRunner.tsx:193
+#: src/components/GoalPreview.tsx:33
+msgid "Goal Preview"
+msgstr "Goal Preview"
+
+#: src/components/DrillRunner.tsx:194
 msgid "Goal:"
 msgstr "Goal:"
 
@@ -137,7 +141,7 @@ msgstr "Goal:"
 msgid "Help tags:"
 msgstr "Help tags:"
 
-#: src/components/DrillRunner.tsx:227
+#: src/components/DrillRunner.tsx:232
 msgid "Hide hint"
 msgstr "Hide hint"
 
@@ -150,8 +154,8 @@ msgstr "Hint:"
 #~ msgstr "Mastered"
 
 #: src/components/SessionSummary.tsx:58
-#: src/pages/HomePage.tsx:189
-#: src/pages/HomePage.tsx:316
+#: src/pages/HomePage.tsx:192
+#: src/pages/HomePage.tsx:315
 msgid "Intermediate"
 msgstr "Intermediate"
 
@@ -166,16 +170,15 @@ msgstr "Launch this lesson as a focus session →"
 #~ msgid "Lesson"
 #~ msgstr "Lesson"
 
-#: src/components/LessonList.tsx:35
-#: src/pages/HomePage.tsx:229
+#: src/pages/HomePage.tsx:232
 msgid "Lessons"
 msgstr "Lessons"
 
-#: src/pages/HomePage.tsx:178
+#: src/pages/HomePage.tsx:181
 msgid "Level"
 msgstr "Level"
 
-#: src/pages/HomePage.tsx:286
+#: src/pages/HomePage.tsx:281
 msgid "Loading drills…"
 msgstr "Loading drills…"
 
@@ -186,8 +189,8 @@ msgid "Loading…"
 msgstr "Loading…"
 
 #: src/components/SessionSummary.tsx:60
-#: src/pages/HomePage.tsx:191
-#: src/pages/HomePage.tsx:318
+#: src/pages/HomePage.tsx:194
+#: src/pages/HomePage.tsx:317
 msgid "Master"
 msgstr "Master"
 
@@ -201,7 +204,7 @@ msgstr "Menu"
 #~ msgid "Mixed challenge"
 #~ msgstr "Mixed challenge"
 
-#: src/pages/HomePage.tsx:199
+#: src/pages/HomePage.tsx:202
 msgid "Mode"
 msgstr "Mode"
 
@@ -217,11 +220,11 @@ msgstr "Next drill"
 msgid "No articles match \"{query}\"."
 msgstr "No articles match \"{query}\"."
 
-#: src/pages/HomePage.tsx:299
+#: src/pages/HomePage.tsx:294
 msgid "No drills available for this selection."
 msgstr "No drills available for this selection."
 
-#: src/pages/HomePage.tsx:221
+#: src/pages/HomePage.tsx:224
 msgid "Order"
 msgstr "Order"
 
@@ -232,7 +235,7 @@ msgstr "Order"
 msgid "Play again"
 msgstr "Play again"
 
-#: src/pages/HomePage.tsx:207
+#: src/pages/HomePage.tsx:210
 msgid "Practice"
 msgstr "Practice"
 
@@ -240,7 +243,7 @@ msgstr "Practice"
 msgid "Practice with drills"
 msgstr "Practice with drills"
 
-#: src/pages/HomePage.tsx:236
+#: src/pages/HomePage.tsx:239
 msgid "Random"
 msgstr "Random"
 
@@ -260,6 +263,10 @@ msgstr "Search by title, summary, or :h tag…"
 msgid "See results"
 msgstr "See results"
 
+#: src/components/GoalPreview.tsx:22
+msgid "Select a level to begin"
+msgstr "Select a level to begin"
+
 #: src/components/SessionSummary.tsx:67
 msgid "Session complete"
 msgstr "Session complete"
@@ -272,7 +279,7 @@ msgstr "Session complete"
 #~ msgid "Sharpen your Vim. One drill at a time."
 #~ msgstr "Sharpen your Vim. One drill at a time."
 
-#: src/components/DrillRunner.tsx:227
+#: src/components/DrillRunner.tsx:232
 msgid "Show hint"
 msgstr "Show hint"
 
@@ -284,7 +291,7 @@ msgstr "Show hint"
 msgid "Slower than target — practice these:"
 msgstr "Slower than target — practice these:"
 
-#: src/components/DrillRunner.tsx:221
+#: src/components/DrillRunner.tsx:226
 msgid "Start"
 msgstr "Start"
 
@@ -307,7 +314,7 @@ msgstr "target {target}s"
 #~ msgid "Target:"
 #~ msgstr "Target:"
 
-#: src/pages/HomePage.tsx:214
+#: src/pages/HomePage.tsx:217
 msgid "Test"
 msgstr "Test"
 

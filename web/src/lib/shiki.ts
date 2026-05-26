@@ -9,5 +9,6 @@ export function getHighlighter(): Promise<Highlighter> {
       langs: ["vim", "css", "html", "javascript", "typescript", "markdown"],
     });
   }
-  return _highlighter;
+  // biome-ignore lint/style/noNonNullAssertion: assigned in the branch above
+  return _highlighter!;
 }
