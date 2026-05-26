@@ -2,6 +2,7 @@ import { Trans } from "@lingui/react/macro";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { ConceptGate } from "../components/ConceptGate";
+import { DrillNavBar } from "../components/DrillNavBar";
 import { DrillRunner } from "../components/DrillRunner";
 import { LessonList } from "../components/LessonList";
 import { SessionSummary } from "../components/SessionSummary";
@@ -116,6 +117,10 @@ export function HomePage() {
       setIndex((i) => i + 1);
     }
   }, [index, pool.length]);
+
+  const handleSelectIndex = useCallback((i: number) => {
+    setIndex(i);
+  }, []);
 
   const handleReplay = useCallback(() => {
     resetDrill(makePool({ focusIds }));
@@ -312,9 +317,13 @@ export function HomePage() {
                 />
               ) : (
                 <>
-                  <div className="terminal-session-bar">
-                    <span className="session-progress-label">
-                      {focusIds.length > 0 ? (
+                  <DrillNavBar
+                    pool={pool}
+                    index={index}
+                    onSelectIndex={handleSelectIndex}
+                    locale={locale ?? "en"}
+                    label={
+                      focusIds.length > 0 ? (
                         <Trans>Focus</Trans>
                       ) : (
                         <>
@@ -323,12 +332,9 @@ export function HomePage() {
                           {level === "advanced" && <Trans>Advanced</Trans>}
                           {level === "master" && <Trans>Master</Trans>}
                         </>
-                      )}
-                    </span>
-                    <span className="session-progress-count" aria-live="polite">
-                      {index + 1} / {pool.length}
-                    </span>
-                  </div>
+                      )
+                    }
+                  />
                   <DrillRunner
                     key={`${currentDrill.id}-${index}`}
                     drill={currentDrill}
