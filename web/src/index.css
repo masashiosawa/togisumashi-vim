@@ -819,6 +819,30 @@ code {
   border: 1px solid var(--border-subtle);
 }
 
+/* Shiki syntax highlighting */
+.code-block pre,
+.code-block pre code,
+.code-block-fallback,
+.code-block-fallback code {
+  background: transparent !important;
+  white-space: pre;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+pre code {
+  white-space: pre;
+}
+
+.drill-goal-code {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+}
+
 .drill-actions {
   display: flex;
   align-items: center;

@@ -33,6 +33,7 @@ export interface DrillDef {
   start_row?: "last" | number;
   goal: DrillGoal;
   solution_keys: string[];
+  lang?: string;
   i18n: {
     en: DrillI18n;
     ja: DrillI18n;

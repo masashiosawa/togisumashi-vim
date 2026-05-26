@@ -8,6 +8,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { instantiateDrill } from "../lib/instantiateDrill";
 import type { Attempt } from "../lib/storage";
 import type { DrillDef, DrillInstance } from "../types/drill";
+import { CodeBlock } from "./CodeBlock";
 import { DrillResult } from "./DrillResult";
 import { DrillTimer } from "./DrillTimer";
 import { ShadowOverlay } from "./ShadowOverlay";
@@ -192,7 +193,11 @@ export function DrillRunner({
           <span className="drill-goal-label">
             <Trans>Goal:</Trans>
           </span>
-          <code>{instance.goalText}</code>
+          <CodeBlock
+            code={instance.goalText}
+            lang={instance.def.lang ?? "text"}
+            className="drill-goal-code"
+          />
         </div>
       )}
 
