@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { DrillDef } from "../../types/drill";
-import { buildGuidedPool, buildSkipPool, filterByLevel } from "../session";
+import { buildLessonsPool, buildRandomPool, filterByLevel } from "../session";
 
 function makeDrill(id: string, tier: 1 | 2 | 3 | 4, lesson?: string): DrillDef {
   return {
@@ -56,29 +56,29 @@ describe("filterByLevel", () => {
   });
 });
 
-describe("buildSkipPool", () => {
+describe("buildRandomPool", () => {
   it("respects count limit", () => {
-    const pool = buildSkipPool(drills, "advanced", 10);
+    const pool = buildRandomPool(drills, "advanced", 10);
     expect(pool.length).toBeLessThanOrEqual(10);
     expect(pool.every((d) => d.tier === 3)).toBe(true);
   });
 
   it("returns at most available drills when count exceeds pool size", () => {
-    const pool = buildSkipPool(drills, "beginner", 30);
+    const pool = buildRandomPool(drills, "beginner", 30);
     expect(pool.length).toBeLessThanOrEqual(2);
   });
 
   it("never includes drills from other tiers", () => {
     for (let i = 0; i < 10; i++) {
-      const pool = buildSkipPool(drills, "advanced", 30);
+      const pool = buildRandomPool(drills, "advanced", 30);
       expect(pool.every((d) => d.tier === 3)).toBe(true);
     }
   });
 });
 
-describe("buildGuidedPool", () => {
+describe("buildLessonsPool", () => {
   it("sorts by lesson id then drill id", () => {
-    const pool = buildGuidedPool(drills, "advanced");
+    const pool = buildLessonsPool(drills, "advanced");
     for (let i = 1; i < pool.length; i++) {
       const a = pool[i - 1];
       const b = pool[i];
@@ -93,7 +93,7 @@ describe("buildGuidedPool", () => {
   });
 
   it("returns only the selected tier", () => {
-    const pool = buildGuidedPool(drills, "advanced");
+    const pool = buildLessonsPool(drills, "advanced");
     expect(pool.every((d) => d.tier === 3)).toBe(true);
     expect(pool).toHaveLength(2);
   });

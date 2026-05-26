@@ -1,6 +1,6 @@
 export type Level = "beginner" | "intermediate" | "advanced" | "master";
 export type Mode = "practice" | "test";
-export type LessonMode = "guided" | "skip";
+export type LessonMode = "lessons" | "random";
 export type Count = 10 | 20 | 30;
 
 export interface Attempt {
@@ -44,9 +44,16 @@ export function recordAttempt(a: Attempt): void {
   window.localStorage.setItem(ATTEMPT_KEY, JSON.stringify(trimmed));
 }
 
+interface RawPrefs extends Omit<Prefs, "lastLessonMode"> {
+  lastLessonMode?: LessonMode | "guided" | "skip";
+}
+
 function loadPrefs(): Prefs {
   if (typeof window === "undefined") return {};
-  return safeParse<Prefs>(window.localStorage.getItem(PREFS_KEY), {});
+  const raw = safeParse<RawPrefs>(window.localStorage.getItem(PREFS_KEY), {});
+  if (raw.lastLessonMode === "guided") raw.lastLessonMode = "lessons";
+  else if (raw.lastLessonMode === "skip") raw.lastLessonMode = "random";
+  return raw as Prefs;
 }
 
 function savePrefs(p: Prefs): void {
@@ -71,7 +78,7 @@ export function saveLastMode(mode: Mode): void {
 }
 
 export function loadLastLessonMode(): LessonMode {
-  return loadPrefs().lastLessonMode ?? "guided";
+  return loadPrefs().lastLessonMode ?? "lessons";
 }
 
 export function saveLastLessonMode(lm: LessonMode): void {
