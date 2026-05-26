@@ -125,19 +125,19 @@ msgstr "復習"
 msgid "Focus practice"
 msgstr "苦手だけ復習"
 
-#: src/components/DrillRunner.tsx:191
+#: src/components/DrillRunner.tsx:193
 msgid "Goal:"
 msgstr "目標:"
 
 #: src/pages/HomePage.tsx:229
-msgid "Guided"
-msgstr "ガイド"
+#~ msgid "Guided"
+#~ msgstr "ガイド"
 
 #: src/pages/AtlasArticlePage.tsx:119
 msgid "Help tags:"
 msgstr "ヘルプタグ:"
 
-#: src/components/DrillRunner.tsx:225
+#: src/components/DrillRunner.tsx:227
 msgid "Hide hint"
 msgstr "ヒントを隠す"
 
@@ -163,12 +163,13 @@ msgid "Launch this lesson as a focus session →"
 msgstr "このレッスンを集中セッションで開始 →"
 
 #: src/pages/HomePage.tsx:221
-msgid "Lesson"
-msgstr "レッスン"
+#~ msgid "Lesson"
+#~ msgstr "レッスン"
 
 #: src/components/LessonList.tsx:35
+#: src/pages/HomePage.tsx:229
 msgid "Lessons"
-msgstr "レッスン一覧"
+msgstr "レッスン"
 
 #: src/pages/HomePage.tsx:178
 msgid "Level"
@@ -220,6 +221,10 @@ msgstr "「{query}」に一致する記事はありません。"
 msgid "No drills available for this selection."
 msgstr "この選択に該当するドリルがありません。"
 
+#: src/pages/HomePage.tsx:221
+msgid "Order"
+msgstr "順序"
+
 #~ msgid "Pick a level. Press Space."
 #~ msgstr "レベルを選んで Space。"
 
@@ -234,6 +239,10 @@ msgstr "練習"
 #: src/pages/AtlasArticlePage.tsx:78
 msgid "Practice with drills"
 msgstr "対応ドリルで練習"
+
+#: src/pages/HomePage.tsx:236
+msgid "Random"
+msgstr "ランダム"
 
 #: src/pages/AtlasArticlePage.tsx:99
 msgid "Related articles"
@@ -263,19 +272,19 @@ msgstr "セッション完了"
 #~ msgid "Sharpen your Vim. One drill at a time."
 #~ msgstr "Vim を研ぎ澄ます。1 問ずつ。"
 
-#: src/components/DrillRunner.tsx:225
+#: src/components/DrillRunner.tsx:227
 msgid "Show hint"
 msgstr "ヒントを表示"
 
 #: src/pages/HomePage.tsx:236
-msgid "Skip"
-msgstr "スキップ"
+#~ msgid "Skip"
+#~ msgstr "スキップ"
 
 #: src/components/SessionSummary.tsx:94
 msgid "Slower than target — practice these:"
 msgstr "目標タイム未達 — 復習推奨:"
 
-#: src/components/DrillRunner.tsx:219
+#: src/components/DrillRunner.tsx:221
 msgid "Start"
 msgstr "開始"
 

@@ -35,11 +35,11 @@ export function buildPool(
   lessonMode: LessonMode,
   count: Count,
 ): DrillDef[] {
-  if (lessonMode === "guided") return buildGuidedPool(drills, level);
-  return buildSkipPool(drills, level, count);
+  if (lessonMode === "lessons") return buildLessonsPool(drills, level);
+  return buildRandomPool(drills, level, count);
 }
 
-export function buildGuidedPool(drills: DrillDef[], level: Level): DrillDef[] {
+export function buildLessonsPool(drills: DrillDef[], level: Level): DrillDef[] {
   const filtered = filterByLevel(drills, level);
   return [...filtered].sort((a, b) => {
     const la = a.lesson ?? "";
@@ -49,7 +49,7 @@ export function buildGuidedPool(drills: DrillDef[], level: Level): DrillDef[] {
   });
 }
 
-export function buildSkipPool(drills: DrillDef[], level: Level, count: Count): DrillDef[] {
+export function buildRandomPool(drills: DrillDef[], level: Level, count: Count): DrillDef[] {
   return shuffle(filterByLevel(drills, level)).slice(0, count);
 }
 

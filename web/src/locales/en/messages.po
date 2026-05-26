@@ -125,19 +125,19 @@ msgstr "Focus"
 msgid "Focus practice"
 msgstr "Focus practice"
 
-#: src/components/DrillRunner.tsx:191
+#: src/components/DrillRunner.tsx:193
 msgid "Goal:"
 msgstr "Goal:"
 
 #: src/pages/HomePage.tsx:229
-msgid "Guided"
-msgstr "Guided"
+#~ msgid "Guided"
+#~ msgstr "Guided"
 
 #: src/pages/AtlasArticlePage.tsx:119
 msgid "Help tags:"
 msgstr "Help tags:"
 
-#: src/components/DrillRunner.tsx:225
+#: src/components/DrillRunner.tsx:227
 msgid "Hide hint"
 msgstr "Hide hint"
 
@@ -163,10 +163,11 @@ msgid "Launch this lesson as a focus session →"
 msgstr "Launch this lesson as a focus session →"
 
 #: src/pages/HomePage.tsx:221
-msgid "Lesson"
-msgstr "Lesson"
+#~ msgid "Lesson"
+#~ msgstr "Lesson"
 
 #: src/components/LessonList.tsx:35
+#: src/pages/HomePage.tsx:229
 msgid "Lessons"
 msgstr "Lessons"
 
@@ -220,6 +221,10 @@ msgstr "No articles match \"{query}\"."
 msgid "No drills available for this selection."
 msgstr "No drills available for this selection."
 
+#: src/pages/HomePage.tsx:221
+msgid "Order"
+msgstr "Order"
+
 #~ msgid "Pick a level. Press Space."
 #~ msgstr "Pick a level. Press Space."
 
@@ -234,6 +239,10 @@ msgstr "Practice"
 #: src/pages/AtlasArticlePage.tsx:78
 msgid "Practice with drills"
 msgstr "Practice with drills"
+
+#: src/pages/HomePage.tsx:236
+msgid "Random"
+msgstr "Random"
 
 #: src/pages/AtlasArticlePage.tsx:99
 msgid "Related articles"
@@ -263,19 +272,19 @@ msgstr "Session complete"
 #~ msgid "Sharpen your Vim. One drill at a time."
 #~ msgstr "Sharpen your Vim. One drill at a time."
 
-#: src/components/DrillRunner.tsx:225
+#: src/components/DrillRunner.tsx:227
 msgid "Show hint"
 msgstr "Show hint"
 
 #: src/pages/HomePage.tsx:236
-msgid "Skip"
-msgstr "Skip"
+#~ msgid "Skip"
+#~ msgstr "Skip"
 
 #: src/components/SessionSummary.tsx:94
 msgid "Slower than target — practice these:"
 msgstr "Slower than target — practice these:"
 
-#: src/components/DrillRunner.tsx:219
+#: src/components/DrillRunner.tsx:221
 msgid "Start"
 msgstr "Start"
 

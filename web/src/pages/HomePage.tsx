@@ -7,7 +7,13 @@ import { LessonList } from "../components/LessonList";
 import { SessionSummary } from "../components/SessionSummary";
 import { useDrills } from "../hooks/useDrills";
 import { useLessons } from "../hooks/useLessons";
-import { COUNTS, LEVELS, buildGuidedPool, buildPoolFromIds, buildSkipPool } from "../lib/session";
+import {
+  COUNTS,
+  LEVELS,
+  buildLessonsPool,
+  buildPoolFromIds,
+  buildRandomPool,
+} from "../lib/session";
 import {
   type Attempt,
   type Count,
@@ -58,8 +64,8 @@ export function HomePage() {
       const cnt = opts.count ?? count;
       const fids = opts.focusIds ?? [];
       if (fids.length > 0) return buildPoolFromIds(drills, fids);
-      if (lm === "guided") return buildGuidedPool(drills, lvl);
-      return buildSkipPool(drills, lvl, cnt);
+      if (lm === "lessons") return buildLessonsPool(drills, lvl);
+      return buildRandomPool(drills, lvl, cnt);
     },
     [drills, level, lessonMode, count],
   );
@@ -128,9 +134,9 @@ export function HomePage() {
   const currentDrill = pool[index];
   const currentLesson = lessons.find((l) => l.id === currentDrill?.lesson);
 
-  // Show concept gate when entering a new lesson in guided mode
+  // Show concept gate when entering a new lesson in lessons mode
   useEffect(() => {
-    if (lessonMode !== "guided" || !currentDrill?.lesson) {
+    if (lessonMode !== "lessons" || !currentDrill?.lesson) {
       prevLessonIdRef.current = currentDrill?.lesson;
       return;
     }
@@ -218,28 +224,28 @@ export function HomePage() {
 
           <div className="settings-group">
             <span className="settings-label">
-              <Trans>Lesson</Trans>
+              <Trans>Order</Trans>
             </span>
             <div className="settings-btns">
               <button
                 type="button"
-                className={`settings-btn ${lessonMode === "guided" ? "active" : ""}`}
-                onClick={() => handleLessonModeChange("guided")}
+                className={`settings-btn ${lessonMode === "lessons" ? "active" : ""}`}
+                onClick={() => handleLessonModeChange("lessons")}
               >
-                <Trans>Guided</Trans>
+                <Trans>Lessons</Trans>
               </button>
               <button
                 type="button"
-                className={`settings-btn ${lessonMode === "skip" ? "active" : ""}`}
-                onClick={() => handleLessonModeChange("skip")}
+                className={`settings-btn ${lessonMode === "random" ? "active" : ""}`}
+                onClick={() => handleLessonModeChange("random")}
               >
-                <Trans>Skip</Trans>
+                <Trans>Random</Trans>
               </button>
             </div>
           </div>
 
           <div
-            className={`settings-group ${lessonMode === "guided" ? "settings-group--disabled" : ""}`}
+            className={`settings-group ${lessonMode === "lessons" ? "settings-group--disabled" : ""}`}
           >
             <span className="settings-label">
               <Trans>Count</Trans>
@@ -251,7 +257,7 @@ export function HomePage() {
                   type="button"
                   className={`settings-btn ${count === n ? "active" : ""}`}
                   onClick={() => handleCountChange(n)}
-                  disabled={lessonMode === "guided"}
+                  disabled={lessonMode === "lessons"}
                 >
                   {n}
                 </button>
@@ -260,7 +266,7 @@ export function HomePage() {
           </div>
         </section>
 
-        {lessonMode === "guided" && (
+        {lessonMode === "lessons" && (
           <LessonList
             lessons={lessons}
             drills={drills}
