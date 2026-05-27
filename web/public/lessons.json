@@ -115,5 +115,41 @@
     "title_ja": "ドット繰り返しとカウントプレフィックス",
     "concept_en": ". (dot) repeats the last change — one of Vim's most powerful features.\n\nx.    — Delete a char, then repeat (delete next char)\ndw.   — Delete a word, then repeat\nciw   then w then .  — Change a word, move to next word, apply same change\n2x    — Delete 2 characters at once (count prefix)\n3dw   — Delete 3 words at once\n\nCombine . with motions to repeat edits efficiently across a file.\n",
     "concept_ja": ". （ドット）は直前の変更を繰り返す — Vim で最も強力な機能の一つ。\n\nx.    — 1文字削除して繰り返す（次の文字も削除）\ndw.   — 単語を削除して繰り返す\nciw → w → .  — 単語を変更し、次の単語に移動して同じ変更を適用\n2x    — 2文字を一度に削除（カウントプレフィックス）\n3dw   — 3単語を一度に削除\n\n. とモーションを組み合わせてファイル全体で効率よく編集を繰り返せる。\n"
+  },
+  {
+    "id": "tier-3-05-visual-mode",
+    "tier": 3,
+    "order": 5,
+    "title_en": "Visual mode: select and operate",
+    "title_ja": "ビジュアルモード: 選択と操作",
+    "concept_en": "Visual mode lets you select a region, then apply an operator to the whole selection.\n\nv    — character-wise visual (select by characters)\nV    — line-wise visual (select whole lines)\nviw  — visually select inner word (same region as ciw/diw)\nv$   — visually select to end of line\n\nAfter selecting, press an operator:\n  d  — delete selection\n  c  — change selection (delete + enter insert)\n  y  — yank (copy) selection\n  ~  — toggle case of selection\n\nvi\" d  is equivalent to di\" (delete inside quotes via visual)\n",
+    "concept_ja": "ビジュアルモードでは範囲を選択してからオペレータを適用できる。\n\nv    — 文字単位のビジュアル選択\nV    — 行単位のビジュアル選択\nviw  — 単語の内側を選択（ciw/diw と同じ範囲）\nv$   — 行末まで選択\n\n選択後にオペレータを押す:\n  d  — 削除\n  c  — 変更（削除してインサートモードへ）\n  y  — ヤンク（コピー）\n  ~  — 大文字/小文字をトグル\n\nvi\" d は di\"（ビジュアル経由でクォート内削除）と等価\n"
+  },
+  {
+    "id": "tier-3-06-case-ops",
+    "tier": 3,
+    "order": 6,
+    "title_en": "Case operators: gU, gu, g~",
+    "title_ja": "大文字・小文字オペレータ: gU, gu, g~",
+    "concept_en": "Vim provides operators for changing the case of text.\n\ngU{motion}  — uppercase the text covered by motion\ngu{motion}  — lowercase the text covered by motion\ng~{motion}  — toggle case of the text covered by motion\n\ngUU  — uppercase the entire current line\nguu  — lowercase the entire current line\n\nCombine with text objects:\n  gUiw  — uppercase inner word\n  guiw  — lowercase inner word\n  g~iw  — toggle case of inner word\n  gUip  — uppercase inner paragraph\n",
+    "concept_ja": "Vim にはテキストの大文字・小文字を変更するオペレータがある。\n\ngU{motion}  — モーションが対象とする範囲を大文字化\ngu{motion}  — モーションが対象とする範囲を小文字化\ng~{motion}  — モーションが対象とする範囲の大文字・小文字をトグル\n\ngUU  — 現在行全体を大文字化\nguu  — 現在行全体を小文字化\n\nテキストオブジェクトと組み合わせる:\n  gUiw  — 単語を大文字化\n  guiw  — 単語を小文字化\n  g~iw  — 単語の大文字・小文字をトグル\n  gUip  — 段落を大文字化\n"
+  },
+  {
+    "id": "tier-3-07-macros",
+    "tier": 3,
+    "order": 7,
+    "title_en": "Macros: record and replay",
+    "title_ja": "マクロ: 記録と再生",
+    "concept_en": "Macros let you record a sequence of keystrokes and replay it on demand.\n\nqa   — start recording into register a (any letter works)\nq    — stop recording\n@a   — play macro stored in register a\n@@   — repeat the last played macro\n2@a  — play macro a exactly 2 times\n\nDesign good macros: end with a motion (like j) so each replay\nadvances to the next target automatically.\n\nExample — change every line's first word to \"new\":\n  qa ciwnew<Esc> j q   ← record: change word, move down\n  @a                   ← replay once\n  @@                   ← replay again without retyping @a\n",
+    "concept_ja": "マクロはキーストロークの列を記録し、後から再生できる機能。\n\nqa   — レジスタ a に記録開始（任意のアルファベット使用可）\nq    — 記録停止\n@a   — レジスタ a のマクロを再生\n@@   — 最後に再生したマクロをもう一度再生\n2@a  — マクロ a を 2 回再生\n\n良いマクロ設計: 末尾に移動コマンド（j など）を入れると\n再生のたびに自動で次の対象に進む。\n\n例 — 各行の最初の単語を \"new\" に変更:\n  qa ciwnew<Esc> j q   ← 記録: 単語変更 → 下に移動\n  @a                   ← 1 回再生\n  @@                   ← @a と打ち直さずにもう一回\n"
+  },
+  {
+    "id": "tier-3-08-substitute",
+    "tier": 3,
+    "order": 8,
+    "title_en": "Substitute: :s and :%s",
+    "title_ja": "置換: :s と :%s",
+    "concept_en": "The substitute command replaces text matching a pattern.\n\n:s/old/new/     — replace first match on current line\n:s/old/new/g    — replace all matches on current line (g = global)\n:%s/old/new/g   — replace all matches in the entire file (% = all lines)\n:%s/^/prefix/   — prepend text to every line (^ = start of line)\n:%s/suffix$//g  — remove trailing text from every line ($ = end of line)\n\nFlags:\n  g  — replace all occurrences (without it, only the first is replaced)\n  i  — case-insensitive match\n  c  — confirm each substitution interactively\n",
+    "concept_ja": "substitute コマンドはパターンにマッチするテキストを置換する。\n\n:s/old/new/     — 現在行の最初のマッチを置換\n:s/old/new/g    — 現在行の全マッチを置換（g = global）\n:%s/old/new/g   — ファイル全体の全マッチを置換（% = 全行）\n:%s/^/prefix/   — 全行の行頭にテキストを追加（^ = 行頭）\n:%s/suffix$//g  — 全行の末尾テキストを削除（$ = 行末）\n\nフラグ:\n  g  — 全マッチを置換（省略時は最初の 1 件のみ）\n  i  — 大文字・小文字を区別しない\n  c  — 置換のたびに確認する\n"
   }
 ]
